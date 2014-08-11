@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmFileInput.msgnode="ComIbmFileInput.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:patternAnnotation="http://www.ibm.com/patternAnnotation/2010" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="mqsi/RecordDistributor.msgflow"
+    nsPrefix="mqsi_RecordDistributor.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="RecordDistributor" bundleName="mqsi/RecordDistributor" pluginId="RDMQOneWayProject"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/RDMQOneWayProject/icons/full/obj16/RecordDistributor.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/RDMQOneWayProject/icons/full/obj30/RecordDistributor.gif"/>
+    <longDescription xmi:type="utility:ConstantString" string="Copyright (c) 2014 IBM Corporation and other Contributors&#xD;&#xA;&#xD;&#xA;All rights reserved. This program and the accompanying materials&#xD;&#xA;are made available under the terms of the Eclipse Public License v1.0&#xD;&#xA;which accompanies this distribution, and is available at&#xD;&#xA;http://www.eclipse.org/legal/epl-v10.html&#xD;&#xA; &#xD;&#xA;Contributors:&#xD;&#xA;     IBM - initial implementation"/>
+    <composition>
+      <nodes xmi:type="ComIbmFileInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_14" location="70,230" inputDirectory="INPUTFILE" processedFileAction="moveToArchive" replaceDuplicateArchives="true" messageDomainProperty="XMLNSC" recordDetection="delimited" recordDelimiter="customDelimiter" fileFtp="true">
+        <translation xmi:type="utility:ConstantString" string="File Input"/>
+      </nodes>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard/>
+    <patternAnnotations>
+      <AnnotationTarget targetObjects="FCMComposite_1_14">
+        <PatternAnnotation xmi:type="patternAnnotation:PropertyPatternAnnotation" aliasId="FCMComposite_1_14.filenamePattern" targetObject="FCMComposite_1_14" targetPropertyId="filenamePattern"/>
+        <PatternAnnotation xmi:type="patternAnnotation:PropertyPatternAnnotation" aliasId="FCMComposite_1_14.inputDirectory" targetObject="FCMComposite_1_14" targetPropertyId="inputDirectory"/>
+        <PatternAnnotation xmi:type="patternAnnotation:PropertyPatternAnnotation" aliasId="FCMComposite_1_14.fileFtpServer" targetObject="FCMComposite_1_14" targetPropertyId="fileFtpServer"/>
+        <PatternAnnotation xmi:type="patternAnnotation:PropertyPatternAnnotation" aliasId="FCMComposite_1_14.fileFtp" targetObject="FCMComposite_1_14" targetPropertyId="fileFtp"/>
+      </AnnotationTarget>
+    </patternAnnotations>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009"/>
+	<meta name="abstract" content="Details about what you need to know, and what resources you must have before you can use the Record Distribution to WebSphere MQ: one-way pattern."/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../css/ibmdita.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/bip4.css"/>
+	<title>Constraints on the use of the Record Distribution to WebSphere MQ: one-way pattern</title>
+	<script language="JavaScript" src="../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.constraints">
+	<h1 class="topictitle1">Constraints on the use of the 
+	<span>Record Distribution to WebSphere MQ: one-way</span> pattern</h1>
+
+<p class="shortdesc">A number of constraints apply when you use this pattern.</p>
+<p>You can use the 
+<span>Record Distribution to WebSphere MQ: one-way</span> pattern only if you meet all the following 
+constraints:</p>
+<ul>
+	<li>It must be possible to read the input file as records.
+	You can process files that contain fixed length records, variable length
+	records separated by a well-known delimiter, or variable length records that
+	can be extracted by a parser, a technique referred to as 
+	<span class="mftobjpropval">Parsed Record Sequence</span>. 
+	This technique can be used to read a file
+	that contains multiple XML documents, returning each document as a record.
+	You cannot use this pattern to extract embedded records, 
+	for example, records within a single XML document.</li>
+	<li>If a remote file is processed by the FTP service, 
+	the broker must be permitted to delete the source file 
+	because source files are moved to the broker and are not read in place.</li>
+	<li>The business function for which the pattern instance is used 
+	must be compatible with the redistribution of records after a system failure. 
+	This pattern distributes the records reliably, 
+	but does not guard against duplicates after a system failure.</li>
+	<li>The business function, for which the pattern instance is used, 
+	must be compatible with the redistribution of records after failure
+	to read a record from the file or to write a record that has been read.
+	In this case, this pattern moves the whole file to the backout directory and an error is written to the
+	error queue. You must arrange for the file to be resubmitted after the error has been corrected.
+	When a file is resubmitted, all the records in the file are reprocessed, which may lead to duplicate 
+	messages.</li>
+	<li>If logging is required, the format that is used by this pattern is assumed 
+	to meet the requirements of your own environment.</li>
+</ul>
+	<p>
+	<a href="overview.htm#anchorBack" title="Back">Back to the Record Distribution to WebSphere MQ: one-way pattern specification</a>
+	</p>
+</body>
+</html>

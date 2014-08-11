@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="Route subflow for the Record Distribution to WebSphere MQ: one-way pattern"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../css/bip4.css" />
+	<title>Route subflow for the Record Distribution to WebSphere MQ: one-way pattern</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mqRoute">
+<div class="section">
+	<h1 class="topictitle1">Route subflow for the Record Distribution to WebSphere MQ: one-way pattern</h1>
+<p class="shortdesc">Details about the Route subflow for the 
+	<span>Record Distribution to WebSphere MQ: one-way</span> 
+	pattern. </p>
+
+<p>The behavior of the Route subflow depends on the value of the 
+<span class="msobjprop">Routing</span> pattern 
+parameter:</p>
+<ul>
+<li><span class="msobjpropval">No routing</span>
+<p>If <span class="msobjpropval">No routing</span> is selected, 
+a single MQOutput node is created and 
+configured with the values of the <span class="msobjprop">Output queue manager</span> and 
+<span class="msobjprop">Output queue</span> 
+pattern parameters. The routing flow is a subflow that includes a Passthrough node. 
+Both default and route terminals are included so that this subflow 
+is consistent with all other types of routing subflow, 
+but the single route terminal only is used.
+</p></li>
+
+
+<li><span class="msobjpropval">Specify routes</span>
+<p> A group of four parameters that define a route:</p>
+<ul>
+<li><span class="msobjprop">Key location</span> 
+is an expression that defines a key location within the current message element. 
+For more information about the type of expression to use, 
+see "Route node" and "Using XPath" in the IBM Integration documentation.</li>
+<li><span class="msobjprop">Key value</span> 
+defines a value that the key location must match if this route is taken.</li>
+<li><span class="msobjprop">Queue manager</span> 
+defines the route as a queue manager.</li>
+<li><span class="msobjprop">Queue</span> 
+defines the route as a queue.</li>
+</ul>
+<p>For each route that is defined, an Output terminal for the Route subflow and an MQOutput node
+are created and connected. </p>
+<p>The Route subflow contains a Route node that is configured with a filter that routes 
+to the first Output terminal for which the condition <tt>KeyLocation = Key Value</tt> is fulfilled.
+If a message element does not match any of the routes, this situation is recorded in a
+variable in the broker environment tree and the message is passed to the Default terminal.</p>
+<p>If the XPATH expression defining a <span class="msobjprop">Key location</span> includes a
+namespace qualifier, the tag defining the namespace must be added to the Namespace table.</p>
+
+<p>You might see a warning on the Route node that is similar to the following message:
+ <tt>Filter table: Filter pattern: The <var>element_name</var> schema element was not found in the 
+ <span class="msobjpropval">Key location = Key value</span> XPath.</tt>
+ This warning does not cause any problems when you deploy and run your pattern instance.</p>
+<p>You can specify a number of different routes by selecting  
+<span class="msobjpropval">Specify routes</span>.</p></li>
+
+
+
+<li><span class="msobjpropval">Lookup routes</span>
+<p>If this value is selected, routes are determined by using values from the message data to look up the 
+queue manager and queue from a database routing table. The routing table is not accessed directly,
+but is read and cached in memory for greater efficiency.</p>
+<p>If this value is selected a single Output terminal is created for the Route subflow. The Output terminal 
+is connected to a single MQOutput node that is configured to take a list of destinations that have been 
+placed in the broker environment tree by the lookup.</p>
+<p>The Route subflow checks whether the cache requires refreshing, by checking if the value of the 
+<span class="filepath">CacheQueueTable.valid</span> shared row variable is set to <tt>NULL</tt>. 
+The variable is set to <tt>NULL</tt> when the flow starts, and when 
+<span class="msobjprop">Cache refresh</span> is enabled and a refresh message has been sent to 
+<span class="msobjprop">Refresh queue</span>. Refresh messages set the value to <tt>NULL</tt>.</p>
+<p>If the cache requires refreshing, the ROUTING_TABLE table of the data source, which is specified in the 
+<span class="msobjprop">Routing data source</span> pattern parameter, is searched to find all of the rows 
+that match the routing context for this flow. The routing context is defined by the 
+<span class="msobjprop">Routing data context</span> pattern parameter, and the rows in which the 
+ROUTING_CONTEXT field matches this parameter are read into an in-memory cache, which is done atomically 
+to prevent lookups while the cache is in an inconsistent state.</p>
+<p>The structure of the cached data is:</p>
+<pre>VARIABLE1, VARIABLE2, QUEUE_MANAGER, QUEUE_NAME </pre>
+<p>The lookup is performed by extracting one, or two,
+key values from the message element by using ESQL expressions that are defined as
+pattern parameters. The lookup is defined by using a statement in the following form: </p>
+<pre>SET KEY = &lt;pattern parameter&gt;</pre>
+<p>If a single key is specified to select a row, or rows,
+from the routing data, use the following WHERE clause for selection: </p>
+<pre>WHERE S.VARIABLE1 = KEY1</pre> 
+<p>If a second key is specified, use the following WHERE clause 
+for selection: </p>
+<pre>WHERE S.VARIABLE1 = KEY1 and S.VARIABLE2 = KEY2</pre>
+<p>This selection sets the queue manager and queue into the list of destinations
+that is used by the MQOutput node. Multiple rows can
+be returned, and the destination data includes all the selected
+destinations. If a match is not found, a routing error occurs and the
+message is passed to the Failure terminal of the Route subflow.</p></li>
+</ul>
+</div>
+<a href="overview.htm#anchor1" title="Back">Back to the Record Distribution to WebSphere MQ: one-way pattern specification</a>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="Use the Record Distribution to WebSphere MQ: one-way pattern to bridge two styles of integration, file based and transaction based."/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../css/bip4.css" />
+	<title>Log subflow for the Record Distribution to WebSphere MQ: one-way pattern</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mqLog">
+<div class="section">
+	<h1 class="topictitle1">Log subflow for the <span>Record Distribution to WebSphere MQ: one-way</span> pattern</h1>
+	<p>Logging is controlled by the user-defined property: 
+	<span class="msobjprop">LoggingOn</span>. 
+	 </p>
+	 <p> Log messages are written as persistent WebSphere MQ messages to a WebSphere MQ queue.
+	 These log messages can be processed separately in accordance with the standard practices
+	within your organization.</p>
+		
+	<p>The following details about the context are contained in the <span class="uicontrol">MQRFH2</span> 
+	header of the message that is written to the log queue:</p>
+		<ul>
+		<li>Broker name</li>
+		<li>Message flow name</li>
+		<li>Time stamp</li>	
+	</ul>
+
+		<p>The following details about the file and records are contained in the 
+		XML body of the message that is written to the log queue:</p>
+		<ul>	
+		<li>Directory</li>
+		<li>File name</li>
+		<li>Records total</li>
+		<li>Records to default</li>
+		</ul>
+	<p>A log message is sent to the log queue only when an entire file is successfully completed. Any file 
+	processing, which causes an error and backs out the file, will
+	generate an error message containing details of where the error occurred.</p>
+</div>
+<a href="overview.htm#anchorBack" title="Back">Back to the Record Distribution to WebSphere MQ: one-way pattern specification</a>
+</body>
+</html>
