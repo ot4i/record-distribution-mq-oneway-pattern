@@ -1,0 +1,30 @@
+<%@taglib id="org.eclipse.jet.workspaceTags" prefix="ws"%>
+
+<c:setVariable select="/*" var="root"/>
+
+<%-- Use the default broker schema unless value set --%>
+<c:set select="$root" name="brokerSchema"></c:set>
+<c:set select="$root" name="brokerSchema1"></c:set>
+<c:set select="$root" name="brokerSchema2"></c:set>
+<c:set select="$root" name="esqlQualifier">#</c:set>
+
+<%-- set the broker schema values if it is not null --%>
+<c:if test="boolean($root/brokerSchema)" >
+	<%-- Tag exists --%>
+	<c:if test="string-length($root/brokerSchema) > 0">
+		<% com.ibm.etools.mft.pattern.fp.plugin.PatternUtility.getBrokerSchemaFolderName(context, "$root/brokerSchema", "brokerSchemaFolderName"); %>	
+		<c:set select="$root" name="brokerSchema"><c:get select="$root/brokerSchema"/></c:set>
+		<c:set select="$root" name="brokerSchema1"><c:get select="$root/brokerSchema"/>_</c:set>
+		<c:set select="$root" name="brokerSchema2"><c:get select="$brokerSchemaFolderName"/>/</c:set>
+		<c:set select="$root" name="esqlQualifier"><c:get select="$root/brokerSchema"/>#</c:set>
+	</c:if>
+</c:if>
+
+<c:choose>
+	<c:when test="namespace-uri($root) = 'com.ibm.etools.mft.pattern.fp.rd.mq'">
+	    <c:include template="fp/rd/mq/templates/main.jet"/>
+	</c:when>
+	<c:otherwise>
+		<c:log severity="error">Unrecognized transform [<c:get select="namespace-uri($root)"/>]</c:log>
+	</c:otherwise>
+</c:choose>

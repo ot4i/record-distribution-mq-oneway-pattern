@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009"/>
+	<meta name="abstract" content="Details about what you need to know, and what resources you must have before you can use the Record Distribution to WebSphere MQ: one-way pattern."/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Tasks to complete before applying the Record Distribution to WebSphere MQ: one-way pattern</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.before">
+	<h1 class="topictitle1">Tasks to complete before applying the 
+	<span>Record Distribution to WebSphere MQ: one-way</span> pattern</h1>
+	<p class="shortdesc">Before applying the pattern to produce a pattern instance, you must determine
+which of the following tasks are required. If required, complete the following tasks:</p>
+
+<ul>
+<li>Identify that this pattern meets the business requirements and 
+can be supported by both file creators and message consumers.</li>
+<li>Name the pattern instance. 
+Identify the purpose of the pattern application so that you can decide on an 
+appropriate name.</li>
+<li>Decide whether you require logging. 
+If logging is required, you must decide to which queue manager and 
+queue the logging messages are sent. Logging might be to a general log queue, 
+which already exists 
+for other broker flows or to a queue that is created for the pattern instance.</li>
+<li>Decide whether you require error messages. 
+If error messages are required, you must decide to which queue manager and 
+queue the error messages are sent.</li>
+<li>Decide how records are detected and, if required, 
+prepare a message set to define how records are parsed. </li>
+<li>Decide if validation is required and, if required,
+prepare a message set to define how records are parsed.</li>
+<li>Determine whether the files that are to be processed are local or remote. 
+If remote files are to be processed, the name of the configurable service must be identified.</li>
+<li>Decide if multiple possible destinations exist. If multiple possible destinations exist, 
+select the routing approach to use.
+	<ul>
+	<li>If you have a limited number of routes where 
+	the destinations do not change frequently, 
+	set the <span class="msobjprop">Routing</span> parameter to 
+	<span class="msobjpropval">Specify routes</span>.</li>
+	<li>If the set of target routes is not fully determined or might change
+	frequently, set the <span class="msobjprop">Routing</span> parameter to 
+	<span class="msobjpropval">Lookup routes</span>. If this value is
+	selected, the name of the data source must be known.</li>
+	</ul></li>
+
+</ul>
+<p>
+		<a href="overview.htm#anchorBack" title="Back">Back to the Record Distribution to WebSphere MQ: one-way pattern specification</a>
+</p>
+</body>
+</html>

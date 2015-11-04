@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-tw" xml:lang="zh-tw">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="使用 Record Distribution to WebSphere MQ: one-way 型樣，可以橋接兩種樣式的整合：檔案型及交易型。"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Record Distribution to WebSphere MQ: one-way 型樣的 RecordDistributor 流程</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mqRecordDistributor">
+<div class="section">
+	<h1 class="topictitle1"><span>Record Distribution to WebSphere MQ: one-way</span> 型樣的記錄配送者流程</h1>
+	<p class="shortdesc"><span>Record Distribution to WebSphere MQ: one-way</span> 型樣的記錄配送者流程明細。</p>
+	<p>此流程執行下列動作：</p>
+	<ol>
+		<li>選取檔案，以根據檔案輸入參數進行處理。</li>
+<li>根據記錄偵測參數，從檔案讀取記錄。每一筆記錄都是在交易內處理。
+如果指定驗證，則會根據訊息集驗證記錄。</li>
+<li>會呼叫路徑子流程，以判斷正確的 WebSphere MQ 目的地，並將記錄寫入正確的目標佇列。
+將記錄寫入佇列時，依預設其格式會與從檔案讀取時的格式相同。
+必要的話，您可以自訂「記錄處理器」流程，以將記錄轉換為其他格式。</li>
+<li>如果選取<span class="msobjpropval">不遞送</span>，則會將記錄寫入預設訊息佇列。</li>
+<li>如果發生錯誤（例如，無法讀取記錄或無法將記錄寫入佇列），則會寫入錯誤訊息，並取消流程。檔案會寫入取消目錄。</li>
+<li>處理所有資料之後，會呼叫「日誌」子流程以記錄作業已完成。如果已將任何記錄寫入預設訊息佇列，則會指出此動作。</li>
+<li>此流程順利結束，而檔案會移至保存子目錄。</li>
+	</ol>
+</div>
+<a href="overview.htm#anchorBack" title="上一步">回到 Record Distribution to WebSphere MQ: one-way 型樣規格</a></body>
+</html>

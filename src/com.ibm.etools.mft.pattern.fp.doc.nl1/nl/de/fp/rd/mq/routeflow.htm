@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de-de" xml:lang="de-de">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="Untergeordneter Routing-Fluss für das Muster 'Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional)"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Untergeordneter Routing-Fluss für das Muster 'Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional)</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mqRoute">
+<div class="section">
+	<h1 class="topictitle1">Untergeordneter Routing-Fluss für das Muster 'Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional)</h1>
+<p class="shortdesc">Informationen zum untergeordneten Routing-Fluss für das Muster <span>Record Distribution to WebSphere MQ: one-way</span> (Verteilung von Datensätzen an WebSphere MQ: unidirektional). </p>
+
+<p>Das Verhalten des untergeordneten Routing-Nachrichtenflusses hängt vom Wert des Musterparameters <span class="msobjprop">Routing</span> ab:</p>
+<ul>
+<li><span class="msobjpropval">Kein Routing</span>
+<p>Wenn <span class="msobjpropval">Kein Routing</span> ausgewählt ist, wird ein einzelner MQOutput-Knoten erstellt und mit den Werten der Musterparameter <span class="msobjprop">Ausgabe-WS-Manager</span> und <span class="msobjprop">Ausgabewarteschlange</span> konfiguriert. Der Routing-Nachrichtenfluss ist ein untergeordneter Nachrichtenfluss, der einen Pass-through-Knoten enthält. 
+Es ist sowohl ein Standard- als auch ein Routenterminal enthalten, sodass dieser untergeordnete Nachrichtenfluss mit allen anderen Typen eines untergeordneten Routing-Nachrichtenflusses konsistent ist, es wird jedoch nur das Routenterminal verwendet.
+</p></li>
+
+
+<li><span class="msobjpropval">Routen angeben</span>
+<p> Eine Gruppe von vier Parametern, die eine Route definieren:</p>
+<ul>
+<li><span class="msobjprop">Schlüsselposition</span> ist ein Ausdruck, der eine Schlüsselposition im aktuellen Nachrichtenelement definiert. 
+Unter "Route-Knoten" und "XPath verwenden" in der IBM Integration-Dokumentation finden Sie weitere
+Informationen zum Typ des zu verwendenden Ausdrucks.</li>
+<li><span class="msobjprop">Schlüsselwert</span>
+definiert einen Wert, mit dem die Schlüsselposition übereinstimmen muss, wenn diese Route genommen wird.</li>
+<li><span class="msobjprop">WS-Manager</span>
+definiert die Route als Warteschlangenmanager.</li>
+<li><span class="msobjprop">Warteschlange</span>
+definiert die Route als Warteschlange.</li>
+</ul>
+<p>Für jede Route, die definiert ist, wird ein Ausgabeterminal für den untergeordneten Routing-Nachrichtenfluss und ein MQOutput-Knoten erstellt und verbunden. </p>
+<p>Der untergeordnete Routing-Nachrichtenfluss enthält einen Route-Knoten, für den ein Filter konfiguriert ist, der die Nachricht zum ersten Ausgabeterminal weiterleitet, wenn die Bedingung <tt>KeyLocation = Key Value</tt> erfüllt ist.
+Wenn ein Nachrichtenelement keiner der Routen entspricht, wird diese Situation in einer Variablen in der Baumstruktur der Brokerumgebung aufgezeichnet und die Nachricht wird das Standardterminal übermittelt.</p>
+<p>Wenn der XPath-Ausdruck, der eine <span class="msobjprop">Schlüsselposition</span> definiert, ein Namespace-Qualifikationsmerkmal enthält, muss der Namespace-Tabelle die Anweisung hinzugefügt werden, mit welcher der Namespace definiert wird.</p>
+
+<p>Möglicherweise wird im Route-Knoten eine Warnung mit ungefähr folgendem Wortlaut angezeigt: <tt>Filtertabelle: Filtermuster: Das Schemaelement <var>Elementname</var> wurde nicht im XPath <span class="msobjpropval">Schlüsselposition = Schlüsselwert</span> gefunden.</tt>
+ Bei der Implementierung und Ausführung Ihrer Musterinstanz spielt diese Warnung keine Rolle.</p>
+<p>Mit der Option <span class="msobjpropval">Routen angeben</span> können Sie eine Reihe verschiedener Routen angeben.</p></li>
+
+
+
+<li><span class="msobjpropval">Routen suchen</span>
+<p>Wenn dieser Wert ausgewählt ist, werden Routen bestimmt, indem der WS-Manager und die Warteschlange in einer Datenbank-Routing-Tabelle mithilfe von Werten aus den Nachrichtendaten gesucht werden. Es erfolgt kein direkter Zugriff auf die Routing-Tabelle, sondern die Tabelle wird im Speicher gelesen und zwischengespeichert, um die Effizienz zu erhöhen.</p>
+<p>Wenn dieser Wert ausgewählt ist, wird für den untergeordneten Routing-Nachrichtenfluss ein einziges Ausgabeterminal erstellt. Das Ausgabeterminal wird mit einem MQOutput-Knoten verbunden, der so konfiguriert ist, dass er eine Liste mit Zielen annimmt, die durch die Suche in der Brokerumgebungsbaumstruktur platziert wurden.</p>
+<p>Der untergeordnete Routing-Nachrichtenfluss überprüft, ob der Cache aktualisiert werden muss, indem er überprüft, ob der Wert der gemeinsam genutzten Zeilenvariablen <span class="filepath">CacheQueueTable.valid</span> auf <tt>NULL</tt> gesetzt ist. 
+Die Variable wird auf <tt>NULL</tt> gesetzt, wenn der Nachrichtenfluss gestartet wird und wenn <span class="msobjprop">Cache-Aktualisierung</span> aktiviert ist und eine Aktualisierungsnachricht an die <span class="msobjprop">Aktualisierungswarteschlange</span> gesendet wurde. Aktualisierungsnachrichten setzen den Wert auf <tt>NULL</tt>.</p>
+<p>Wenn der Cache aktualisiert werden muss, wird die Tabelle
+ROUTING_TABLE der Datenquelle, die im Musterparameter
+<span class="msobjprop">Routing-Datenquelle</span> angegeben ist, durchsucht, um alle Zeilen zu finden, die dem Routing-Kontext für diesen Nachrichtenfluss entsprechen. Der Routing-Kontext wird durch den Musterparameter <span class="msobjprop">Routing-Datenkontext</span> definiert und die Zeilen, in denen das Feld ROUTING_CONTEXT diesem Parameter entspricht, werden in einen Speichercache eingelesen, was atomar durchgeführt wird, um zu verhindern, dass Suchen ausgeführt werden, während sich der Cache in einem inkonsistentem Status befindet.</p>
+<p>Die zwischengespeicherten Daten haben folgende Struktur:</p>
+<pre>VARIABLE1, VARIABLE2, QUEUE_MANAGER, QUEUE_NAME </pre>
+<p>Die Suche wird ausgeführt, indem mithilfe von ESQL-Ausdrücken, die als Musterparameter definiert sind, ein oder zwei Schlüsselwerte aus dem Nachrichtenelement extrahiert werden. Die Suche wird mithilfe einer Anweisung im folgenden Format definiert: </p>
+<pre>SET KEY = &lt;Musterparameter&gt;</pre>
+<p>Wenn ein einzelner Schlüssel angegeben wird, um eine Zeile oder Zeilen aus den Routing-Daten auszuwählen, verwenden Sie für die Auswahl die folgende WHERE-Klausel: </p>
+<pre>WHERE S.VARIABLE1 = KEY1</pre> 
+<p>Wenn ein zweiter Schlüssel angegeben wird, verwenden Sie für die Auswahl die folgende WHERE-Klausel: </p>
+<pre>WHERE S.VARIABLE1 = KEY1 und S.VARIABLE2 = KEY2</pre>
+<p>Durch diese Auswahl wird der Warteschlangenmanager und die Warteschlange in der Liste mit Zieladressen festgelegt, die vom MQOutput-Knoten verwendet wird. Es können mehrere Zeilen zurückgegeben werden und die Zieldaten enthalten alle ausgewählten Ziele. Wenn keine Übereinstimmung gefunden wird, tritt ein Routing-Fehler auf und die Nachricht wird an das Fehlerterminal des untergeordneten Routing-Nachrichtenflusses übermittelt.</p></li>
+</ul>
+</div>
+<a href="overview.htm#anchor1" title="Zurück">Zurück zur Spezifikation des Musters 'Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional)</a>
+</body>
+</html>

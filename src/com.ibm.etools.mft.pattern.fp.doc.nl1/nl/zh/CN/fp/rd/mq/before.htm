@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn" xml:lang="zh-cn">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009"/>
+	<meta name="abstract" content="有关使用 Record Distribution to WebSphere MQ: one-way 模式之前必须了解的内容和必须具有的资源的详细信息。"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>应用 Record Distribution to WebSphere MQ: one-way 模式之前要完成的任务</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.before">
+	<h1 class="topictitle1">应用 <span>Record Distribution to WebSphere MQ: one-way</span> 模式之前要完成的任务</h1>
+	<p class="shortdesc">应用模式以生成模式实例之前，您必须确定需要执行以下哪些任务。如果需要，请完成以下任务：</p>
+
+<ul>
+<li>确定此模式是否符合业务需求，以及文件创建者和消息使用者是否都支持此模式。</li>
+<li>对模式实例进行命名。识别模式应用程序的用途，以便确定合适的名称。</li>
+<li>确定是否需要记录。如果需要记录，那么必须确定将记录消息发送到哪个队列管理器和队列。记录可以发送到常规日志队列，其他代理流可能已有该队列，或发送到针对模式实例所创建的队列。</li>
+<li>确定是否需要错误消息。如果需要错误消息，那么必须确定将错误消息发送到哪个队列管理器和队列。</li>
+<li>确定记录检测方式，如果需要，准备消息集以定义记录解析方式。</li>
+<li>确定是否需要验证，如果需要，准备消息集以定义记录解析方式。</li>
+<li>确定要处理的文件是本地文件还是远程文件。如果要处理远程文件，那么必须标识可配置服务的名称。</li>
+<li>确定是否存在多个可能的目标。如果存在多个可能的目标，那么请选择要使用的路由方法。<ul>
+	<li>如果路由数量有限且目标不会频繁更改，那么请将<span class="msobjprop">路由</span>参数设置为<span class="msobjpropval">指定路由</span>。</li>
+	<li>如果目标路由集未完全确定或者可能频繁更改，那么请将<span class="msobjprop">路由</span>参数设置为<span class="msobjpropval">查找路由</span>。如果选择此值，那么数据源名称必须是已知的。</li>
+	</ul></li>
+
+</ul>
+<p>
+		<a href="overview.htm#anchorBack" title="返回">返回至 Record Distribution to WebSphere MQ: one-way 模式规范</a>
+	</p>
+</body>
+</html>

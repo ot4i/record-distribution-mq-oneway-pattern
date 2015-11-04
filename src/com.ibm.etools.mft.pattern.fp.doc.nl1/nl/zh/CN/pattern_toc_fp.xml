@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS  TYPE="org.eclipse.help.toc"?>
+<toc link_to="toc.xml#wmb_patterns_fp" label="File Processing" topic="fp/rd/overview.htm">
+    <topic label="Record Distribution" href="fp/rd/overview.htm">
+      	<topic label="MQ one-way" href="fp/rd/mq/overview.htm">
+      		<topic label="路由子流" href="fp/rd/mq/routeflow.htm"/>
+      		<topic label="错误子流" href="fp/rd/mq/errorflow.htm"/>
+      		<topic label="日志子流" href="fp/rd/mq/logflow.htm"/>
+      		<topic label="记录分发器子流" href="fp/rd/mq/recorddistributor.htm"/>
+      		<topic label="记录处理器子流" href="fp/rd/mq/recordprocessor.htm"/>
+      		<topic label="约束" href="fp/rd/mq/constraints.htm"/>
+      		<topic label="应用模式之前要完成的任务" href="fp/rd/mq/before.htm"/>      		
+      		<topic label="参数" href="fp/rd/mq/parameters.htm"/>
+      		<topic label="生成模式之后要完成的任务" href="fp/rd/mq/after.htm"/>
+      	</topic>
+    </topic>
+</toc>
+
+

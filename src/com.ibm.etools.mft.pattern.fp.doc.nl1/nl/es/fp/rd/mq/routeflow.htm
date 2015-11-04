@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-es" xml:lang="es-es">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="Subflujo Route para el patrón Distribución de registros en WebSphere MQ: unidireccional"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Subflujo Route para el patrón Distribución de registros en WebSphere MQ: unidireccional</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mqRoute">
+<div class="section">
+	<h1 class="topictitle1">Subflujo Route para el patrón Distribución de registros en WebSphere MQ: unidireccional</h1>
+<p class="shortdesc">Detalles sobre el subflujo Route para el patrón <span>Distribución de registros en WebSphere MQ: unidireccional</span>. </p>
+
+<p>El comportamiento del subflujo Route depende del valor del parámetro de patrón
+<span class="msobjprop">Direccionamiento</span>:</p>
+<ul>
+<li><span class="msobjpropval">Sin direccionamiento</span>
+<p>Si se ha seleccionado <span class="msobjpropval">Sin direccionamiento</span>, se crea y configura un único nodo MQOutput con los valores de los parámetros de patrón <span class="msobjprop">Gestor de colas de salida</span> y <span class="msobjprop">Cola de salida</span>. El flujo de direccionamiento es un subflujo que incluye un nodo Passthrough. 
+Los terminales predeterminado y de ruta se incluyen para que este subflujo sea coherente con todos los demás tipos de subflujo de direccionamiento, pero sólo se utiliza el terminal de ruta única.
+</p></li>
+
+
+<li><span class="msobjpropval">Especificar rutas</span>
+<p> Un grupo de cuatro parámetros que define una ruta:</p>
+<ul>
+<li><span class="msobjprop">Ubicación de clave</span> es una expresión que define una ubicación de clave en el elemento de mensaje actual. 
+Para obtener más información sobre el tipo de expresión que se debe utilizar, consulte
+"Nodo Route" y "Utilización de XPath" en la documentación de IBM Integration.</li>
+<li><span class="msobjprop">Valor de clave</span> define un valor con el que la ubicación de clave debe coincidir si se toma esta ruta.</li>
+<li><span class="msobjprop">Gestor de colas</span> define la ruta como un gestor de colas.</li>
+<li><span class="msobjprop">Cola</span> define la ruta como una cola.</li>
+</ul>
+<p>Para cada ruta que se define, se crean y se conectan un terminal de salida para el subflujo Route y un nodo MQOutput. </p>
+<p>El subflujo Route contiene un nodo Route que se ha configurado con un filtro que direcciona al primer terminal de salida para el que se cumpla la condición <tt>KeyLocation = Key Value</tt>.
+Si un elemento de mensaje no coincide con ninguna de las rutas, esta situación se graba en una variable de entorno en el árbol de entorno de intermediario y el mensaje se pasa al terminal predeterminado.</p>
+<p>Si la expresión XPATH que define una <span class="msobjprop">Ubicación de claves</span> incluye un calificador de espacio de nombres, el código define el espacio de nombres debe añadirse a la tabla Espacio de nombres.</p>
+
+<p>Es posible que aparezca un aviso en el nodo Route parecido al mensaje siguiente: <tt>Tabla de filtros: Patrón de filtro: No se ha podido encontrar el elemento de esquema <var>nombre_elemento</var> en la XPath <span class="msobjpropval">Ubicación de claves = Valor de clave</span>.</tt>
+ Este aviso no causa ningún problema al desplegar y ejecutar el patrón de instancia.</p>
+<p>Puede especificar varias rutas distintas seleccionando <span class="msobjpropval">Especificar rutas</span>.</p></li>
+
+
+
+<li><span class="msobjpropval">Buscar rutas</span>
+<p>Si se selecciona este valor, las rutas se determinan utilizando valores de los datos de mensaje para buscar el gestor de colas y la cola de una tabla de direccionamiento de base de datos. No se accede directamente a la tabla de direccionamiento, sino que se lee y se almacena en la memoria caché para conseguir una mayor eficiencia.</p>
+<p>Si se selecciona este valor se creará un solo terminal Output para el subflujo Route. El terminal Output se conecta a un solo nodo
+MQOutput que se ha configurado para tener una lista de destinos que la búsqueda ha colocado en el árbol de entorno de intermediario de búsqueda.</p>
+<p>El subflujo Route comprueba si es necesario actualizar la memoria caché verificando si el valor de la variable de fila compartida <span class="filepath">CacheQueueTable.valid</span> se ha establecido en <tt>NULL</tt>. 
+La variable se establece en <tt>NULL</tt> cuando el flujo se inicia y cuando
+<span class="msobjprop">Renovación de memoria caché</span>
+está habilitada y se ha enviado un mensaje de renovación a <span class="msobjprop">Renovar cola</span>. Los mensajes de renovación establecen el valor en <tt>NULL</tt>.</p>
+<p>Si es necesario renovar la memoria caché, se busca en la tabla
+ROUTING_TABLE del origen de datos, especificada en el parámetro de patrón <span class="msobjprop">Origen de datos de direccionamiento</span>, para encontrar todas las filas que coinciden con el contexto de direccionamiento de este flujo. El contexto de direccionamiento se define mediante el parámetro de patrón <span class="msobjprop">Contexto de datos de direccionamiento</span>, y las filas en las que el campo ROUTING_CONTEXT coincida con este parámetro se leen en una memoria caché en memoria, acción que se efectúa atómicamente, para evitar que se realicen búsquedas mientras las memoria caché se encuentre en un estado incoherente.</p>
+<p>La estructura de los datos almacenados en la memoria caché es:</p>
+<pre>VARIABLE1, VARIABLE2, QUEUE_MANAGER, QUEUE_NAME </pre>
+<p>La búsqueda se realiza extrayendo uno o dos valores de clave del elemento de mensaje utilizando expresiones ESQL que están definidas como parámetros de patrón. La búsqueda se define utilizando una sentencia en el formato siguiente: </p>
+<pre>SET KEY = &lt;parámetro de patrón&gt;</pre>
+<p>Si se especifica una sola clave para seleccionar una o varias filas de los datos de direccionamiento, utilice la cláusula WHERE siguiente para la selección: </p>
+<pre>WHERE S.VARIABLE1 = KEY1</pre> 
+<p>Si se especifica una segunda clave, utilice la siguiente cláusula WHERE para la selección: </p>
+<pre>WHERE S.VARIABLE1 = KEY1 y S.VARIABLE2 = KEY2</pre>
+<p>Esta selección coloca el gestor de colas y la cola en una lista de destinos que utiliza el nodo MQOutput. Pueden devolverse varias filas y los datos de destino incluyen todos los destinos seleccionados. Si no se encuentra ninguna coincidencia, se produce un error de direccionamiento y el mensaje se pasa al terminal de anomalías del subflujo Route.</p></li>
+</ul>
+</div>
+<a href="overview.htm#anchor1" title="Volver">Volver a la especificación del patrón Distribución de registros en WebSphere MQ: unidireccional</a>
+</body>
+</html>

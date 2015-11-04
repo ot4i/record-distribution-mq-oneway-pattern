@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de-de" xml:lang="de-de">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009"/>
+	<meta name="abstract" content="Details zum notwendigen Know-How und den erforderlichen Ressourcen für die Verwendung des Musters 'Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional)."/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Tasks, die vor der Anwendung des Musters 'Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional) ausgeführt werden müssen.</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.before">
+	<h1 class="topictitle1">Tasks, die vor der Anwendung des Musters <span>Record Distribution to WebSphere MQ: one-way</span> (Verteilung von Datensätzen an WebSphere MQ: unidirektional) ausgeführt werden müssen.</h1>
+	<p class="shortdesc">Bevor Sie das Muster für die Erstellung einer Musterinstanz anwenden, müssen Sie bestimmen, welche der folgenden Tasks erforderlich sind. Führen Sie folgende Tasks aus, falls erforderlich:</p>
+
+<ul>
+<li>Stellen Sie fest, ob dieses Muster den Geschäftsanforderungen entspricht und von Dateierstellern und Nachrichtenkonsumenten unterstützt werden kann.</li>
+<li>Benennen Sie die Musterinstanz. 
+Bestimmen Sie den Zweck der Musteranwendung, sodass Sie einen geeigneten Namen festlegen können.</li>
+<li>Entscheiden Sie, ob eine Protokollierung erforderlich ist. 
+Falls ja, bestimmen Sie den Warteschlangenmanager und die Warteschlange für die Protokollnachrichten. Die Protokollierung kann aber auch in eine allgemeine Warteschlange, die
+bereits für andere Brokernachrichtenflüsse vorhanden ist, oder in eine Warteschlange, die für die
+Musterinstanz erstellt wird, erfolgen.</li>
+<li>Entscheiden Sie, ob Fehlernachrichten erforderlich sind. 
+Ist dies der Fall, müssen Sie festlegen, an welchen WS-Manager und an welche Warteschlange die Fehlernachrichten gesendet werden.</li>
+<li>Entscheiden Sie, wie Datensätze erkannt werden sollen, und bereiten Sie gegebenenfalls einen Nachrichtensatz vor, um zu definieren, wie Datensätze syntaktisch analysiert werden. </li>
+<li>Entscheiden Sie, ob eine Auswertung erforderlich ist, und bereiten Sie gegebenenfalls einen Nachrichtensatz vor, um zu definieren, wie Datensätze syntaktisch analysiert werden.</li>
+<li>Bestimmen Sie, ob die Dateien, die verarbeitet werden sollen, lokal oder fern sind. 
+Wenn ferne Dateien verarbeitet werden sollen, muss der Name des konfigurierbaren Services identifiziert werden.</li>
+<li>Bestimmen Sie, ob mehrere mögliche Ziele vorhanden sind. Ist dies der Fall, wählen Sie die Routing-Methode aus, die verwendet werden soll.
+	<ul>
+	<li>Wenn eine begrenzte Anzahl von Routen vorhanden ist und sich die Ziele nicht häufig ändern,
+	setzen Sie den Parameter <span class="msobjprop">Routing</span> auf
+	<span class="msobjpropval">Routen angeben</span>.</li>
+	<li>Wenn die Gruppe der Zielrouten nicht vollständig bestimmt ist oder sich häufig ändern kann, setzen Sie den Parameter <span class="msobjprop">Routing</span> auf
+	<span class="msobjpropval">Routen suchen</span>. Bei dieser Einstellung muss der Name der Datenquelle bekannt sein.</li>
+	</ul></li>
+
+</ul>
+<p>
+		<a href="overview.htm#anchorBack" title="Zurück">Zurück zur Spezifikation des Musters 'Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional)</a>
+</p>
+</body>
+</html>

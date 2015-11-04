@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de-de" xml:lang="de-de">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="Verwenden Sie das Muster 'Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional) für die Überbrückung der zwei Integrationsstile, der dateibasierten und der transaktionsbasierten Integration."/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Datensatzverteiler-Nachrichtenfluss für das Muster 'Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional)</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mqRecordDistributor">
+<div class="section">
+	<h1 class="topictitle1">Datensatzverteiler-Nachrichtenfluss für das Muster <span>Record Distribution to WebSphere MQ: one-way</span> (Verteilung von Datensätzen an WebSphere MQ: unidirektional)</h1>
+	<p class="shortdesc">Informationen zum Datensatzverteiler-Nachrichtenfluss für das Muster <span>Record Distribution to WebSphere MQ: one-way</span> (Verteilung von Datensätzen an WebSphere MQ: unidirektional). </p>
+	<p>Der Nachrichtenfluss führt folgende Aktionen aus:</p>
+	<ol>
+		<li>Eine Datei wird entsprechend den Dateieingabeparametern zur Verarbeitung ausgewählt.</li>
+<li>Datensätze werden entsprechend der Datensatzerkennungsparameter aus der Datei gelesen.
+Jeder Datensatz wird in einer Transaktion verarbeitet. 
+Wenn eine Auswertung angegeben ist, wird der Datensatz auf Basis des Nachrichtensatzes ausgewertet.</li>
+<li>Der untergeordnete Routing-Nachrichtenfluss wird aufgerufen, um das korrekte WebSphere MQ-Ziel zu bestimmen, und der Datensatz wird in die korrekte Zielwarteschlange geschrieben. 
+Wenn ein Datensatz in eine Warteschlange geschrieben wird, hat er standardmäßig dasselbe Format wie beim Lesen aus der Datei.
+Sie können den Datensatz gegebenenfalls in ein anderes Format umwandeln, indem Sie den Datensatzprozessor-Nachrichtenfluss anpassen.</li>
+<li>Wenn <span class="msobjpropval">Kein Routing</span> ausgewählt ist, wird der Datensatz in die Standardnachrichtenwarteschlange geschrieben.</li>
+<li>Wenn Fehler auftreten, beispielsweise weil ein Datensatz nicht gelesen oder in eine Warteschlange geschrieben werden kann, wird eine Fehlernachricht geschrieben und der Nachrichtenfluss wird zurückgesetzt.
+Die Datei wird in das Verzeichnis für die Zurücksetzung geschrieben.</li>
+<li>Wenn alle Daten verarbeitet sind, wird der untergeordnete Protokollnachrichtenfluss aufgerufen, um den Abschluss aufzuzeichnen.
+Wenn Datensätze in die Standardnachrichtenwarteschlange geschrieben wurden, wird diese Aktion vermerkt.</li>
+<li>Der Nachrichtenfluss wird erfolgreich beendet und die Datei wird in das Archivunterverzeichnis verschoben.</li>
+	</ol>
+</div>
+<a href="overview.htm#anchorBack" title="Zurück">Zurück zur Spezifikation des Musters 'Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional)</a>
+</body>
+</html>

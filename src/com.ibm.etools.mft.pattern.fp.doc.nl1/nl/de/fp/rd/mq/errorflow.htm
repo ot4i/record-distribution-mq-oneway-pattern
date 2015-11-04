@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de-de" xml:lang="de-de">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="Verwenden Sie das Muster 'Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional) für die Überbrückung der zwei Integrationsstile, der dateibasierten und der transaktionsbasierten Integration."/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Untergeordneter Fehlernachrichtenfluss für das Muster 'Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional)</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mqError">
+<div class="section">
+	<h1 class="topictitle1">Untergeordneter Fehlernachrichtenfluss für das Muster <span>Record Distribution to WebSphere MQ: one-way</span> (Verteilung von Datensätzen an WebSphere MQ: unidirektional)</h1>
+	<p class="shortdesc">Dieser untergeordnete Nachrichtenfluss überprüft, ob eine Fehlernachricht ausgegeben werden muss. Dies wird durch die benutzerdefinierte Eigenschaft <span class="msobjprop">ErrorLoggingOn</span> bestimmt.</p>
+<p>Wenn während der Verarbeitung in den Nachrichtenflüssen ein Fehler abgefangen wird, wird der
+untergeordnete Fehlernachrichtenfluss aufgerufen. 
+Folgende Aktionen werden vom untergeordneten Fehlernachrichtenfluss ausgeführt:
+</p>	
+<ol>	
+<li>Wenn Fehlernachrichten erforderlich sind,	wird eine Fehlernachricht erzeugt und in die
+Fehlerwarteschlange geschrieben.
+Details zur
+Ausnahmebedingung werden als XML-Nachricht geschrieben. Zu diesen Details gehören:
+	<ul>
+	<li>Brokername</li>
+	<li>Nachrichtenflussname</li>
+	<li>Zeitmarke</li>
+	<li>Dateiverzeichnis</li>
+	<li>Dateiname</li>
+	<li>Satznummer, bei der der Fehler auftrat</li>
+	<li>Anzahl der in die Standardwarteschlange geschriebenen Sätze</li>
+	<li>Zusammenfassung der Ausnahmedaten</li>
+	</ul>
+<p>Die Zusammenfassung der Ausnahmedaten enthält die Nachrichtenflussbezeichnung, Fehlernummer,
+Textbeschreibung und eine Liste mit Einfügungen, die weitere Details liefern.</p>
+</li>
+<li>Es wird eine Ausnahmebedingung erzeugt, die dazu führt, dass der Nachrichtenfluss nicht erfolgreich beendet wird. Durch diese Aktion wird die Datei in das Unterverzeichnis für die Zurücksetzung verschoben.</li>
+</ol>
+<div class="note"><span class="notetitle"> Hinweis: </span> Nachrichten, die nicht weitergeleitet werden können, werden in ein Standardziel geschrieben. Diese Aktion wird nicht als Fehler behandelt.
+<p>Jede Störung, die dazu führt, dass ein Datensatz nicht aus der Datei gelesen und auf einen
+Datenträger geschrieben wird, wird als Fehler behandelt.</p></div>
+</div>
+<a href="overview.htm#anchorBack" title="Zurück">Zurück zur Spezifikation des Musters 'Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional)</a>
+</body>
+</html>
+
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja-jp" xml:lang="ja-jp">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009"/>
+	<meta name="abstract" content="「WebSphere MQ へのレコード配布: 一方向」パターンを使用する前に知っておくべき事柄や、必要なリソースについての詳細。"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css"/>
+	<title>「WebSphere MQ へのレコード配布: 一方向」パターンの使用に関する制約</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.constraints">
+	<h1 class="topictitle1">「<span>WebSphere MQ へのレコード配布: 一方向</span>」パターンの使用に関する制約</h1>
+
+<p class="shortdesc">このパターンを使用する場合に適用される制約は多数あります。</p>
+<p>以下のすべての制約を満たす場合にのみ、「<span>WebSphere MQ へのレコード配布: 一方向</span>」パターンを使用できます。</p>
+<ul>
+	<li>入力ファイルをレコードとして読み取ることが可能でなければなりません。
+固定長レコード、既知の区切り文字で区切られた可変長レコード、またはパーサーによって抽出できる可変長レコードを含むファイルを処理できます (この技法を<span class="mftobjpropval">構文解析されたレコード・シーケンス</span>といいます)。
+この技法を使って複数の XML 文書を含むファイルを読み取り、各文書を 1 つのレコードとして返すことができます。
+このパターンを使用して、埋め込みレコード (例えば 1 つの XML 文書内の複数のレコード) を抽出することはできません。</li>
+	<li>リモート・ファイルが FTP サービスによって処理される場合、ソース・ファイルはその場で読み取られるのではなくブローカーに移動されるため、ブローカーによるソース・ファイルの削除が許可されなければなりません。</li>
+	<li>パターン・インスタンスの使用対象となるビジネス機能には、システム障害後のレコード再配布との互換性が必要です。
+このパターンは信頼性のある方法でレコードを配布しますが、システム障害後の重複を防ぐわけではありません。</li>
+	<li>パターン・インスタンスの使用対象となるビジネス機能には、ファイルからレコードを読み取る際または読み取られたレコードを書き込む際の障害後の、レコード再配布との互換性が必要です。
+この場合、このパターンはファイル全体をバックアウト・ディレクトリーに移動して、エラーがエラー・キューに書き込まれます。
+エラーが訂正された後、ファイルが再実行依頼されるように調整する必要があります。
+ファイルが再実行依頼されるとき、ファイル内のすべてのレコードは再処理されるので、重複するメッセージが生じることがあります。</li>
+	<li>ロギングが必要な場合、このパターンで使用されるフォーマットが、実際の環境の要件を満たしていると想定されます。</li>
+</ul>
+	<p>
+		<a href="overview.htm#anchorBack" title="戻る">「WebSphere MQ へのレコード配布: 一方向」パターンの仕様に戻る</a>
+</p>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-es" xml:lang="es-es">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="Utilice el patrón Distribución de registros en WebSphere MQ para establecer un puente entre dos estilos de integración, la basada en archivos y la basada en transacciones."/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Subflujo Log para el patrón Distribución de registros en WebSphere MQ: unidireccional</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mqLog">
+<div class="section">
+	<h1 class="topictitle1">Subflujo Log para el patrón <span>Distribución de registros en WebSphere MQ: unidireccional</span></h1>
+	<p>El registro está controlado por la propiedad definida por el usuario:
+	<span class="msobjprop">LoggingOn</span>. 
+	 </p>
+	 <p> Los mensajes de registro se escriben como mensajes persistentes de WebSphere MQ en una cola de WebSphere MQ.
+	 Estos mensajes de registro se pueden procesar por separado de acuerdo a las prácticas estándar de su organización.</p>
+		
+	<p>Los siguientes detalles sobre el contexto se incluyen en la cabecera <span class="uicontrol">MQRFH2</span>
+del mensaje que se escribe en la cola de registro:</p>
+		<ul>
+		<li>Nombre del intermediario</li>
+		<li>Nombre del flujo de mensajes</li>
+		<li>Indicación horaria</li>	
+	</ul>
+
+		<p>Los siguientes detalles sobre el archivo y los registros se incluyen en el cuerpo XML del mensaje que se escribe en la cola de registro:</p>
+		<ul>	
+		<li>Directorio</li>
+		<li>Nombre de archivo</li>
+		<li>Total de registros</li>
+		<li>Registros del valor predeterminado</li>
+		</ul>
+	<p>Se envía un mensaje de registro a la cola de registro sólo cuando todo un archivo se ha completado satisfactoriamente. Cualquier proceso de archivos, que genere un error y retrotraiga el archivo, generará un mensaje que contenga detalles sobre el lugar donde se haya producido el error.</p>
+</div>
+<a href="overview.htm#anchorBack" title="Volver">Volver a la especificación del patrón Distribución de registros en WebSphere MQ: unidireccional</a>
+</body>
+</html>

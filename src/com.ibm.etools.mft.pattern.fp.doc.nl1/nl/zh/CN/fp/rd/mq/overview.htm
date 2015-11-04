@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn" xml:lang="zh-cn">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009" />
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009" />
+	<meta name="abstract" content="Record Distribution to MQ 模式概述"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Record Distribution to WebSphere MQ: one-way 模式</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq">
+<h1 class="topictitle1"><span>Record Distribution to WebSphere MQ: one-way</span> 模式</h1>
+<div>
+	<p class="shortdesc">使用 <span>Record Distribution to WebSphere MQ: one-way</span> 模式在基于文件和基于事务的样式集成之间建立桥接。</p>
+	
+	<p> 在以下情况下使用此模式：</p>
+<ul>
+<li>您拥有以文件形式从本地或远程系统接收的多个事务批次。</li>
+<li>由于以下原因而无法将您的事务作为单个事务发送：<ul>
+<li>源系统的技术限制，仅支持基于文件的集成功能。</li> 
+<li>业务需求，例如，规定在一个工作日内批处理所有事务的集合。</li>
+<li>需要符合现有工作实践，例如，使用包含 EDI 事务的文件。</li>
+</ul></li>
+<li>目标系统设计为接受单个事务。此类系统可以从近乎实时系统和批处理文件获取输入，因此可以提供一个事务接口。</li>	
+<li>有些批处理文件所包含的事务必须分发至一个或多个系统。</li>
+<li>记录必须进行处理，但故障可以通过重新处理整个文件来解决。</li>
+</ul>
+</div>
+
+<div class="section">
+	<h2 class="sectiontitle">解决方案</h2>
+</div>
+<p>解决方案是实现一个消息流，该流可以从文件读取记录，并根据路由规则将每个记录路由至 WebSphere MQ 目标，或者，如果在路由规则中找不到匹配项，那么将记录路由至缺省目标。</p>
+<div>
+<div class="image">
+	<img src="recorddistributor.gif"
+		alt="此图显示将模式服务请求转发至最终服务提供者的行为。" />
+</div>
+	<div>
+		<a href="recorddistributor.htm" title="有关记录分发器消息流的设计信息。">记录分发器消息流</a>
+	</div>
+	<div>
+		<a href="recordprocessor.htm" title="有关记录处理器消息流的设计信息。">记录处理器消息流</a>
+	</div>
+	<div>
+		<a href="logflow.htm" title="有关日志子流的设计信息。">日志子流</a>
+	</div>
+		<div>
+		<a href="errorflow.htm" title="有关错误子流的设计信息。">错误子流</a>
+	</div>
+		<div>
+		<a href="routeflow.htm" title="有关路由子流的设计信息。">路由子流</a>
+	</div>
+	<div class="familylinks">
+		<a name="anchor1"></a>
+		<div class="section">
+			<h2 class="sectiontitle">相关任务</h2>
+		</div>
+		<p>
+			请阅读以下部分以获取有关如何应用和使用此模式的信息。</p>
+		<a href="constraints.htm" title="使用此模式时的约束">使用此模式时的约束</a>
+	</div>
+	<div>
+		<a href="before.htm" title="有关使用此模式之前必须了解的内容和必须具备的资源的详细信息">应用模式之前要完成的任务</a>
+	</div>
+	<div>
+		<a href="parameters.htm" title="模式参数">模式参数</a>
+	</div>
+	<div>
+		<a href="after.htm" title="生成模式之后要完成的任务">生成模式之后要完成的任务</a>
+	</div>
+</div>
+</body>
+</html>

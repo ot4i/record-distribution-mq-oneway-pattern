@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko-kr" xml:lang="ko-kr">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009" />
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009" />
+	<meta name="abstract" content="MQ에 대한 레코드 분배 패턴 개요"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>WebSphere MQ에 대한 레코드 분배: 단방향 패턴</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq">
+<h1 class="topictitle1"><span>WebSphere MQ에 대한 레코드 분배: 단방향</span> 패턴</h1>
+<div>
+	<p class="shortdesc"><span>WebSphere MQ에 대한 레코드 분배: 단방향</span> 패턴을 사용하여
+파일 기반과 트랜잭션 기반의 통합 유형을 브릿지 처리할 수 있습니다. </p>
+	
+	<p> 다음과 같은 경우 이 패턴을 사용하십시오.</p>
+<ul>
+<li>로컬 또는 원격 시스템에서 파일로 수신된 트랜잭션 배치가 있습니다.</li>
+<li>다음과 같은 이유로 트랜잭션을 개별 트랜잭션으로 송신할 수 없습니다.
+<ul>
+<li>파일 기반 통합 기능만 지원하는 소스 시스템의 기술적 제한이 있습니다.</li> 
+<li>비즈니스 요구사항에 따라 배치 처리가 필요합니다(예: 근무일의 모든 트랜잭션 콜렉션).</li>
+<li>기존의 작업 관행을 준수해야 합니다(예: EDI 트랜잭션을 포함한 파일 사용).</li>
+</ul></li>
+<li>대상 시스템이 개별 트랜잭션을 승인하도록 설계되었습니다.
+이러한 시스템은 거의 실시간 시스템과 배치 파일에서 입력 사항을
+	가져오므로 트랜잭션 인터페이스를 제공합니다.</li>	
+<li>둘 이상의 시스템에 분배해야 하는 트랜잭션을 포함한 배치 파일이 있습니다.</li>
+<li>레코드를 처리해야 하며, 실패하면 전체 파일을 다시 처리하여 실패를 핸들링할 수 있습니다.</li>
+</ul>
+</div>
+
+<div class="section">
+	<h2 class="sectiontitle">솔루션</h2>
+</div>
+<p>해결책은 파일에서 레코드를 읽고 각 레코드를 라우팅 규칙에 따라
+WebSphere MQ 목적지로 또는 라우팅 규칙에 일치하는
+항목이 없는 경우에는 기본 목적지로 라우팅하는 메시지 플로우를
+구현하는 것입니다.</p>
+<div>
+<div class="image">
+	<img src="recorddistributor.gif"
+		alt="패턴의 작동을 보여주는 다이어그램입니다. 서비스 요청이 종료 서비스 제공자로 전달됩니다." />
+</div>
+	<div>
+		<a href="recorddistributor.htm" title="레코드 분배자 메시지 플로우의 설계 정보입니다.">레코드 분배자 메시지 플로우</a>
+	</div>
+	<div>
+		<a href="recordprocessor.htm" title="레코드 프로세서 메시지 플로우의 설계 정보입니다.">레코드 프로세서 메시지 플로우</a>
+	</div>
+	<div>
+		<a href="logflow.htm" title="로그 서브플로우의 설계 정보입니다.">로그 서브플로우</a>
+	</div>
+		<div>
+		<a href="errorflow.htm" title="오류 서브플로우의 설계 정보입니다.">오류 서브플로우</a>
+	</div>
+		<div>
+		<a href="routeflow.htm" title="라우트 서브플로우의 설계 정보입니다.">라우트 서브플로우</a>
+	</div>
+	<div class="familylinks">
+		<a name="anchor1"></a>
+		<div class="section">
+			<h2 class="sectiontitle">관련 태스크</h2>
+		</div>
+		<p>
+			이 패턴의 적용 및 사용 방법에 대한 정보는 다음 절을 읽어 보십시오.
+		</p>
+		<a href="constraints.htm" title="패턴의 사용 제한조건">
+			패턴의 사용 제한조건</a>
+	</div>
+	<div>
+		<a href="before.htm" title="패턴을 사용하기 전에 알아야 하는 내용과 필요한 자원">
+			패턴을 적용하기 전 완료할 태스크</a>
+	</div>
+	<div>
+		<a href="parameters.htm" title="패턴 매개변수">
+			패턴 매개변수</a>
+	</div>
+	<div>
+		<a href="after.htm" title="패턴 생성 후에 완료할 태스크">
+			패턴을 생성 후에 완료할 태스크</a>
+	</div>
+</div>
+</body>
+</html>

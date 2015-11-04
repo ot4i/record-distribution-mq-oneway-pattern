@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-tw" xml:lang="zh-tw">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="使用 Record Distribution to WebSphere MQ: one-way 型樣，可以橋接兩種樣式的整合：檔案型及交易型。"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Record Distribution to WebSphere MQ: one-way 型樣的錯誤子流程</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mqError">
+<div class="section">
+	<h1 class="topictitle1"><span>Record Distribution to WebSphere MQ: one-way</span> 型樣的錯誤子流程</h1>
+	<p class="shortdesc">此子流程會測試是否必須寫入錯誤訊息，而這是透過使用者定義的內容 <span class="msobjprop">ErrorLoggingOn</span> 來決定。</p>
+<p>如果在訊息流程的處理期間捕捉到錯誤，則會呼叫「錯誤」子流程。「錯誤」子流程會採取下列動作：</p>	
+<ol>	
+<li>如果需要錯誤訊息，則會準備錯誤訊息，並將它寫入錯誤佇列。異常狀況的明細會寫入為 XML 訊息。這些明細包括：<ul>
+	<li>分配管理系統名稱</li>
+	<li>流程名稱</li>
+	<li>時間戳記</li>
+	<li>檔案目錄</li>
+	<li>檔名
+</li>
+	<li>發生錯誤時的記錄編號</li>
+	<li>寫入預設佇列的記錄數目</li>
+	<li>異常狀況資料的摘要</li>
+	</ul>
+<p>異常狀況資料的摘要包含訊息流程標籤、錯誤碼、文字說明，以及提供進一步明細的插入項目清單。</p>
+</li>
+<li>會產生導致流程未順利結束的異常狀況。此動作會將檔案移至取消子目錄。</li>
+</ol>
+<div class="note"><span class="notetitle">附註：</span>無法遞送的訊息會寫入預設目的地。此動作不會視為錯誤。
+<p>從檔案停止讀取記錄並寫入磁碟的任何失敗都會視為錯誤。</p></div>
+</div>
+<a href="overview.htm#anchorBack" title="上一步">回到 Record Distribution to WebSphere MQ: one-way 型樣規格</a></body>
+</html>
+
+

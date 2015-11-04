@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="pt-br">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009" />
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009" />
+	<meta name="abstract" content="Visão Geral do Padrão de Record Distribution para MQ"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Padrão de Record Distribution para WebSphere MQ: Unidirecional</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq">
+<h1 class="topictitle1">Padrão de <span>Record Distribution para WebSphere MQ: Unidirecional</span></h1>
+<div>
+	<p class="shortdesc">Use o padrão de <span>Record Distribution para WebSphere MQ: Unidirecional</span>
+	para ligar estilos de integração baseados em arquivo e baseados em transação. </p>
+	
+	<p> Use este padrão quando:</p>
+<ul>
+<li>Você tiver lotes de transações que são recebidos como arquivos a partir dos sistemas locais ou remotos.</li>
+<li>Suas transações não puderem ser enviadas como transações individuais devido a:
+<ul>
+<li>as limitações técnicas de sistemas de origem que suportam apenas recursos de integração baseados em arquivo.</li> 
+<li>os requisitos de negócios que ordenam lote, por exemplo, a coleta de todas as transações
+em um dia de trabalho.</li>
+<li>conformidade com práticas de trabalho existentes, por exemplo, o uso de arquivos que contêm transações EDI.</li>
+</ul></li>
+<li>Seus sistemas de destino são projetados para aceitar transações individuais. Tais sistemas podem utilizar entrada de
+sistemas quase em tempo real e de arquivos em lote e, portanto, apresentam uma interface transacional.</li>	
+<li>Você possui arquivos em lote contendo transações que devem ser distribuídas para um ou mais sistemas.</li>
+<li>Os registros devem ser processados, mas qualquer falha pode ser tratada reprocessando o arquivo inteiro.</li>
+</ul>
+</div>
+
+<div class="section">
+	<h2 class="sectiontitle">Solução</h2>
+</div>
+<p>A solução é implementar um fluxo de mensagens que lê registros de um arquivo e roteia cada registro para um
+destino do WebSphere MQ de acordo com as regras de roteamento ou para um destino padrão se uma correspondência não
+for localizada nas regras de roteamento.</p>
+<div>
+<div class="image">
+	<img src="recorddistributor.gif"
+		alt="Um diagrama mostrando o comportamento dos pedidos de serviço padrão que são encaminhados para o provedor de serviços final." />
+</div>
+	<div>
+		<a href="recorddistributor.htm" title="Informações de Design sobre o Fluxo de Mensagens do Record Distrinbutor.">Fluxo de Mensagens do Record Distributor</a>
+	</div>
+	<div>
+		<a href="recordprocessor.htm" title="Informações de Design sobre o Fluxo de Mensagens do Record Processor.">Fluxo de Mensagens do Record Processor</a>
+	</div>
+	<div>
+		<a href="logflow.htm" title="Informações de Design sobre o Subfluxo de Log.">Subfluxo de Log</a>
+	</div>
+		<div>
+		<a href="errorflow.htm" title="Informações de Design sobre o Subfluxo de Erro.">Subfluxo de Erro</a>
+	</div>
+		<div>
+		<a href="routeflow.htm" title="Informações de Design sobre o Subfluxo de Rota.">Subfluxo de Rota</a>
+	</div>
+	<div class="familylinks">
+		<a name="anchor1"></a>
+		<div class="section">
+			<h2 class="sectiontitle">Tarefas Relacionadas</h2>
+		</div>
+		<p>
+			Leia a seção a seguir para obter informações sobre como aplicar e usar este padrão.
+		</p>
+		<a href="constraints.htm" title="Restrições no Uso do Padrão">
+			Restrições no uso do padrão</a>
+	</div>
+	<div>
+		<a href="before.htm" title="O Que é Necessário Saber e Quais Recursos Você Deve Ter Antes de Poder Usar o Padrão">
+			Tarefas para concluir antes de aplicar o padrão</a>
+	</div>
+	<div>
+		<a href="parameters.htm" title="Parâmetros para o Padrão">
+			Parâmetros para o padrão</a>
+	</div>
+	<div>
+		<a href="after.htm" title="Tarefas para Concluir Após Gerar o Padrão">
+			Tarefas para concluir após gerar o padrão</a>
+	</div>
+</div>
+</body>
+</html>

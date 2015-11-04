@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-es" xml:lang="es-es">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009"/>
+	<meta name="abstract" content="Detalles sobre lo que necesita saber y qué recursos debe tener antes de poder utilizar el patrón Distribución de registro a WebSphere MQ: unidireccional."/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css"/>
+	<title>Restricciones en la utilización del patrón Distribución de registros en WebSphere MQ: unidireccional</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.constraints">
+	<h1 class="topictitle1">Restricciones en la utilización del patrón <span>Distribución de registros en WebSphere MQ: unidireccional</span></h1>
+
+<p class="shortdesc">Se aplican una serie de restricciones cuando se utiliza este patrón.</p>
+<p>Puede utilizar el patrón <span>Distribución de registros en WebSphere MQ: unidireccional</span> sólo si se cumplen todas las restricciones siguientes:</p>
+<ul>
+	<li>Debe ser posible leer el archivo de entrada como registros.
+	Puede procesar archivos que contengan registros de longitud fija, registros de longitud variable separados por un delimitador bien conocido, o registros de longitud variable que un analizador pueda extraer, técnica que se conoce como <span class="mftobjpropval">Secuencia de registros analizados</span>. 
+	Esta técnica se puede utilizar para leer un archivo que contenga varios documentos XML, en que cada documento se devolverá como un registro.
+	No se puede utilizar este patrón para extraer registros incrustados, por ejemplo, los registros de un solo documento XML.</li>
+	<li>Si el servicio FTP procesa un archivo remoto, el intermediario debe tener permiso para suprimir el archivo de origen porque los archivos de origen se mueven al intermediario y no se leen en su lugar.</li>
+	<li>La función de negocio para la que se utiliza la instancia de patrón debe ser compatible con la redistribución de registros después de un error del sistema. 
+	Este patrón distribuye los registros de manera fiable, pero no protege contra duplicados después de un error del sistema.</li>
+	<li>La función de negocio, para la que se utiliza la instancia de patrón, debe ser compatible con la redistribución de registros después de producirse un error de lectura de un registro del archivo, o un error de grabación de un registro que se haya leído.
+	En este caso, este patrón mueve todo el archivo al directorio de retrotracción y se graba un error en la cola de errores. Lleve a cabo las acciones pertinentes para que el archivo se someta otra vez, después de que se haya corregido el error.
+	Cuando se vuelve a someter un archivo, se vuelven a procesar todos los registros del mismo, hecho que puede generar mensajes duplicados.</li>
+	<li>Si el registro es necesario, se supone que el formato utilizado por este patrón cumple los requisitos de su propio entorno.</li>
+</ul>
+	<p>
+	<a href="overview.htm#anchorBack" title="Volver">Volver a la especificación del patrón Distribución de registros en WebSphere MQ: unidireccional</a>
+	</p>
+</body>
+</html>

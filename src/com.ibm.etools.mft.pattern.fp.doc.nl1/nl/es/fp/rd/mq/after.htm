@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-es" xml:lang="es-es">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009, 2010
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="Tareas que deben completarse después de generar el patrón Distribución de registros en WebSphere MQ: unidireccional."/>
+	<meta name="description" content=""/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css"/>
+	<title>Tareas que deben completarse después de generar el patrón Distribución de registros en WebSphere MQ: unidireccional</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.after">
+	<h1 class="topictitle1">Tareas que deben completarse después de generar el patrón <span>Distribución de registros en WebSphere MQ: unidireccional</span></h1>
+	<p class="shortdesc">Tareas que debe completar después de haber generado el patrón.</p>
+
+<ol>
+<li>Cree el archivo archivador de intermediario (BAR). Añada el flujo de mensajes generado al archivo BAR. En el editor del Archivador de intermediario, debe seleccionar la opción <span class="uicontrol">Compilar y poner en línea recurso</span> antes de crear el archivo BAR. Si ha utilizado un conjunto de mensajes para definir cómo se analizan los registros, debe añadir éste al archivo Bar.
+</li>
+<li>Configure el archivo archivador de intermediario. No es necesario efectuar ninguna configuración adicional del flujo de mensajes en el archivo archivador de intermediario antes de desplegar los flujos de mensajes para la instancia del patrón <span>Distribución de registros en WebSphere MQ: unidireccional</span>, pero es posible que desee revisar algunas de las opciones predeterminadas y los cambios de configuración que deban aplicarse a su entorno.
+<p>En la página <span class="uicontrol">Gestionar</span> del editor <span class="uicontrol">Archivador de intermediario</span>:</p>
+<ul>
+	<li>Opcional: utilice la propiedad definida por el usuario <span class="msobjprop">LoggingOn</span> para seleccionar si el registro está activado o desactivado para el flujo de mensajes.</li>
+	<li>Opcional: utilice la propiedad definida por el usuario <span class="msobjprop">ErrorLoggingOn</span> para seleccionar si se generan mensajes de error.</li>
+	<li>Opcional: también puede cambiar cualquiera de las propiedades configurables en el archivador de intermediario, por ejemplo, las propiedades de seguridad o crear instancias adicionales. Debe asegurarse de que los valores que cambie no influirán en el comportamiento de la instancia de patrón.</li>
+</ul></li>
+
+<li>En el archivo de resumen, vea la lista de colas que debe crear. El archivo de resumen se encuentra en la carpeta Configuración de patrón, en el proyecto de instancia del patrón <i>Nombre_instancia</i>.</li>
+ 
+ <li>Cree las colas. Cuando se aplica el patrón, una lista de colas de WebSphere MQ se genera con nombres de cola y nombres de gestor de colas, estas colas de WebSphere MQ deben crearse si no existen ya. Todos los valores de mensaje que el patrón necesita se establecen explícitamente en los mensajes y no dependen de los valores de la cola.</li>
+
+<li>Cree los recursos de <span>WebSphere MQ</span>. 
+Puede crear recursos de <span>WebSphere MQ</span> en la línea de mandatos mediante programas y programas de utilidad tales como, por ejemplo, <span class="cmdname">runmqsc</span>, o mediante la interfaz gráfica del Explorador de <span>WebSphere MQ</span>. 
+Para obtener más información sobre la creación de recursos de <span>WebSphere MQ</span>,
+consulte <span>WebSphere MQ</span> Intercommunication, que está disponible en la
+<img src="../../../images/external_link.gif" alt="Este enlace se abre en una nueva ventana" class="external_link" />
+<a href="http://www.ibm.com/software/integration/wmq/library/" target="_blank">página
+web de la biblioteca de WebSphere MQ</a>.</li>
+<li>
+Si utiliza el valor <span class="msobjpropval">Buscar rutas</span> del parámetro <span class="msobjprop">Direccionamiento</span>, puede definir rutas de manera dinámica en la base de datos, pero las rutas no aparecen en la lista del archivo de resumen. 
+Si ha añadido rutas a la base de datos, debe crear las colas y gestores de colas correspondientes.   </li>
+<li>Configure una base de datos de direccionamiento, si es necesario.
+Si se selecciona el valor <span class="msobjpropval">Buscar rutas</span> en el parámetro <span class="msobjprop">Direccionamiento</span>, el origen de los datos debe configurarse con una tabla ROUTING_TABLE. Esta tabla debe incluir las columnas siguientes:
+<ul>
+<li>ROUTING_CONTEXT
+<p>Utilice un valor que identifique las entradas de direccionamiento de este flujo.</p>
+</li>
+<li>VARIABLE1
+<p>El valor con el que la propiedad <span class="msobjprop">KEY1</span> del elemento de mensaje debe coincidir.</p>
+</li>
+<li>VARIABLE2
+<p>El valor con el que la propiedad <span class="msobjprop">KEY2</span> del elemento de mensaje debe coincidir.</p>
+</li>
+<li>QUEUE_MANAGER
+<p>El gestor de colas del destino.</p>
+</li>
+<li>QUEUE_NAME
+<p>La cola de destino.</p>
+</li>
+</ul>
+</li>
+<li>Si ha elegido utilizar FTP para obtener los archivos de entrada, debe crear un servicio configurable FtpServer en el intermediario de destino que coincida con el nombre especificado en el patrón. 
+Esta acción es necesaria para que el nodo FileInput pueda conectarse al servidor FTP remoto.</li>
+<li>Despliegue el archivo BAR. Si se utiliza un conjunto de mensajes para definir registros, este conjunto de mensajes debe desplegarse utilizando el mismo archivo BAR u otro.
+</li>
+</ol>
+
+
+
+	<p>
+		<a href="overview.htm#anchorBack" title="Volver">Volver a la especificación del patrón Distribución de registros en WebSphere MQ: unidireccional</a>
+	</p>
+</body>
+</html>

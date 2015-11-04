@@ -1,0 +1,1502 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="es-es" xmlns="http://www.w3.org/1999/xhtml" xml:lang="es-es">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009"/>
+	<meta name="security" content="public"/>
+	<meta name="Robots" content="index,follow"/>
+	<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+	<meta name="DC.Type" content="reference"/>
+	<meta name="DC.Title" content="Parámetros de patrón para el patrón Distribución de registros en WebSphere MQ: unidireccional"/>
+	<meta name="abstract" content="Tablas que contienen los detalles de los parámetros de patrón para el patrón Distribución de registros en WebSphere MQ: unidireccional"/>
+	<meta name="description" content="Tablas que contienen los detalles de los parámetros de patrón para el patrón Distribución de registros en WebSphere MQ: unidireccional"/>
+	<meta name="DC.Format" content="XHTML"/>
+	<meta name="DC.Language" content="es-es"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->	
+	<link rel="stylesheet" type="text/css" href="../../../css/style2.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css"/>
+	<title>Parámetros de patrón para el patrón Distribución de registros en WebSphere MQ: unidireccional</title>	
+	<script language="JavaScript" src="../../../help/LiveHelp.js"></script>
+	 <!-- START NON-TRANSLATABLE -->
+	<script language="JavaScript">
+	<!--
+
+	function getParameter(location, name) {
+		name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+		var search = "[\\?&]" + name + "=([^&#]*)";
+		var regex = new RegExp(search);
+		var results = regex.exec(location);
+		return (results == null ? true : (results[1] == "false" ? false : true));
+	}
+	
+	function addStyleSheet() {
+		if (getParameter(window.location.href, "everything") == false) {
+			var headId = document.getElementsByTagName("head")[0];         
+			var cssNode = document.createElement("link");
+			cssNode.type = "text/css";
+			cssNode.rel = "stylesheet";
+			cssNode.href = "../../../css/patterns.css";
+			cssNode.media = "screen";
+			headId.appendChild(cssNode);
+		}
+	}
+		
+	addStyleSheet(); // Depends on the query string!
+	
+	function getElementsByStyleClass (className) {
+  		var all = document.all ? document.all :
+    	document.getElementsByTagName('*');
+  		var elements = new Array();
+  		
+  		for (var e = 0; e < all.length; e++) {
+    		if (all[e].className == className) {
+      			elements[elements.length] = all[e];
+      		}
+      	}
+ 		return elements;
+	}
+	
+	function collapseAll() {
+		var elements = getElementsByStyleClass('twisty');
+		for (var e = 0; e < elements.length; e++) {
+			changeTwisty(elements[e], 'TWISTIE.COLLAPSEALL');
+		}
+	}
+	
+	function expandAll() {
+		var elements = getElementsByStyleClass('twisty');
+		for (var e = 0; e < elements.length; e++) {
+			changeTwisty(elements[e], 'TWISTIE.EXPANDALL');
+		}
+	}
+	
+	function toggleTwisty(group) {
+		changeTwisty(group, 'TWISTIE.TOGGLE');
+		if (typeof kc === "object" && typeof kc.resize === "function") kc.resize();
+	}
+
+	function changeTwisty(group, mode) {		
+		whichGroupId = group.parentNode.id;
+
+		whichGroupContainerId = whichGroupId + "Container";
+		whichGroupTwistyId = whichGroupId + "Twisty";
+		whichGroupTwistyImageId = whichGroupId + "Arrow";
+		groupContainerObj = document.getElementById(whichGroupContainerId);
+		twistyArrowContainerObj = document.getElementById(whichGroupTwistyId);
+		twistyArrowImageObj = document.getElementById(whichGroupTwistyImageId);
+		group.parentNode.style.height = "auto";
+
+		var toShow = false;
+		
+		if (mode == 'TWISTIE.TOGGLE') {
+			if (groupContainerObj.style.display == "none" || groupContainerObj.style.display == "") {
+				toShow = true;
+			} else {
+				toShow = false;
+			}
+		} else if (mode == 'TWISTIE.EXPANDALL') {
+			toShow = true;
+		}
+		
+		if (toShow) {
+			groupContainerObj.style.visibility = "visible";
+			groupContainerObj.style.display = "block";
+			twistyArrowImageObj.src = '../../../images/twisty-open.png'
+			group.parentNode.style.height = (groupContainerObj.offsetHeight + 30) +'px'; 
+	
+		} else {
+			groupContainerObj.style.visibility = "hidden";
+			groupContainerObj.style.display = "none";
+			twistyArrowImageObj.src = '../../../images/twisty-closed.png'
+		}
+	
+	}
+	//-->
+	</script>
+	 <!-- END NON-TRANSLATABLE -->
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.parametertable">
+	<!-- Page main title -->
+  	<div id="title" class="invisible">
+		<h1 class="patterns-title">Parámetros para el patrón <span>Distribución de registros en WebSphere MQ: unidireccional</span></h1>
+  	</div>
+
+	
+		
+				
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="fileInput">
+							<div class="twisty" onmouseup="toggleTwisty(this)"  onkeyup="toggleTwisty(this)" role="menubar" id="fileInputTwisty">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="fileInputArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar"  >Archivo de entrada</div>
+							
+							
+									
+									
+									
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="fileInputContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Parámetro de patrón</th>
+													  <th class="invisible" valign="top" width="*">O</th>
+													  <th class="invisible" valign="top" width="*">C</th>
+													  <th class="invisible" valign="top" width="*">Predeterminado</th>
+													  <th valign="top" width="*">Descripción</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Directorio de archivo de entrada</th>
+															<td valign="top" width="*" class="invisible">
+																		Sí
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Sí
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		&nbsp;
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>La ubicación del archivo de entrada.</p>
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Patrón de archivo</th>
+															<td valign="top" width="*" class="invisible">
+																		Sí
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Sí
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">*</span>
+															</td>
+															<td valign="top" width="*">
+																
+    														<p>Nombre de archivo o serie que contiene caracteres comodín opcionales (asterisco (*) o interrogante (?))
+    														que identifican el archivo o archivos que se van a procesar del directorio de entrada.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Usar FTP</th>
+															<td valign="top" width="*" class="invisible">
+																		Sí
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Sí
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				Borrado
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Este parámetro determina si se utiliza FTP para recuperar archivos remotos.</p>
+
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Servicio configurable FTP</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Sí
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">ftpservice</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Este servicio configurable define cómo se utiliza FTP para recuperar un archivo remoto.</p>
+
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="recordDetection">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="recordDetectionTwisty">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="recordDetectionArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Proceso de registros de entrada</div>
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="recordDetectionContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Parámetro de patrón</th>
+													  <th class="invisible" valign="top" width="*">O</th>
+													  <th class="invisible" valign="top" width="*">C</th>
+													  <th class="invisible" valign="top" width="*">Predeterminado</th>
+													  <th valign="top" width="*">Descripción</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Detección de registros</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">Longitud fija (binario o texto)</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Los registros se leen del archivo de acuerdo con el método de detección de registros que se selecciona.</p>
+    <p> Los valores válidos son:</p>
+		                        <ul>
+		                        <li> <span class="msobjpropval">Longitud fija (binario o texto)</span></li>
+		                        <li> <span class="msobjpropval">Delimitados (binario o texto)</span></li>
+		                        <li> <span class="msobjpropval">Delimitados (XML)</span></li>
+		                        <li> <span class="msobjpropval">Analizados (binario o texto)</span></li>
+		                        <li> <span class="msobjpropval">Analizados (XML)</span></li>
+		                        </ul>
+	<p>Si se selecciona <span class="msobjpropval">Analizados (binario o texto)</span>, también deben configurarse los parámetros <span class="msobjprop">Conjunto de mensajes de entrada</span>, <span class="msobjprop">Tipo de mensaje de entrada</span> y <span class="msobjprop">Formato de mensaje de entrada</span>.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Longitud de registro</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">80</span>
+															</td>
+															<td valign="top" width="*">
+																
+    												<p>Los registros de la longitud necesaria se leen del archivo de origen.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Tipo de delimitador</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="2*" class="invisible">
+																		<span class="msobjpropval">Fin de línea de DOS o UNIX</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Si los datos no utilizan el valor predeterminado, seleccione <span class="msobjpropval">Delimitador personalizado (hexadecimal)</span>.</p>
+
+															</td>
+														</tr>
+														
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Delimitador de registro</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		&nbsp;
+															</td>
+															<td valign="top" width="*">
+																
+    													<p>Los registros que se leen desde el archivo están separados por el delimitador especificado, que se proporciona en formato hexadecimal. </p>
+    															<p>Este delimitador debe especificarse como un número par de hasta 32 caracteres, cada uno de ellos entre 0-9 o A-F (en mayúsculas o minúsculas).</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Conjunto de mensajes de entrada</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		&nbsp;
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Los registros se leen del archivo según una definición de este conjunto de mensajes.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Tipo de mensaje de entrada</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		&nbsp;
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Los registros se leen y se analizan según este tipo de mensajes.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Formato de mensaje de entrada</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		&nbsp;
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Los registros se leen y se analizan según este formato de mensajes.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																CCSID de archivo</th>
+															<td valign="top" width="*" class="invisible">
+																		Sí
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Sí
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">Valor predeterminado del sistema de intermediario</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Este parámetro define el conjunto de caracteres codificados que se utiliza para interpretar bytes del archivo que se lee.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Codificación de archivo</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Sí
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">Determinado por el sistema de intermediario</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Este parámetro define el esquema de codificación para los números y caracteres grandes que se utilizan para interpretar
+bytes del archivo que se lee. 
+    Los valores válidos son: </p>
+    <ul>
+    <li><span class="msobjpropval">Determinado por el sistema de intermediario</span></li>
+    <li><span class="msobjpropval">Little endian, con coma flotante IEEE (546)</span></li>
+    <li><span class="msobjpropval">Big endian, con coma flotante IEEE (273)</span></li>
+    <li><span class="msobjpropval">Big endian, con coma flotante S390 (785)</span></li>
+    </ul>
+      <p>Para obtener información sobre la codificación, consulte &quot;Conversión de
+datos con flujos de mensajes&quot; en la documentación de IBM Integration.</p>
+		                        
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="routing">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="routingTwisty">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="routingArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Direccionamiento</div>
+							
+							
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="routingContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Parámetro de patrón</th>
+													  <th class="invisible" valign="top" width="*">O</th>
+													  <th class="invisible" valign="top" width="*">C</th>
+													  <th class="invisible" valign="top" width="*">Predeterminado
+</th>
+													  <th valign="top" width="*">Descripción
+</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+Direccionamiento </th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">Sin direccionamiento</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Este parámetro define el método de direccionamiento que se va a utilizar. Los valores válidos son: </p>
+							<ul>
+								<li>
+									<span class="msobjpropval">Sin direccionamiento</span>
+								</li>
+								<li>
+									<span class="msobjpropval">Especificar rutas</span>
+								</li>
+								<li>
+									<span class="msobjpropval">Buscar rutas</span>
+								</li>
+							</ul>
+		                        
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="noRouting">
+							<div class="twisty" onmouseup="toggleTwisty(this)" id="noRoutingTwisty" onkeyup="toggleTwisty(this)" role="menubar">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="noRoutingArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Sin direccionamiento
+</div>
+							
+							
+									
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="noRoutingContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Parámetro de patrón</th>
+													  <th class="invisible" valign="top" width="*">O</th>
+													  <th class="invisible" valign="top" width="*">C</th>
+													  <th class="invisible" valign="top" width="*">Predeterminado
+</th>
+													  <th valign="top" width="*">Descripción
+</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+Gestor de colas de salida</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Sí
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Este parámetro define el gestor de colas al que se envían todos los mensajes de salida. </p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+Cola de salida </th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Sí
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">OUTPUT</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Este parámetro define la cola a la que se envían todos los mensajes de salida. </p>
+		                        
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="specifyRoutes">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="specifyRoutesTwisty">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="specifyRoutesArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Especificar rutas</div>
+							
+							
+									
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="specifyRoutesContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Parámetro de patrón</th>
+													  <th class="invisible" valign="top" width="*">O</th>
+													  <th class="invisible" valign="top" width="*">C</th>
+													  <th class="invisible" valign="top" width="*">Predeterminado
+</th>
+													  <th valign="top" width="*">Descripción
+</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Gestor de colas predeterminado</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Sí
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Este parámetro define el gestor de colas al que se envían los mensajes cuando no se cumplen los criterios para el valor de propiedad
+<span class="msobjpropval">Especificar rutas</span>. </p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Cola predeterminada</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Sí
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">DEFAULT</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Este parámetro define la cola a la que se envían los mensajes cuando no se cumplen los criterios para el valor de propiedad <span class="msobjpropval">Especificar rutas</span>. </p>
+		                        
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+					
+							    			<p>Los parámetros de la <span class="msobjprop">Tabla de espacio de nombres</span> siguiente definen los prefijos de espacio de nombres y los URI de espacio de nombres que puede utilizar en las expresiones
+XPath que definen las ubicaciones de clave para rutas. 
+Si se incluye una fila, deben incluirse ambos parámetros.</p>
+<p>Puede añadir, editar y suprimir valores y cambiar el orden de los valores en la tabla.</p>
+
+<div class="tablenoborder">
+	<table cellpadding="4" cellspacing="0" summary="" width="100%" rules="all" frame="border" border="1">
+		<thead align="left">
+			<tr>
+				<th class="firstcol" align="left" valign="top" width="*">Parámetro Tabla de espacio de nombres</th>
+				<th class="invisible" valign="top" width="*">O</th>
+				<th class="invisible" valign="top" width="*">C</th>
+				<th class="invisible" valign="top" width="*">Predeterminado
+</th>
+				<th valign="top" width="*">Descripción
+</th>
+			</tr>
+		</thead>
+		<tbody>
+				<tr>
+					<th align="left" valign="top" width="*" class="firstcol">
+						Prefijo de espacio de nombres
+					</th>
+					<td valign="top" width="*" class="invisible">
+								Sí
+					</td>
+					<td valign="top" width="*" class="invisible">
+								No
+					</td>
+					<td valign="top" width="*" class="invisible">
+										
+					</td>
+					<td valign="top" width="*">
+						
+    <p>Este parámetro define el código para un espacio de nombres.</p>
+
+					</td>
+				</tr>
+				<tr>
+					<th align="left" valign="top" width="*" class="firstcol">
+						URI de espacio de nombres
+					</th>
+					<td valign="top" width="*" class="invisible">
+								Sí
+					</td>
+					<td valign="top" width="*" class="invisible">
+								No
+					</td>
+					<td valign="top" width="*" class="invisible">
+										
+					</td>
+					<td valign="top" width="*">
+						
+    <p>Este parámetro define el espacio de nombres para el código actual. </p>
+
+					</td>
+				</tr>
+		</tbody>
+	</table>
+</div>
+    <p>La <span class="msobjprop">Tabla de espacio de nombres</span> define los espacios de nombres que están disponibles para utilizar en expresiones
+    XPath en la <span class="msobjprop">Tabla de direccionamiento</span>.</p> 
+	
+		                        			
+<div class="tablenoborder">
+	<table cellpadding="4" cellspacing="0" summary="" width="100%" rules="all" frame="border" border="1">
+		<thead align="left">
+			<tr>
+				<th class="firstcol" align="left" valign="top" width="*">Parámetro Tabla de direccionamiento</th>
+				<th class="invisible" valign="top" width="*">O</th>
+				<th class="invisible" valign="top" width="*">C</th>
+				<th class="invisible" valign="top" width="*">Predeterminado
+</th>
+				<th valign="top" width="*">Descripción
+</th>
+			</tr>
+		</thead>
+		<tbody>
+				<tr>
+					<th align="left" valign="top" width="*" class="firstcol">
+						Ubicación de claves
+					</th>
+					<td valign="top" width="*" class="invisible">
+								Sí
+					</td>
+					<td valign="top" width="*" class="invisible">
+								No
+					</td>
+					<td valign="top" width="*" class="invisible">
+										
+					</td>
+					<td valign="top" width="*">
+					        <p>Una ubicación de clave es una expresión XPath que define una ubicación en el registro que se está propagando. Por ejemplo, <tt>$Root/XMLNSC/submitPORequest/partNo</tt>. </p>
+							<p>Para obtener más información sobre el tipo de expresión que se debe utilizar,
+consulte "Nodo Route" y "Utilización de XPath" en la documentación de IBM Integration.</p>
+							<p>
+							Los espacios de nombres pueden incluirse si se especifican en la <span class="msobjprop">tabla de espacio de nombres</span> opcional.
+							</p>
+
+					</td>
+				</tr>
+				<tr>
+					<th align="left" valign="top" width="*" class="firstcol">
+						Valor de clave
+					</th>
+					<td valign="top" width="*" class="invisible">
+								Sí
+					</td>
+					<td valign="top" width="*" class="invisible">
+								No
+					</td>
+					<td valign="top" width="*" class="invisible">
+										
+					</td>
+					<td valign="top" width="*">
+						
+    <p>Este parámetro contiene el valor con el que el campo <span class="msobjprop">Ubicación de claves</span> del mensaje entrante debe coincidir para seleccionar esta ruta.
+</p>
+					</td>
+				</tr>
+				<tr>
+					<th align="left" valign="top" width="*" class="firstcol">
+Gestor de colas
+
+</th>
+					<td valign="top" width="*" class="invisible">
+								No
+					</td>
+					<td valign="top" width="*" class="invisible">
+								Sí
+					</td>
+					<td valign="top" width="*" class="invisible">
+										
+					</td>
+					<td valign="top" width="*">
+						
+    <p>Este parámetro define el gestor de colas para un destino de direccionamiento. </p>
+
+					</td>
+				</tr>
+				<tr>
+					<th align="left" valign="top" width="*" class="firstcol">
+Cola
+
+</th>
+					<td valign="top" width="*" class="invisible">
+								Sí
+					</td>
+					<td valign="top" width="*" class="invisible">
+								Sí
+					</td>
+					<td valign="top" width="*" class="invisible">
+										
+					</td>
+					<td valign="top" width="*">
+						
+    <p>Este parámetro define la cola para un destino de direccionamiento. </p>
+
+					</td>
+				</tr>
+		</tbody>
+	</table>
+</div>						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="lookupRoutes">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="lookupRoutesTwisty">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="lookupRoutesArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Buscar rutas
+</div>
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="lookupRoutesContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Parámetro de patrón</th>
+													  <th class="invisible" valign="top" width="*">O</th>
+													  <th class="invisible" valign="top" width="*">C</th>
+													  <th class="invisible" valign="top" width="*">Predeterminado
+</th>
+													  <th valign="top" width="*">Descripción
+</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+Origen de datos de direccionamiento
+</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Sí
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+    <p>										Este parámetro define el origen de datos desde el que se puede seleccionar una ruta. La información de direccionamiento se busca en la tabla
+										<tt>ROUTING_TABLE</tt>.
+</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Contexto de datos de direccionamiento</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+										Este parámetro define un contexto de direccionamiento de manera que puede utilizar una <tt>ROUTING_TABLE</tt> para más de un flujo de mediación. 
+																<p>										Sólo se seleccionan las filas en las que el campo <tt>ROUTING_CONTEXT</tt> coincide con el valor de
+<span class="msobjprop">Contexto de datos de direccionamiento</span> para la búsqueda de direccionamiento y se añaden a la memoria caché en memoria.
+</p>
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+Ubicación de claves 1
+</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Este parámetro define cómo se extrae la primera clave del elemento de mensajes propagado. Se define como una expresión ESQL. </p>
+    <p>La primera clave se utiliza para seleccionar en <tt>VARIABLE1</tt> en una entrada de direccionamiento de origen de datos.
+	La ubicación debe estar en el formato <tt>InputBody</tt>
+										o <tt>InputRoot</tt>.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+Ubicación de claves 2
+</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Este parámetro define cómo una segunda clave opcional se extrae del elemento de mensaje propagado. Se define como una expresión ESQL. </p>
+    <p>La segunda clave se utiliza para seleccionar en <tt>VARIABLE2</tt> en una entrada de direccionamiento de origen de datos.
+	
+    La ubicación debe estar en el formato <tt>InputBody</tt>
+										o <tt>InputRoot</tt>.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Gestor de colas predeterminado</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Sí
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Este parámetro define el gestor de colas al que se envían los mensajes cuando no se cumplen los criterios para el valor de propiedad <span class="msobjpropval">Buscar rutas</span>. </p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Cola predeterminada</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Sí
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">DEFAULT</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Este parámetro define la cola a la que se envían los mensajes cuando no se cumplen los criterios para el valor de propiedad <span class="msobjpropval">Buscar rutas</span>. </p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Renovación de memoria caché</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				Borrado
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Si este parámetro está seleccionado, cuando se recibe un mensaje de renovación, la memoria caché en memoria de datos de direccionamiento se renueva desde el origen de datos. </p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Renovar cola</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Sí
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">REFRESH</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Si <span class="msobjprop">Renovación de memoria caché</span> está seleccionado, un mensaje que se envíe a esta cola desencadena la renovación de los datos de direccionamiento en memoria. </p>
+		                        
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="log">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="logTwisty">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="logArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Registro
+</div>
+							
+							
+									
+									
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="logContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Parámetro de patrón</th>
+													  <th class="invisible" valign="top" width="*">O</th>
+													  <th class="invisible" valign="top" width="*">C</th>
+													  <th class="invisible" valign="top" width="*">Predeterminado
+</th>
+													  <th valign="top" width="*">Descripción
+</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+Registro obligatorio </th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				Borrado
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Este parámetro de patrón determina si la instancia de patrón incluye el código de registro. </p>
+		                        <p>Si se borra <span class="msobjprop">Registro necesario</span>, no se incluye un subflujo Log. </p>
+		                        <p>Si se selecciona <span class="msobjprop">Registro obligatorio</span>, se incluye un subflujo Log en el flujo de mensajes, y se deben establecer los valores para <span class="msobjprop">Gestor de colas de registro</span> y <span class="msobjprop">Cola de registro</span>. </p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Gestor de colas de registro</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Sí
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Este parámetro de patrón define el gestor de colas para el registro. Se puede dejar en blanco si se utiliza el gestor de colas de intermediario para el registro. </p>
+		                        <p>Este parámetro es necesario sólo si se ha seleccionado <span class="msobjprop">Registro necesario</span>. 		                        </p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Cola de registro</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Sí
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">LOG</span>
+															</td>
+															<td valign="top" width="*">
+																
+								<p>Este parámetro de patrón define la cola de registro. </p>
+								<p>Este parámetro es necesario sólo si se ha seleccionado <span class="msobjprop">Registro necesario</span>. </p>
+		                        
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="errorHandling">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="errorHandlingTwisty">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="errorHandlingArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Manejo de errores </div>
+							
+							
+									
+									
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="errorHandlingContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Parámetro de patrón</th>
+													  <th class="invisible" valign="top" width="*">O</th>
+													  <th class="invisible" valign="top" width="*">C</th>
+													  <th class="invisible" valign="top" width="*">Predeterminado
+</th>
+													  <th valign="top" width="*">Descripción
+</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+Mensaje de error obligatorio
+</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				Seleccionado
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Este parámetro de patrón define si la aplicación de patrón crea los elementos de flujo de mensajes que crean los mensajes de error. </p>
+		                        <p>Si <span class="msobjprop">Mensaje de error necesario</span> está seleccionado, deben establecerse valores para <span class="msobjprop">Gestor de colas de errores</span> y <span class="msobjprop">Cola de errores</span>.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+Gestor de colas de errores
+</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Sí
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		&nbsp;
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Este parámetro de patrón define el gestor de colas para los mensajes de error. Se puede dejar en blanco si se utiliza el gestor de colas de intermediario para el registro. </p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Cola de errores</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Sí
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">ERROR</span>
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Este parámetro de patrón define la cola para mensajes de error.
+</p>
+		                        <p>Este parámetro es necesario sólo si se ha seleccionado <span class="msobjprop">Mensaje de error necesario</span>. 		                        </p>
+		                        
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="general">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="generalTwisty">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="generalArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">General
+</div>
+							
+							
+									
+									
+									
+									
+									
+									
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="generalContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Parámetro de patrón</th>
+													  <th class="invisible" valign="top" width="*">O</th>
+													  <th class="invisible" valign="top" width="*">C</th>
+													  <th class="invisible" valign="top" width="*">Predeterminado
+</th>
+													  <th valign="top" width="*">Descripción
+</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Esquema de intermediario</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">mqsi</span>
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Si se especifica un esquema de intermediario, todos los flujos de mensajes y archivos ESQL se crean en ese esquema. Si no se especifica ningún esquema, se utiliza el esquema de intermediario predeterminado. </p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+Prefijo de flujo </th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Si se establece, este prefijo se añade al inicio de todos los nombres de flujo de mensajes. </p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+Sufijo de flujo </th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Si se establece, este sufijo se añade al final de todos los nombres de flujo de mensajes. </p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Prefijo de cola</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Si se establece, este prefijo se añade al inicio de todos los nombres de cola. 		                        </p>
+		                        <p> Si se utilizan nombres de cola predeterminados, debe establecerse el prefijo, el sufijo, o ambos para identificar los nombres de cola para cada instancia de patrón. 
+		                        </p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Sufijo de cola</th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Si se establece, este sufijo se añade al final de todos los nombres de cola. </p>
+								<p>Si se utilizan nombres de cola predeterminados, debe establecerse el prefijo, el sufijo, o ambos para identificar los nombres de cola para cada instancia de patrón. 
+		                        </p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+Descripción corta </th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Esta descripción se añade a la propiedad <span class="msobjprop">Descripción corta</span> de todos los flujos de mensajes que se generan. </p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+Descripción larga </th>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		No
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Esta descripción se añade a la propiedad <span class="msobjprop">Descripción larga</span> de todos los flujos de mensajes que se generan. </p>
+		                        
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+
+	<div id="footnotes" class="invisible">
+		<div class="box first">
+		<div class="TitleBox"><!-- --></div>
+		<div class="FooterBox"><!-- --></div>
+		<div class="TL"><!-- --></div>
+		<div class="TR"><!-- --></div>
+		<div class="BL"><!-- --></div>
+		<div class="BR"><!-- --></div>
+		<div class="ContentBox">
+			<div class="invisible" >
+				<p class="shortdesc">
+Todos los parámetros de patrón aparecen en la lista con sus valores predeterminados. 					</p>
+					<p>
+					La columna con la cabecera <b>O</b> indica si la propiedad es <dfn class="term">obligatoria</dfn>. 
+				La columna con la cabecera <b>C</b> indica si la propiedad es <dfn class="term">configurable</dfn>, lo que quiere decir que puede cambiar
+				el valor al añadir el flujo de mensajes al archivo archivador de intermediario (BAR).
+					</p>
+					<p>
+Si no se indica el valor predeterminado, éste es una serie vacía. 					</p>
+				</div>
+<a href="overview.htm#anchorBack" title="Volver">Volver a la especificación del patrón Distribución de registros en WebSphere MQ: unidireccional</a>
+<p></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

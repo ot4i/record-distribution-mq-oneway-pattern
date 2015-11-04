@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="pt-br">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="Use o padrão de Record Distribution para WebSphere MQ: unidirecional para ligar dois estilos de integração, baseado em arquivo e baseado em transação."/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Fluxo de RecordDistributor para o Padrão de Record Distribution para WebSphere MQ: Unidirecional</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mqRecordDistributor">
+<div class="section">
+	<h1 class="topictitle1">Fluxo de Record Distributor para o
+	Padrão de <span>Record Distribution para WebSphere MQ: Unidirecional</span></h1>
+	<p class="shortdesc">Detalhes sobre o fluxo de Record distributor para o
+	padrão de <span>Record Distribution para WebSphere MQ: Unidirecional</span>. </p>
+	<p>O fluxo executa as seguintes ações:</p>
+	<ol>
+		<li>Um arquivo é selecionado para processamento de acordo com os parâmetros de entrada de arquivo.</li>
+<li>Os registros são lidos a partir do arquivo de acordo com os parâmetros de detecção de registro.
+Cada registro é processado em uma transação. 
+Se a validação for especificada, o registro será validado em um conjunto de mensagens.</li>
+<li>O subfluxo de Rota é chamado para determinar o destino correto do WebSphere MQ
+e o registro é gravado na fila de destino correta. 
+Quando um registro é gravado em uma fila, por padrão ele está no mesmo formato em que foi lido a partir do arquivo.
+Se necessário, é possível transformar o registro em outro formato customizando o fluxo do Processador de Registro.</li>
+<li>Se <span class="msobjpropval">Sem Roteamento</span> for selecionado,
+o registro será gravado na fila de mensagens padrão.</li>
+<li>Se ocorrerem erros, por exemplo falha ao ler um registro ou em gravar um registro em uma fila,
+uma mensagem de erro será gravada e o fluxo será restaurado.
+O arquivo é gravado no diretório de restauração.</li>
+<li>Quando todos os dados forem processados, o subfluxo de Log será chamado para registrar a conclusão.
+Se quaisquer registros tiverem sido gravados na fila de mensagens padrão, esta ação será observada.</li>
+<li>O fluxo finaliza com êxito e o arquivo é movido para o subdiretório do archive.</li>
+	</ol>
+</div>
+<a href="overview.htm#anchorBack" title="Voltar">Voltar para a especificação de padrão do Record Distribution para WebSphere MQ: Unidirecional</a>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="fr-fr">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="Flux secondaire Route de la Distribution d'enregistrements vers WebSphere MQ : modèle unidirectionnel"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Flux secondaire Route de la Distribution d'enregistrements vers WebSphere MQ : modèle unidirectionnel</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mqRoute">
+<div class="section">
+	<h1 class="topictitle1">Flux secondaire Route de la Distribution d'enregistrements vers WebSphere MQ : modèle unidirectionnel</h1>
+<p class="shortdesc">Informations sur le flux secondaire Route du modèle <span>Distribution d'enregistrements vers WebSphere MQ : unidirectionnel</span>. </p>
+
+<p>Le comportement du flux secondaire Route dépend de la valeur du paramètre de modèle <span class="msobjprop">Routage</span> :</p>
+<ul>
+<li><span class="msobjpropval">Aucun routage</span>
+<p>Si vous avez sélectionné <span class="msobjpropval">Aucun routage</span>,
+un seul noeud MQOutput est créé et configuré avec les valeurs des paramètres <span class="msobjprop">Gestionnaire de files d'attente de sortie</span> et<span class="msobjprop">File d'attente de sortie</span> du modèle. Le flux de routage est un flux secondaire qui inclut un noeud Passthrough. 
+Les terminaux par défaut et de route sont inclus pour assurer la cohérence du flux secondaire avec tous les autres types de flux secondaires de routage, mais seul le terminal de route unique est utilisé.
+</p></li>
+
+
+<li><span class="msobjpropval">Indiquer les routes</span>
+<p> Groupe de quatre paramètres qui définissent une route :</p>
+<ul>
+<li><span class="msobjprop">Emplacement de clé</span>
+est une expression qui définit un emplacement de clé dans l'élément de message en cours. 
+Pour plus d'informations sur le type d'expression à utiliser, voir "Noeud de route" et "Utilisation de XPath" dans la documentation IBM Integration.</li>
+<li><span class="msobjprop">Valeur de clé</span>
+définit une valeur à laquelle l'emplacement de clé doit correspondre si la route est utilisée.</li>
+<li><span class="msobjprop">Gestionnaire de files d'attente</span>
+définit la route sous la forme d'un gestionnaire de files d'attente.</li>
+<li><span class="msobjprop">File d'attente</span> définit la route sous la forme d'une file d'attente.</li>
+</ul>
+<p>Pour chaque route définie, un terminal de sortie pour le flux secondaire Route et un noeud MQOutput sont créés et connectés. </p>
+<p>Le flux secondaire Route contient un noeud Route configuré avec un filtre qui mène au premier terminal de Sortie si la condition <tt>KeyLocation = Key Value</tt> est satisfaite.
+Si un élément de message ne correspond à aucune des routes, cette situation est enregistrée dans une variable de l'arborescence d'environnement du courtier et le message est envoyé au terminal par défaut.</p>
+<p>Si l'expression XPATH définissant un <span class="msobjprop">Emplacement de clé</span> comprend un qualificatif d'espace de nom, la balise définissant l'espace de nom doit être ajoutée à la table Espace de nom.</p>
+
+<p>Vous pouvez voir un avertissement sur le noeud de la Route similaire au message suivant :
+ <tt>Table du filtre : Modèle de filtre: L'élément de schéma <var>nom_élément</var> est introuvable dans le XPath <span class="msobjpropval">Emplacement de clé = Valeur de clé</span>.</tt>
+ Cet avertissement ne génère aucun incident lorsque vous déployez et exécutez votre instance de modèle.</p>
+<p>Vous pouvez définir des routes différentes en spécialisant <span class="msobjpropval">Indiquer les routes</span>.</p></li>
+
+
+
+<li><span class="msobjpropval">Rechercher les routes</span>
+<p>Si vous sélectionnez cette valeur, les routes sont déterminées en utilisant les valeurs des données de message pour rechercher le gestionnaire de files d'attente et la file d'attente dans la table de routage de la base de données. La table de routage n'est pas accessible directement, mais elle est lue et mise en cache pour plus d'efficacité.</p>
+<p>Si vous sélectionnez cette valeur, un seul terminal de Sortie est créé pour le flux secondaire Route. Le terminal de Sortie est connecté à un seul noeud MQOutput configuré pour utiliser la liste des destinations placée dans l'arborescence de l'environnement du courtier par la recherche.</p>
+<p>Le flux secondaire Route vérifie si le cache doit être régénéré en vérifiant si la variable de ligne partagée <span class="filepath">CacheQueueTable.valid</span> a la valeur <tt>NULL</tt>. 
+La variable a la valeur <tt>NULL</tt> lorsque le flux démarre et lorsque <span class="msobjprop">Régénérer le cache</span> est activé et qu'un message de régénération a été envoyé à la <span class="msobjprop">file d'attente de régénération</span>. Les messages de régénération définissent la valeur <tt>NULL</tt>.</p>
+<p>Si le cache doit être régénéré, toutes les lignes correspondant au contexte de routage du flux sont recherchées dans la table ROUTING_TABLE de la source de données définie dans le paramètre de modèle <span class="msobjprop">Source de données de routage</span>. Le contexte de routage est défini par le paramètre de modèle <span class="msobjprop">Contexte de données de routage</span> et les lignes dans lesquelles la zone ROUTING_CONTEXT correspond à ce paramètre sont lues dans une mémoire cache interne, l'opération étant exécutée de manière atomique pour empêcher les recherches pendant que l'état de la mémoire cache n'est pas cohérent.</p>
+<p>La structure des données dans la mémoire cache est la suivante :</p>
+<pre>VARIABLE1, VARIABLE2, QUEUE_MANAGER, QUEUE_NAME </pre>
+<p>La recherche est effectuée en extrayant une ou deux valeurs de clé de l'élément de message en utilisant des expressions ESQL définies sous forme de paramètres de modèle. La recherche est définie en utilisant une instruction ayant le format suivant : </p>
+<pre>SET KEY = &lt;paramètre de modèle&gt;</pre>
+<p>Si une seule clé est définie pour sélectionner une ligne ou des lignes dans les données de routage, utilisez la clause WHERE suivante pour la sélection : </p>
+<pre>WHERE S.VARIABLE1 = KEY1</pre> 
+<p>Si une seconde clé est définie, utilisez la clause WHERE suivante pour la sélection : </p>
+<pre>WHERE S.VARIABLE1 = KEY1 and S.VARIABLE2 = KEY2</pre>
+<p>Cette sélection définit le gestionnaire de files d'attente et la file d'attente dans la liste des destinations utilisées dans le noeud MQOutput. Plusieurs lignes peuvent être retournées et les données de destination incluent toutes les destinations sélectionnées. S'il n'existe aucune correspondance, une erreur de routage et le message sont envoyés au terminal Echec du flux secondaire Route.</p></li>
+</ul>
+</div>
+<a href="overview.htm#anchor1" title="Retour">Spécification du modèle Distribution d'enregistrements vers WebSphere MQ : unidirectionnel</a>
+</body>
+</html>

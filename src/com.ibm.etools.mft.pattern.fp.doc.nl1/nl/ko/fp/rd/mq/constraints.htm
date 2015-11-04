@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko-kr" xml:lang="ko-kr">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009"/>
+	<meta name="abstract" content="WebSphere MQ에 대한 레코드 분배: 단방향 패턴을 사용하기 전에 알아야 하는 내용과 필요한 자원 세부사항입니다."/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css"/>
+	<title>WebSphere MQ에 대한 레코드 분배: 단방향 패턴의 사용 제한조건</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.constraints">
+	<h1 class="topictitle1"><span>WebSphere MQ에 대한 레코드 분배: 단방향</span> 패턴의 사용 제한조건</h1>
+
+<p class="shortdesc">이 패턴을 사용할 때는 많은 제한조건이 존재합니다. </p>
+<p>다음과 같은 제한조건을 모두 충족하는 경우에만 <span>WebSphere MQ에 대한 레코드 분배: 단방향</span> 패턴을 사용할 수 있습니다.</p>
+<ul>
+	<li>입력 파일을 레코드로 읽을 수 있어야 합니다.
+	고정 길이 레코드, 잘 알려진 구분 기호로 분리된 가변 길이 레코드나 구문 분석기로 추출할 수 있는
+가변 길이 레코드가 포함된 파일을 처리할 수 있으며, 이 기술을 <span class="mftobjpropval">구문 분석된 레코드 순서</span>라고 합니다.
+	이 기술을 사용하여 여러 개의 XML 문서가 포함된 파일을 읽고
+	각 문서를 레코드로 리턴할 수 있습니다.
+	임베드된 레코드(예: 단일 XML 문서 안의 레코드)를 추출할 때에는
+이 패턴을 사용할 수 없습니다.</li>
+	<li>FTP 서비스에서 원격 파일을 처리하는 경우에는
+소스 파일이 브로커로 이동하고 제대로 읽지 못하므로
+브로커가 소스 파일을 삭제할 수 있어야 합니다. </li>
+	<li>패턴 인스턴스가 사용되는 비즈니스 기능이 시스템 실패 이후
+레코드의 재분배와 호환 가능해야 합니다.
+이 패턴은 레코드를 올바르게 분배하지만,
+시스템 실패 이후 복제되지 않도록 보호하지 못합니다.</li>
+	<li>패턴 인스턴스가 사용되는 비즈니스 기능이 파일에서 레코드를 읽거나 읽은 레코드를 기록하는 데 실패한 이후
+레코드의 재분배와 호환 가능해야 합니다.
+이 경우 이 패턴을 사용하면 파일 전체가 백아웃 디렉토리로 이동되고 오류 큐에 오류가 기록됩니다. 오류를 수정한 후에는 파일을 다시 제출할 수 있도록 배열해야 합니다.
+	파일을 다시 제출할 때는 파일 내 모든 레코드가 다시 처리되어 중복 메시지가 나타날 수 있습니다.</li>
+	<li>로그 기록이 필요하면 이 패턴에 사용된 형식이
+사용자 고유 환경의 요구사항을 충족한다고 가정합니다.</li>
+</ul>
+	<p>
+	<a href="overview.htm#anchorBack" title="이전">WebSphere MQ에 대한 레코드 분배: 단방향 패턴 스펙으로 돌아가기</a>
+	</p>
+</body>
+</html>

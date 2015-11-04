@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de-de" xml:lang="de-de">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="Verwenden Sie das Muster 'Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional) für die Überbrückung der zwei Integrationsstile, der dateibasierten und der transaktionsbasierten Integration."/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Untergeordneter Protokollnachrichtenfluss für das Muster 'Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional)</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mqLog">
+<div class="section">
+	<h1 class="topictitle1">Untergeordneter Protokollnachrichtenfluss für das Muster <span>Record Distribution to WebSphere MQ: one-way</span> (Verteilung von Datensätzen an WebSphere MQ: unidirektional)</h1>
+	<p>Die Protokollierung wird von der benutzerdefinierten Eigenschaft
+	<span class="msobjprop">LoggingOn</span> gesteuert. 
+	 </p>
+	 <p> Protokollnachrichten werden als persistente WebSphere MQ-Nachrichten in eine WebSphere MQ-Warteschlange geschrieben.
+	 Diese Protokollnachrichten können gemäß den Standardverfahren in Ihrem Unternehmen gesondert bearbeitet werden.</p>
+		
+	<p>Folgende Details zum Kontext sind im <span class="uicontrol">MQRFH2</span>-Header der Nachricht enthalten, die in die Protokollwarteschlange geschrieben wird:</p>
+		<ul>
+		<li>Brokername</li>
+		<li>Nachrichtenflussname</li>
+		<li>Zeitmarke</li>	
+	</ul>
+
+		<p>Folgende Details zur Datei und zu den Datensätzen sind im XML-Hauptteil der Nachricht enthalten, die in die Protokollwarteschlange geschrieben wird:</p>
+		<ul>	
+		<li>Verzeichnis</li>
+		<li>Dateiname</li>
+		<li>Gesamtanzahl der Datensätze</li>
+		<li>Datensätze in Standardwarteschlange</li>
+		</ul>
+	<p>Es wird nur eine Protokollnachricht an die Protokollwarteschlange gesendet, wenn die gesamte Datei erfolgreich ausgeführt wurde. Eine Dateiverarbeitung, die einen Fehler verursacht und zurückgesetzt wird, generiert eine Fehlernachricht mit Informationen dazu, an welcher Stelle der Fehler aufgetreten ist.</p>
+</div>
+<a href="overview.htm#anchorBack" title="Zurück">Zurück zur Spezifikation des Musters 'Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional)</a>
+</body>
+</html>

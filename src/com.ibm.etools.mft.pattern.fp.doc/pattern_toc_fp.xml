@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS  TYPE="org.eclipse.help.toc"?>
+<toc link_to="toc.xml#wmb_patterns_fp" label="File Processing" topic="fp/rd/overview.htm">
+    <topic label="Record Distribution" href="fp/rd/overview.htm">
+      	<topic label="MQ one-way" href="fp/rd/mq/overview.htm">
+      		<topic label="Route subflow" href="fp/rd/mq/routeflow.htm"/>
+      		<topic label="Error subflow" href="fp/rd/mq/errorflow.htm"/>
+      		<topic label="Log subflow" href="fp/rd/mq/logflow.htm"/>
+      		<topic label="Record distributor subflow" href="fp/rd/mq/recorddistributor.htm"/>
+      		<topic label="Record processor subflow" href="fp/rd/mq/recordprocessor.htm"/>
+      		<topic label="Constraints" href="fp/rd/mq/constraints.htm"/>
+      		<topic label="Tasks to complete before applying the pattern" href="fp/rd/mq/before.htm"/>      		
+      		<topic label="Parameters" href="fp/rd/mq/parameters.htm"/>
+      		<topic label="Tasks to complete after generating the pattern" href="fp/rd/mq/after.htm"/>
+      	</topic>
+    </topic>
+</toc>
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja-jp" xml:lang="ja-jp">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="ファイル・ベースおよびトランザクション・ベースの 2 つの統合スタイルを橋渡しするために、「WebSphere MQ へのレコード配布: 一方向」パターンを使用します。"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>「WebSphere MQ へのレコード配布: 一方向」パターンのエラー・サブフロー</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mqError">
+<div class="section">
+	<h1 class="topictitle1">「<span>WebSphere MQ へのレコード配布: 一方向</span>」パターンのエラー・サブフロー</h1>
+	<p class="shortdesc">このサブフローは、エラー・メッセージを書き込む必要があるかどうかをテストします。これは、ユーザー定義のプロパティー <span class="msobjprop">ErrorLoggingOn</span> によって決定されます。</p>
+<p>メッセージ・フローの処理中にエラーがキャッチされた場合、エラー・サブフローが呼び出されます。エラー・サブフローは以下のアクションを実行します。
+</p>	
+<ol>	
+<li>エラー・メッセージが必要な場合、エラー・メッセージが作成されてエラー・キューに書き込まれます。例外の詳細は XML メッセージとして書き込まれます。これらの詳細には、以下の内容が含まれます。<ul>
+	<li>ブローカー名</li>
+	<li>フロー名</li>
+	<li>タイム・スタンプ</li>
+	<li>ファイル・ディレクトリー</li>
+	<li>ファイル名
+</li>
+	<li>エラー発生時のレコード番号</li>
+	<li>デフォルト・キューに書き込まれたレコードの数</li>
+	<li>例外データの要約</li>
+	</ul>
+<p>例外データの要約には、メッセージ・フロー・ラベル、エラー番号、テキスト記述、および詳細情報挿入リストが含まれます。</p>
+</li>
+<li>生成された例外が原因で、フローが異常終了します。
+このアクションにより、ファイルがバックアウト・サブディレクトリーに移動されます。
+</li>
+</ol>
+<div class="note"><span class="notetitle">注:</span> ルーティングできないメッセージはデフォルト宛先に書き込まれます。
+このアクションはエラーとしては扱われません。
+<p>ファイルからレコードを読み取ってディスクに書き込むことを停止させるすべての障害は、エラーとして扱われます。</p></div>
+</div>
+		<a href="overview.htm#anchorBack" title="戻る">「WebSphere MQ へのレコード配布: 一方向」パターンの仕様に戻る</a>
+</body>
+</html>
+
+

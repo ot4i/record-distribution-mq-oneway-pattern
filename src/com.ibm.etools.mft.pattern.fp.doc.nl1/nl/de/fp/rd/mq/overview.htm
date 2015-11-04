@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de-de" xml:lang="de-de">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009" />
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009" />
+	<meta name="abstract" content="Übersicht über das Muster für die Verteilung von Datensätzen an WebSphere MQ"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Muster 'Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional)</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq">
+<h1 class="topictitle1">Muster <span>Record Distribution to WebSphere MQ: one-way</span> (Verteilung von Datensätzen an WebSphere MQ: unidirektional)</h1>
+<div>
+	<p class="shortdesc">Verwenden Sie das Muster <span>Record Distribution to WebSphere MQ: one-way</span> (Verteilung von Datensätzen an WebSphere MQ: unidirektional) für die Überbrückung des dateibasierten und des transaktionsbasierten Integrationsstils. </p>
+	
+	<p> Verwenden Sie dieses Muster in folgenden Fällen:</p>
+<ul>
+<li>Transaktionsbatches werden von lokalen oder fernen Systemen als Dateien empfangen.</li>
+<li>Ihre Transaktionen können aufgrund folgender Punkte nicht als einzelne Transaktionen gesendet werden:
+<ul>
+<li>Technische Einschränkungen der Quellensysteme, die nur dateibasierte Integrationsfunktionen unterstützen.</li> 
+<li>Geschäftsanforderungen, die einen Stapelbetrieb erfordern, z. B. die Sammlung aller Transaktionen eines Arbeitstages.</li>
+<li>Anpassung an vorhandene Arbeitsverfahren, z. B. die Verwendung von Dateien, die EDI-Transaktionen enthalten.</li>
+</ul></li>
+<li>Ihre Zielsysteme sind so konzipiert, dass sie einzelne Transaktionen akzeptieren. Solche Systeme nehmen möglicherweise Eingaben von echtzeitnahen Systemen und von Batchdateien an und stellen deshalb eine transaktionsorientierte Schnittstelle dar.</li>	
+<li>Batchdateien enthalten Transaktionen, die an mehrere Systeme verteilt werden müssen.</li>
+<li>Die Datensätze müssen verarbeitet werden, Fehler können jedoch durch die erneute Verarbeitung der gesamten Datei behandelt werden.</li>
+</ul>
+</div>
+
+<div class="section">
+	<h2 class="sectiontitle">Lösung</h2>
+</div>
+<p>Die Lösung besteht in der Implementierung eines Nachrichtenflusses, der Datensätze aus einer Datei liest und jeden Datensatz gemäß Routing-Regeln an ein WebSphere MQ-Ziel oder an ein Standardziel weiterleitet, wenn in den Routing-Regeln keine Übereinstimmung gefunden wird.</p>
+<div>
+<div class="image">
+	<img src="recorddistributor.gif"
+		alt="Ein Diagramm, in dem das Verhalten der Musterserviceanforderungen dargestellt wird, die an den Endservice-Provider weitergeleitet werden." />
+</div>
+	<div>
+		<a href="recorddistributor.htm" title="Gestaltungsinformationen zum Datensatzverteiler-Nachrichtenfluss">Datensatzverteiler-Nachrichtenfluss</a>
+	</div>
+	<div>
+		<a href="recordprocessor.htm" title="Gestaltungsinformationen zum Datensatzprozessor-Nachrichtenfluss">Datensatzprozessor-Nachrichtenfluss</a>
+	</div>
+	<div>
+		<a href="logflow.htm" title="Gestaltungsinformationen zum untergeordneten Protokollnachrichtenfluss">Untergeordneter Protokollnachrichtenfluss</a>
+	</div>
+		<div>
+		<a href="errorflow.htm" title="Informationen zur Gestaltung des untergeordneten Fehlernachrichtenflusses">Untergeordneter Fehlernachrichtenfluss</a>
+	</div>
+		<div>
+		<a href="routeflow.htm" title="Gestaltungsinformationen zum untergeordneten Routing-Nachrichtenfluss">Untergeordneter Routing-Nachrichtenfluss</a>
+	</div>
+	<div class="familylinks">
+		<a name="anchor1"></a>
+		<div class="section">
+			<h2 class="sectiontitle">Verwandte Tasks</h2>
+		</div>
+		<p>
+			Im folgenden Abschnitt finden Sie Informationen zur Anwendung und Verwendung dieses Musters.
+		</p>
+		<a href="constraints.htm" title="Vorgaben für die Verwendung des Musters">
+			Vorgaben für die Verwendung des Musters</a>
+	</div>
+	<div>
+		<a href="before.htm" title="Details zum notwendigen Know-how und den erforderlichen Ressourcen für die Verwendung des Musters"> 			Erforderliche Tasks vor der Anwendung des Musters</a>
+	</div>
+	<div>
+		<a href="parameters.htm" title="Parameter für das Muster">
+			Parameter für das Muster</a>
+	</div>
+	<div>
+		<a href="after.htm" title="Erforderliche Tasks nach der Generierung des Musters">
+			Erforderliche Tasks nach der Generierung des Musters</a>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS  TYPE="org.eclipse.help.toc"?>
+<toc link_to="toc.xml#wmb_patterns_fp" label="Proceso de archivos" topic="fp/rd/overview.htm">
+    <topic label="Distribución de registros" href="fp/rd/overview.htm">
+      	<topic label="En MQ, unidireccional" href="fp/rd/mq/overview.htm">
+      		<topic label="Subflujo Route" href="fp/rd/mq/routeflow.htm"/>
+      		<topic label="Subflujo Error" href="fp/rd/mq/errorflow.htm"/>
+      		<topic label="Subflujo Log" href="fp/rd/mq/logflow.htm"/>
+      		<topic label="Subflujo de distribuidor de registros" href="fp/rd/mq/recorddistributor.htm"/>
+      		<topic label="Subflujo de procesador de registros" href="fp/rd/mq/recordprocessor.htm"/>
+      		<topic label="Restricciones" href="fp/rd/mq/constraints.htm"/>
+      		<topic label="Tareas que deben completarse antes de aplicar el patrón" href="fp/rd/mq/before.htm"/>      		
+      		<topic label="Parámetros" href="fp/rd/mq/parameters.htm"/>
+      		<topic label="Tareas que deben completarse después de generar el patrón" href="fp/rd/mq/after.htm"/>
+      	</topic>
+    </topic>
+</toc>
+
+

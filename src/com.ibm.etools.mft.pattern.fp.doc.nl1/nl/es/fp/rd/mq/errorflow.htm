@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-es" xml:lang="es-es">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="Utilice el patrón Distribución de registros en WebSphere MQ para establecer un puente entre dos estilos de integración, la basada en archivos y la basada en transacciones."/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Subflujo Error para el patrón Distribución de registros en WebSphere MQ: unidireccional</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mqError">
+<div class="section">
+	<h1 class="topictitle1">Subflujo Error para el patrón <span>Distribución de registros en WebSphere MQ: unidireccional</span></h1>
+	<p class="shortdesc">Este subflujo prueba si debe escribirse un mensaje de error y lo determina la propiedad definida por el usuario: <span class="msobjprop"> ErrorLoggingOn</span>.</p>
+<p>Si se detecta un error durante el proceso de flujos de mensajes, se llamará al subflujo Error. 
+El subflujo Error realiza las acciones siguientes:
+</p>	
+<ol>	
+<li>Si los mensajes de error son necesarios, se preparará un mensaje de error y se grabará en la cola de errores.
+Los detalles de la excepción se graban como un mensaje XML. Estos detalles incluyen:
+	<ul>
+	<li>Nombre del intermediario</li>
+	<li>Nombre de flujo</li>
+	<li>Indicación horaria</li>
+	<li>Directorio de archivos</li>
+	<li>Nombre de archivo</li>
+	<li>Número de registro, cuando se ha producido un error</li>
+	<li>Número de registros grabados en la cola predeterminada</li>
+	<li>Resumen de los datos de excepción</li>
+	</ul>
+<p>El resumen de los datos de excepción contienen la etiqueta del flujo de mensajes, el número del error, la descripción del texto y una lista de inserciones que ofrecen más detalles.</p>
+</li>
+<li>Se produce una excepción que hace que el flujo finalice de manera incorrecta. Esta acción mueve el archivo al subdirectorio de retrotracción.</li>
+</ol>
+<div class="note"><span class="notetitle"> Nota: </span> Los mensajes que no se pueden direccionar se escriben en un destino predeterminado. Esta acción no se trata como un error.
+<p>Una anomalía que detiene un registro que se está leyendo desde el archivo y se está grabando en el disco se trata como si fuera un error.</p></div>
+</div>
+<a href="overview.htm#anchorBack" title="Volver">Volver a la especificación del patrón Distribución de registros en WebSphere MQ: unidireccional</a>
+</body>
+</html>
+
+

@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de-de" xml:lang="de-de">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009, 2010
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="Tasks, die nach der Generierung des Musters 'Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional) ausgeführt werden müssen."/>
+	<meta name="description" content=""/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css"/>
+	<title>Tasks, die nach der Generierung des Musters 'Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional) ausgeführt werden müssen</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.after">
+	<h1 class="topictitle1">Tasks, die nach der Generierung des Musters <span>Record Distribution to WebSphere MQ: one-way</span> (Verteilung von Datensätzen an WebSphere MQ: unidirektional) ausgeführt werden müssen</h1>
+	<p class="shortdesc">Tasks, die Sie nach der Generierung des Musters ausführen müssen.</p>
+
+<ol>
+<li>Erstellen Sie die Brokerarchivdatei (BAR-Datei). Fügen Sie den generierten Nachrichtenfluss Ihrer BAR-Datei hinzu. 
+Im Brokerarchiveditor müssen Sie die Option <span class="uicontrol">Ressourcen kompilieren und integrieren</span> auswählen, um die BAR-Datei zu erstellen. 
+Wenn Sie einen Nachrichtensatz zur Definition der Parsing-Weise für Datensätze verwendet haben, müssen Sie der Brokerarchivdatei den Nachrichtensatz hinzufügen.
+</li>
+<li>Konfigurieren Sie die Brokerarchivdatei. Eine weitere Konfiguration des Nachrichtenflusses in der Brokerarchivdatei ist nicht erforderlich, bevor Sie die Nachrichtenflüsse für Ihre Instanz des Musters <span>Record Distribution to WebSphere MQ: one-way</span> (Verteilung von Datensätzen an WebSphere MQ: unidirektional) implementieren, Sie können jedoch einige Standardoptionen überprüfen und Änderungen für Ihre Umgebung konfigurieren.
+<p>Auf der Seite <span class="uicontrol">Verwalten</span> des Editors <span class="uicontrol">Brokerarchiv</span> können Sie folgende Vorgänge ausführen:</p>
+<ul>
+	<li>Optional: Wählen Sie mithilfe der benutzerdefinierten Eigenschaft
+	<span class="msobjprop">LoggingOn</span> aus, ob die Protokollierung für den Nachrichtenfluss aktiviert oder inaktiviert ist.</li>
+	<li>Optional: Wählen Sie mithilfe der benutzerdefinierten Eigenschaft <span class="msobjprop">ErrorLoggingOn</span> aus, ob Fehlernachrichten generiert werden.</li>
+	<li>Optional: Sie können auch die konfigurierbaren Eigenschaften im Brokerarchiv ändern, zum Beispiel Sicherheitseigenschaften oder Eigenschaften zur Erstellung weiterer Instanzen. Allerdings müssen Sie sicherstellen, dass sich die von Ihnen geänderten Werte
+				nicht auf das Verhalten der Musterinstanz auswirken.</li>
+</ul></li>
+
+<li>Die zu erstellenden Warteschlangen entnehmen Sie bitte der
+ 				Zusammenfassungsdatei. Die Summendatei befindet sich im Projektverweisordner des Musterinstanzprojektes <i>Instanzname</i>.</li>
+ 
+ <li>Erstellen Sie die Warteschlangen. Bei der Anwendung des Musters wird eine Liste mit
+		WebSphere MQ-Warteschlangen generiert. Diese Liste enthält die Namen von Warteschlangen
+		und Warteschlangenmanagern. Falls diese WebSphere MQ-Warteschlangen noch nicht
+		vorhanden sind, müssen sie erstellt werden. Alle Nachrichteneinstellungen, die für das Muster erforderlich sind, werden explizit in den Nachrichten festgelegt und hängen nicht von Warteschlangeneinstellungen ab.</li>
+
+<li>Erstellen Sie die <span>WebSphere MQ</span>-Ressourcen. 
+Sie können <span>WebSphere MQ</span>-Ressourcen entweder über die Befehlszeile mithilfe von Programmen und Dienstprogrammen wie
+<span class="cmdname">runmqsc</span> oder mithilfe der grafischen Oberfläche von <span>WebSphere MQ</span> Explorer erstellen. 
+Weitere Informationen zur Erstellung von
+    				<span>WebSphere MQ</span>-Ressourcen finden Sie unter <span>WebSphere MQ</span> Intercommunication,         verfügbar auf der <img src="../../../images/external_link.gif" alt="Dieser Link öffnet sich in einem neuen Fenster" class="external_link" />	<a href="http://www.ibm.com/software/integration/wmq/library/" target="_blank">WebSphere
+    				MQ-Bibliotheks</a>webseite.</li>
+<li>
+Wenn Sie den Wert <span class="msobjpropval">Routen suchen</span> im Parameter
+<span class="msobjprop">Routing</span> verwenden, können Sie Routen dynamisch in der Datenbank definieren, die Routen werden jedoch nicht in der Summendatei aufgelistet. 
+Wenn Sie Routen zur Datenbank hinzugefügt haben, müssen Sie die entsprechenden Warteschlangen und WS-Manager erstellen.   </li>
+<li>Richten Sie bei Bedarf eine Routing-Datenbank ein.
+Wenn der Wert <span class="msobjpropval">Routen suchen</span> im Parameter
+<span class="msobjprop">Routing</span> ausgewählt ist, muss die Datenquelle mit der Tabelle 'ROUTING_TABLE' konfiguriert werden. Diese Tabelle muss die folgenden Spalten enthalten:
+<ul>
+<li>ROUTING_CONTEXT
+<p>Geben Sie einen Wert ein, der die Routing-Einträge für diesen Nachrichtenfluss identifiziert.</p>
+</li>
+<li>VARIABLE1
+<p>Der Wert, mit dem die Eigenschaft <span class="msobjprop">KEY1</span> des Nachrichtenelements übereinstimmen muss.</p>
+</li>
+<li>VARIABLE2
+<p>Der Wert, mit dem die Eigenschaft <span class="msobjprop">KEY2</span> des Nachrichtenelements übereinstimmen muss.</p>
+</li>
+<li>QUEUE_MANAGER
+<p>Der Warteschlangenmanager des Ziels.</p>
+</li>
+<li>QUEUE_NAME
+<p>Die Zielwarteschlange.</p>
+</li>
+</ul>
+</li>
+<li>Wenn Sie FTP zum Abruf von Eingabedateien nutzen möchten, müssen einen konfigurierbaren FtpServer-Service auf dem Zielbroker erstellen, der dem Namen entspricht, der in Ihrem Muster angegeben ist. 
+Diese Aktion ist erforderlich, damit sich der FileInput-Knoten mit dem fernen FTP-Server verbinden kann.</li>
+<li>Implementieren Sie die BAR-Datei. Wenn ein Nachrichtensatz für die Definition von Datensätzen verwendet wird, muss dieser Nachrichtensatz mithilfe derselben oder einer anderen BAR-Datei implementiert werden.
+</li>
+</ol>
+
+
+
+	<p>
+		<a href="overview.htm#anchorBack" title="Zurück">Zurück zur Spezifikation des Musters 'Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional)</a>
+	</p>
+</body>
+</html>

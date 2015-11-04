@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="pt-br">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009"/>
+	<meta name="abstract" content="Detalhes sobre o que é necessário saber e quais recursos você deve ter antes de poder usar o padrão de Record Distribution para WebSphere MQ: unidirecional."/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css"/>
+	<title>Restrições sobre o Uso do Padrão de Record Distribution para WebSphere MQ: Unidirecional</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.constraints">
+	<h1 class="topictitle1">Restrições sobre o Uso do Padrão de
+	<span>Record Distribution para WebSphere MQ: Unidirecional</span></h1>
+
+<p class="shortdesc">Várias restrições se aplicam quando este padrão é usado.</p>
+<p>É possível usar o padrão de
+<span>Record Distribution para WebSphere MQ: Unidirecional</span> apenas se você atender a todas as
+restrições a seguir:</p>
+<ul>
+	<li>Deve ser possível ler o arquivo de entrada como registros.
+	É possível processar arquivos que contêm registros de comprimento fixo, registros de
+	comprimento variável separados por um delimitador bem conhecido ou registros de comprimento variável que
+	podem ser extraídos por um analisador, uma técnica referida como
+	<span class="mftobjpropval">Sequência do Registro Analisado</span>. 
+	Esta técnica pode ser usada para ler um arquivo
+	que contém múltiplos documentos XML, retornando cada documento como um registro.
+	Não é possível usar este padrão para extrair registros integrados,
+	por exemplo, registros em um único documento XML.</li>
+	<li>Se um arquivo remoto for processado pelo serviço FTP,
+	o broker deverá ter permissão para excluir o arquivo de origem
+	porque arquivos de origem são movidos para o broker e não são lidos no local.</li>
+	<li>A função de negócios para a qual a instância padrão é usada
+	deve ser compatível com a redistribuição de registros após uma falha do sistema. 
+	Este padrão distribui os registros de maneira confiável,
+	mas não protege contra duplicatas após uma falha do sistema.</li>
+	<li>A função de negócios, para a qual a instância padrão é usada,
+	deve ser compatível com a redistribuição de registros após a falha
+	para ler um registro do arquivo ou para gravar um registro que foi lido.
+	Neste caso, este padrão move o arquivo inteiro para o diretório de restauração e um erro é gravado na
+	fila de erros. É necessário organizar o arquivo para ser reenviado após o erro ser corrigido.
+	Quando um arquivo é reenviado, todos os registros no arquivo são reprocessados, o que pode levar a mensagens
+	duplicadas.</li>
+	<li>Se a criação de log for necessária, o formato que é usado por este padrão é assumido para atender aos requisitos
+	de seu próprio ambiente.</li>
+</ul>
+	<p>
+	<a href="overview.htm#anchorBack" title="Voltar">Voltar para a especificação de padrão do Record Distribution para WebSphere MQ: Unidirecional</a>
+	</p>
+</body>
+</html>

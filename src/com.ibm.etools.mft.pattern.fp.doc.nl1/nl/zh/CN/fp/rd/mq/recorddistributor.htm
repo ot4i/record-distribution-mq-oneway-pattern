@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn" xml:lang="zh-cn">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="使用 Record Distribution to WebSphere MQ: one-way 模式在两种样式的集成（基于文件和基于事务的集成）之间建立桥接。"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Record Distribution to WebSphere MQ: one-way 模式的记录分发器流</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mqRecordDistributor">
+<div class="section">
+	<h1 class="topictitle1"><span>Record Distribution to WebSphere MQ: one-way</span> 模式的记录分发器流</h1>
+	<p class="shortdesc">有关 <span>Record Distribution to WebSphere MQ: one-way</span> 模式的记录分发器流的详细信息。</p>
+	<p>该流将执行以下操作：</p>
+	<ol>
+		<li>选中文件以根据文件输入参数进行处理。</li>
+<li>根据记录检测参数从文件读取记录。
+每个记录都在一个事务中进行处理。
+如果指定了验证，那么将针对消息集验证记录。</li>
+<li>将调用路由子流来确定正确的 WebSphere MQ 目标，并将记录写入正确的目标队列。
+在缺省情况下，将记录写入队列的格式与从文件中读取的格式相同。
+如果需要，可以通过定制记录处理器流来将记录变换为其他格式。</li>
+<li>如果选择了“<span class="msobjpropval">无路由</span>”，那么记录将写入缺省消息队列。</li>
+<li>如果发生错误，例如，无法读取记录或将记录写入队列，那么将编写错误消息，并将回退该流。文件将写入回退目录。</li>
+<li>处理所有数据后，将调用日志子流来记录完成。
+如果任何记录都已写入缺省消息队列，那么将记录此操作。</li>
+<li>流成功结束，并且文件将移动到归档子目录。</li>
+	</ol>
+</div>
+<a href="overview.htm#anchorBack" title="返回">返回至 Record Distribution to WebSphere MQ: one-way 模式规范</a>
+	</body>
+</html>

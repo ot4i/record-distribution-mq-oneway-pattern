@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="fr-fr">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="Utilisez le modèle Distribution d'enregistrements vers WebSphere MQ : unidirectionnel	pour lier deux styles d'intégration : l'intégration à base de fichier et intégration à base de transaction."/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Flux secondaire Erreur du modèle Distribution d'enregistrements vers WebSphere MQ : unidirectionnel</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mqError">
+<div class="section">
+	<h1 class="topictitle1">Flux secondaire Erreur du modèle <span>Distribution d'enregistrements vers WebSphere MQ : unidirectionnel</span></h1>
+	<p class="shortdesc">Ce flux secondaire teste si un message d'erreur doit être écrit, ce qui est déterminé par la propriété	<span class="msobjprop">	ErrorLoggingOn</span> définie par l'utilisateur.</p>
+<p>Si une erreur est interceptée lors du traitement dans le flux de messages, le flux secondaire Erreur est appelé. 
+Le flux secondaire Erreur exécutent les actions suivantes :
+</p>	
+<ol>	
+<li>Si des messages d'erreur sont requis, un message d'erreur est rédigé et écrit dans la file d'attente des erreurs.
+Les détails de l'exception sont écrits sous forme de message XML. Ces détails comprennent :
+	<ul>
+	<li>Nom du courtier</li>
+	<li>Nom du flux</li>
+	<li>Horodatage</li>
+	<li>Répertoire de fichier</li>
+	<li>Nom de fichier</li>
+	<li>Numéro d'enregistrement, lorsque l'erreur s'est produite</li>
+	<li>Nombre d'enregistrements inscrits dans la file d'attente par défaut</li>
+	<li>Récapitulatif des données de l'exception</li>
+	</ul>
+<p>Le récapitulatif des données d'exception contient le libellé du flux de messages, le numéro d'erreur, la description de texte, ainsi qu'une liste d'insertions donnant plus de détails.</p>
+</li>
+<li>Une exception générée provoque l'échec du flux. Cette action transfère le fichier vers le sous-répertoire d'annulation.</li>
+</ol>
+<div class="note"><span class="notetitle"> Remarque : </span> les messages qui
+	ne peuvent pas être routés sont écrits dans une destination par défaut. Cette action n'est pas traitée comme une erreur.
+<p>Tout incident qui empêche la lecture d'un enregistrement dans le fichier et son écriture sur le disque est traité comme une erreur.</p></div>
+</div>
+<a href="overview.htm#anchorBack" title="Retour">Spécification du modèle Distribution d'enregistrements vers WebSphere MQ : unidirectionnel</a>
+</body>
+</html>
+
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS  TYPE="org.eclipse.help.toc"?>
+<toc link_to="toc.xml#wmb_patterns_fp" label="ファイル処理" topic="fp/rd/overview.htm">
+    <topic label="レコード配布" href="fp/rd/overview.htm">
+      	<topic label="MQ 一方向" href="fp/rd/mq/overview.htm">
+      		<topic label="経路サブフロー" href="fp/rd/mq/routeflow.htm"/>
+      		<topic label="エラー・サブフロー" href="fp/rd/mq/errorflow.htm"/>
+      		<topic label="ログ・サブフロー" href="fp/rd/mq/logflow.htm"/>
+      		<topic label="レコード・ディストリビューター・サブフロー" href="fp/rd/mq/recorddistributor.htm"/>
+      		<topic label="レコード・プロセッサー・サブフロー" href="fp/rd/mq/recordprocessor.htm"/>
+      		<topic label="制約" href="fp/rd/mq/constraints.htm"/>
+      		<topic label="パターンを適用する前に完了するタスク" href="fp/rd/mq/before.htm"/>      		
+      		<topic label="パラメーター" href="fp/rd/mq/parameters.htm"/>
+      		<topic label="パターンを生成した後に完了するタスク" href="fp/rd/mq/after.htm"/>
+      	</topic>
+    </topic>
+</toc>
+
+

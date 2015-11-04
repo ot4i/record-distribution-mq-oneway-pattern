@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn" xml:lang="zh-cn">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009, 2012
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="copyright" content="Copyright IBM Corporation 2009" />
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009" />
+	<meta name="abstract" content="Record Distribution"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/bip4.css" />
+	<title>Record Distribution</title>
+	<script language="JavaScript" src="../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.overview">
+<h1 class="topictitle1">
+	<span>Record Distribution</span></h1>
+<div>
+	<p class="shortdesc">
+	使用 Record Distribution 模式可提供将本地或远程文件作为一系列记录进行处理的方法，以及通过事务接口应用每一条记录来更新一个或多个系统的方法。该模式在非事务文件系统接口和处理错误的事务接口之间建立桥接，以确保不会丢失数据。</p>
+</div>
+<div class="image"><img src="./fp_rd.gif" alt="记录分发体系结构图"></img></div>
+<div class="section">
+	<h2 >上下文</h2>
+</div>
+<p>该模式及其变体可应用于以下上下文：</p>
+	<ul>
+	<li>集成仅具有基于文件的集成功能的系统和新的事务系统。此方案通常是更新计划的一部分，更新计划旨在使业务方法的事务性更强，并使技术能够容纳现有系统。</li>
+	<li>在升级现有系统以生成近乎实时的事务数据时，需要临时系统集成。</li>
+	<li>处理电子数据交换 (EDI) 事务文件，其中包含必须单独处理并路由的多个事务记录批次。</li>
+	<li>处理“时间间隔结束”更新。例如，在工作日或一周结束时的更新，这些更新必须传递至事务系统，并且必须在非高峰时段以批处理方式进行处理。</li>
+	<li>分发引用数据。例如，产品报价和部件目录的配置，尤其是更新与某个开始日期相关联时，使更新计时十分关键。</li>
+</ul>
+<div class="section"><h2>问题</h2>
+</div>
+<p>该模式在两种样式的集成（基于文件和基于事务的集成）之间建立桥接。因为文件系统是非事务性的，所以没有事务能够在从文件读取所有记录和将所有记录写入目标之间建立桥接。因此，需要提供确保不会丢失记录的错误处理。该类别中的模式能够解决文件处理和记录分发时的数据丢失问题。某些模式实现也可以解决仅交付一次的问题。
+</p>
+<p>该模式还可以解决将文件中的不同事务路由至正确的 WebSphere MQ 目标的问题。</p>
+
+<div class="section"><h2>选择指导信息</h2>
+
+<p>在以下情况下使用此模式：</p>
+<ul>
+<li>您拥有以文件形式从本地或远程系统接收的多个事务批次。</li>
+<li>由于以下原因而无法将您的事务作为单个事务发送：<ul>
+	<li>源系统存在技术限制，仅支持基于文件的集成功能。</li>
+	<li>业务需求规定在一个工作日内批处理所有事务的集合。</li>
+	<li>需要符合现有工作实践，例如，如何使用包含 EDI 事务的文件。</li>
+	</ul></li>
+<li>目标系统设计为接受单个事务。此类系统可以从近乎实时系统和批处理文件获取输入，因此可以提供一个事务接口。</li>
+<li>有些批处理文件所包含的事务必须分发至多个系统。</li>
+<li>记录必须进行处理，并且故障可以通过重新处理整个文件来解决。</li>
+</ul>
+<p>请勿将该模式用于：</p>
+<ul>
+<li>处理带有嵌入式记录的 XML 文件。记录解析机制不适用于这些嵌入式记录，这些记录需要处理模式能够抽取消息流中的嵌入式记录。</li>
+<li>记录必须仅处理一次。
+</li>
+</ul>
+
+</div>
+<div class="section"><h2><a name="Record Distributor_Solution">解决方案</a></h2>
+<p>解决方案是实现一个消息流，该流可以从文件读取记录，并将记录路由至正确的 WebSphere MQ 目标或单个事务中的不正确消息队列。</p>
+
+
+
+</div>
+</body>
+</html>

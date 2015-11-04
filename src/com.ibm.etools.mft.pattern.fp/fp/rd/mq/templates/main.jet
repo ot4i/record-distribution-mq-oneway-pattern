@@ -1,0 +1,120 @@
+<%@taglib id="org.eclipse.jet.workspaceTags" prefix="ws"%>
+<%
+com.ibm.etools.mft.pattern.fp.plugin.PatternPlugin pattern = com.ibm.etools.mft.pattern.fp.plugin.PatternPlugin.getInstance();
+com.ibm.etools.mft.pattern.fp.rd.mq.PatternMessages messages = new com.ibm.etools.mft.pattern.fp.rd.mq.PatternMessages();
+%>
+
+<%-- Define variables the root element in the model --%>
+<c:setVariable select="/*" var="root"/>
+
+<% com.ibm.etools.mft.pattern.fp.plugin.PatternUtility.checkMessageSetIsValidOrEmpty(context, "$root/messageSet", "isMessageSetValid"); %>	
+<c:if test="boolean($isMessageSetValid) = false">
+	<c:log severity="error">
+	    <%= pattern.getString("com.ibm.etools.mft.pattern.fp.rd.mq.jet.1") %>
+	</c:log> 
+	<% if (true) return; %>
+</c:if>
+
+<c:set select="$root" name="projectname"><c:get select="$root/instanceName"/>_Flows</c:set>
+<c:set select="$root" name="patternName">com.ibm.etools.mft.pattern.fp.rd.mq</c:set>
+<c:set select="$root" name="patternVersion">1.0</c:set>
+
+<%-- Make a name for each message flow --%>
+<c:set select="$root" name="recordDistributor"><c:get select="$root/flowPrefix"/>RecordDistributor<c:get select="$root/flowSuffix"/></c:set>
+<c:set select="$root" name="recordProcessor"><c:get select="$root/flowPrefix"/>RecordProcessor<c:get select="$root/flowSuffix"/></c:set>
+<c:set select="$root" name="error"><c:get select="$root/flowPrefix"/>Error<c:get select="$root/flowSuffix"/></c:set>
+<c:set select="$root" name="log"><c:get select="$root/flowPrefix"/>Log<c:get select="$root/flowSuffix"/></c:set>
+<c:set select="$root" name="route"><c:get select="$root/flowPrefix"/>Route<c:get select="$root/flowSuffix"/></c:set>
+
+<% com.ibm.etools.mft.pattern.fp.plugin.PatternUtility.getPatternConfigurationFolderName(context, "patternConfigurationFolderName"); %>	
+
+<%-- Pattern reference project --%>
+<ws:project name="{$root/instanceName}">
+	<ws:file encoding="UTF-8" template="fp/rd/mq/templates/root/summary.jet" 
+		path="{$patternConfigurationFolderName}/{$root/instanceName}_summary.html"/>
+	<ws:copyFile src="css/summary.css" srcContext="transform" 
+		target="{$patternConfigurationFolderName}/summary.css"/>
+
+	<ws:folder path="{$patternConfigurationFolderName}/icons">
+		<ws:copyFile src="icons/header-gradient.gif" binary="true"
+			srcContext="transform" target="header-gradient.gif" />
+		<ws:copyFile src="icons/section.gif" binary="true"
+			srcContext="transform" target="section.gif" />
+		<ws:copyFile src="icons/summary-title.gif" binary="true"
+			srcContext="transform" target="summary-title.gif" />
+		<ws:copyFile src="icons/title-gradient.gif" binary="true"
+			srcContext="transform" target="title-gradient.gif" />
+	</ws:folder>			
+</ws:project>
+
+<%-- Message flow project --%>
+<ws:project name="{$root/@projectname}">
+	<ws:file encoding="UTF-8" path=".project" replace="true" template="fp/rd/mq/templates/root/project.jet"/>
+
+	<%-- Error --%>
+	<c:set select="$root" name="thisFlow"><c:get select="$root/@error"/></c:set>
+	<c:set select="$root" name="thisFlowURI"><c:get select="$root/@brokerSchema2"/><c:get select="$root/@thisFlow"/></c:set>
+	<c:set select="$root" name="thisFlowPrefix"><c:get select="$root/@brokerSchema1"/><c:get select="$root/@thisFlow"/></c:set>
+	<c:set select="$root" name="thisFlowBundleName"><c:get select="$root/@brokerSchema2"/><c:get select="$root/@thisFlow"/></c:set>
+	<ws:file encoding="UTF-8" path="{$root/@brokerSchema2}Error.esql" replace="true" template="fp/rd/mq/templates/root/Error.esql.jet"/>
+	<ws:file encoding="UTF-8" path="{$root/@brokerSchema2}{$root/@error}.subflow" replace="true" template="fp/rd/mq/templates/root/Error.subflow.jet"/>
+
+	<%-- Logging --%>
+	<c:if test="$root/loggingRequired = 'true'" >
+		<c:set select="$root" name="thisFlow"><c:get select="$root/@log"/></c:set>
+		<c:set select="$root" name="thisFlowURI"><c:get select="$root/@brokerSchema2"/><c:get select="$root/@thisFlow"/></c:set>
+		<c:set select="$root" name="thisFlowPrefix"><c:get select="$root/@brokerSchema1"/><c:get select="$root/@thisFlow"/></c:set>
+		<c:set select="$root" name="thisFlowBundleName"><c:get select="$root/@brokerSchema2"/><c:get select="$root/@thisFlow"/></c:set>
+		<ws:file encoding="UTF-8" path="{$root/@brokerSchema2}Log.esql" replace="true" template="fp/rd/mq/templates/root/Log.esql.jet"/>   
+		<ws:file encoding="UTF-8" path="{$root/@brokerSchema2}{$root/@log}.subflow" replace="true" template="fp/rd/mq/templates/root/Log.subflow.jet"/>
+	</c:if>
+	
+	<%-- Record distributor --%>
+	<c:set select="$root" name="thisFlow"><c:get select="$root/@recordDistributor"/></c:set>
+	<c:set select="$root" name="thisFlowURI"><c:get select="$root/@brokerSchema2"/><c:get select="$root/@thisFlow"/></c:set>
+	<c:set select="$root" name="thisFlowPrefix"><c:get select="$root/@brokerSchema1"/><c:get select="$root/@thisFlow"/></c:set>
+	<c:set select="$root" name="thisFlowBundleName"><c:get select="$root/@brokerSchema2"/><c:get select="$root/@thisFlow"/></c:set>
+	<ws:file encoding="UTF-8" path="{$root/@brokerSchema2}{$root/@recordDistributor}.msgflow" replace="true" template="fp/rd/mq/templates/root/RecordDistributor.msgflow.jet"/>
+	<ws:file encoding="UTF-8" path="{$root/@brokerSchema2}RecordDistributor.esql" replace="true" template="fp/rd/mq/templates/root/RecordDistributor.esql.jet"/>   
+	
+	<%-- Record processor --%>
+	<c:set select="$root" name="thisFlow"><c:get select="$root/@recordProcessor"/></c:set>
+	<c:set select="$root" name="thisFlowURI"><c:get select="$root/@brokerSchema2"/><c:get select="$root/@thisFlow"/></c:set>
+	<c:set select="$root" name="thisFlowPrefix"><c:get select="$root/@brokerSchema1"/><c:get select="$root/@thisFlow"/></c:set>
+	<c:set select="$root" name="thisFlowBundleName"><c:get select="$root/@brokerSchema2"/><c:get select="$root/@thisFlow"/></c:set>
+	<ws:file encoding="UTF-8" path="{$root/@brokerSchema2}{$root/@recordProcessor}.subflow" replace="true" template="fp/rd/mq/templates/root/RecordProcessor.subflow.jet"/>
+	
+	<%-- Routing --%>	
+	<c:set select="$root" name="thisFlow"><c:get select="$root/@route"/></c:set>
+	<c:set select="$root" name="thisFlowURI"><c:get select="$root/@brokerSchema2"/><c:get select="$root/@thisFlow"/></c:set>
+	<c:set select="$root" name="thisFlowPrefix"><c:get select="$root/@brokerSchema1"/><c:get select="$root/@thisFlow"/></c:set>
+	<c:set select="$root" name="thisFlowBundleName"><c:get select="$root/@brokerSchema2"/><c:get select="$root/@thisFlow"/></c:set>
+		
+	<c:choose>
+		<c:when test="$root/routing = 'specifyRoutes'" >
+	  		<ws:file encoding="UTF-8" path="{$root/@brokerSchema2}Route.esql" replace="true" template="fp/rd/mq/templates/root/routeRoute/route.esql.jet"/>
+	  		<ws:file encoding="UTF-8" path="{$root/@brokerSchema2}{$root/@route}.subflow" replace="true" template="fp/rd/mq/templates/root/routeRoute/route.subflow.jet"/>
+		</c:when>
+	
+		<c:when test="$root/routing = 'lookupRoutes'">
+	    	<ws:file encoding="UTF-8" path="{$root/@brokerSchema2}DeclareCache.esql" replace="true" 
+	    	template="fp/rd/mq/templates/root/destinationCache/declarecache.esql.jet"/>
+	    	<ws:file encoding="UTF-8" path="{$root/@brokerSchema2}{$root/@route}.subflow" replace="true" 
+	    	template="fp/rd/mq/templates/root/destinationCache/destination_cache.subflow.jet"/>
+	   
+			<c:choose>
+				<c:when test="$root/key2 = ''">  
+					<ws:file encoding="UTF-8" path="{$root/@brokerSchema2}Route.esql" replace="true" 
+					template="fp/rd/mq/templates/root/destinationCache/destination_cache_1k.esql.jet"/>
+				</c:when>
+				<c:otherwise> 
+				   	<ws:file encoding="UTF-8" path="{$root/@brokerSchema2}Route.esql" replace="true" 
+				   	template="fp/rd/mq/templates/root/destinationCache/destination_cache_2k.esql.jet"/>
+				</c:otherwise>
+			</c:choose>
+		</c:when>
+		<c:otherwise>
+			<ws:file encoding="UTF-8" path="{$root/@brokerSchema2}{$root/@route}.subflow" replace="true" template="fp/rd/mq/templates/root/routeDefault/route_default.subflow.jet"/>
+		</c:otherwise>
+	</c:choose>
+</ws:project>

@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn" xml:lang="zh-cn">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009"/>
+	<meta name="abstract" content="有关使用 Record Distribution to WebSphere MQ: one-way 模式之前必须了解的内容和必须具有的资源的详细信息。"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css"/>
+	<title>使用 Record Distribution to WebSphere MQ: one-way 模式时的约束</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.constraints">
+	<h1 class="topictitle1">使用 <span>Record Distribution to WebSphere MQ: one-way</span> 模式时的约束</h1>
+
+<p class="shortdesc">使用此模式时会有若干约束。</p>
+<p>只有在满足以下所有约束时，才可以使用 <span>Record Distribution to WebSphere MQ: one-way</span> 模式：</p>
+<ul>
+	<li>必须能够将输入文件读取为记录。您能够处理的文件可以包含固定长度记录、由已知定界符分隔的可变长度记录或可以由解析器抽取的可变长度记录（这一技术被称为<span class="mftobjpropval">解析后的记录序列</span>）。此技术可用于读取包含多个 XML 文档的文件，并且将每一个文档作为一个记录返回。此模式不能用于抽取嵌入式记录，例如，单个 XML 文档中的记录。</li>
+	<li>如果利用 FTP 服务处理远程文件，那么必须允许代理删除源文件，因为源文件将移至代理而不是就地读取。</li>
+	<li>使用此模式实例的业务功能必须与系统发生故障后的记录重新分发保持一致。此模式能够可靠地分发记录，但无法在系统发生故障后避免重复。</li>
+	<li>使用此模式实例的业务功能必须与发生故障后的记录重新分发保持一致，才能从文件读取记录或写入已读取的记录。在此情况下，该模式会将整个文件移至回退目录，并将错误写入错误队列。更正错误后，您必须安排要重新提交的文件。重新提交文件时，将重新处理文件中的所有记录，这可能导致重复的消息。</li>
+	<li>如果需要记录，那么会假定此模式使用的格式符合您自己环境的需求。</li>
+</ul>
+	<p>
+	<a href="overview.htm#anchorBack" title="返回">返回至 Record Distribution to WebSphere MQ: one-way 模式规范</a>
+	</p>
+</body>
+</html>

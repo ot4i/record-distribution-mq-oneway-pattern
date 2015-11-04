@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="fr-fr">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009, 2010
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="Tâches à exécuter après avoir généré le modèle Distribution d'enregistrements vers WebSphere MQ : unidirectionnel."/>
+	<meta name="description" content=""/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css"/>
+	<title>Tâches à exécuter après avoir généré le modèle Distribution d'enregistrements vers WebSphere MQ : unidirectionnel.</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.after">
+	<h1 class="topictitle1">Tâches à exécuter après avoir généré le modèle <span>Distribution d'enregistrements vers WebSphere MQ : unidirectionnel</span> .</h1>
+	<p class="shortdesc">Tâches que vous devez exécuter après avoir généré le modèle.</p>
+
+<ol>
+<li>Créez le fichier archive de courtier (BAR). Ajoutez le flux de messages généré au fichier BAR. 
+Dans l'éditeur d'archives du courtier, vous devez sélectionner l'option <span class="uicontrol">Compiler et intégrer des ressources</span> avant de générer le fichier BAR. 
+Si vous avez utilisé un ensemble de messages pour définir la manière dont sont analysés les chier BAR.
+</li>
+<li>Configurez le fichier archive de courtier. Il n'est pas nécessaire d'effectuer d'autres opérations de configuration au niveau du flux de messages dans le fichier archive de courtier avant de déployer les flux de messages de votre instance de modèle <span>Distribution d'enregistrements vers WebSphere MQ : modèle unidirectionnel</span>. Néanmoins, vous pouvez vérifier certaines options par défaut et configurer des modifications pour votre environnement.
+<p>Dans la page <span class="uicontrol">Gestion</span> de l'éditeur <span class="uicontrol">Archive de courtier</span> :</p>
+<ul>
+	<li>Facultatif : utilisez la propriété
+	<span class="msobjprop">LoggingOn</span> définie par l'utilisateur pour indiquer si la consignation est activée ou désactivée pour le flux de messages.</li>
+	<li>Facultatif : utilisez la propriété <span class="msobjprop">ErrorLoggingOn</span> définie par l'utilisateur pour indiquer si des messages d'erreur sont générés.</li>
+	<li>Facultatif : vous pouvez également modifier les propriétés configurables dans l'archive de courtier, telles que les propriétés de sécurité ou de création d'instances supplémentaires. Vous devez vérifier que les valeurs que vous changez n'affectent pas le comportement de l'instance du modèle.</li>
+</ul></li>
+
+<li>Dans le fichier récapitulatif, consultez la liste des files d'attente que vous devez créer. Ce fichier se trouve dans le dossier Configuration du modèle du projet d'instance de modèle <i>InstanceName</i>.</li>
+ 
+ <li>Créez les files d'attente. Lorsque vous appliquez le modèle, la liste des files d'attente WebSphere MQ est générée, avec des noms de file d'attente et de gestionnaire de files d'attente, que vous devez créer s'ils n'existent pas. Tous les paramètres de message nécessaires au modèle sont définis explicitement dans les messages et ne dépendent pas des paramètres de file d'attente.</li>
+
+<li>Créez les ressources <span>WebSphere MQ</span>. 
+Vous pouvez créer les ressources <span>WebSphere MQ</span> depuis la ligne de commande, en utilisant des programmes et des utilitaires, tels que <span class="cmdname">runmqsc</span>, ou en utilisant l'interface graphique <span>WebSphere MQ</span> Explorer. 
+Pour plus d'informations sur la création des ressources <span>WebSphere MQ</span>, voir <span>WebSphere MQ</span> Intercommunication
+sur la page Web
+<img src="../../../images/external_link.gif" alt="Ce lien s'ouvre dans une nouvelle fenêtre" class="external_link" />
+<a href="http://www.ibm.com/software/integration/wmq/library/" target="_blank">Bibliothèque WebSphere MQ</a>.</li>
+<li>
+Si vous utilisez la valeur <span class="msobjpropval">Rechercher les routes</span> dans le paramètre <span class="msobjprop">Routage</span>, vous pouvez définir des routes dynamiquement dans la base de données, mais ces dernières ne figurent pas dans le fichier récapitulatif. 
+Si vous avez ajouté des routes à la base de données, vous devez créer les files d'attente et les gestionnaires de files d'attente correspondants.   </li>
+<li>Configurez la base de données de routage, si nécessaire.
+Si la valeur <span class="msobjpropval">Rechercher les routes</span> est sélectionnée dans le paramètre <span class="msobjprop">Routage</span>, vous devez configurer la source de données avec une ROUTING_TABLE. Cette table doit contenir les colonnes suivantes :
+<ul>
+<li>ROUTING_CONTEXT
+<p>Utilisez une valeur qui identifie les entrées de routage du flux.</p>
+</li>
+<li>VARIABLE1
+<p>Valeur à laquelle la propriété <span class="msobjprop">KEY1</span> de l'élément de message doit correspondre.</p>
+</li>
+<li>VARIABLE2
+<p>Valeur à laquelle la propriété <span class="msobjprop">KEY2</span> de l'élément de message doit correspondre.</p>
+</li>
+<li>QUEUE_MANAGER
+<p>Gestionnaire de files d'attente de destination.</p>
+</li>
+<li>QUEUE_NAME
+<p>File d'attente de destination.</p>
+</li>
+</ul>
+</li>
+<li>Si vous avez choisi d'utiliser le protocole FTP pour obtenir les fichiers d'entrée, vous devez créer un service configurable FtpServer sur le courtier cible, correspondant au nom spécifié dans votre modèle. 
+Cette action est requise par le noeud FileInput afin de se connecter au serveur FTP distant.</li>
+<li>Déployez le fichier BAR. Si un ensemble de messages est utilisé pour définir les enregistrements, l'ensemble de message doit être déployé en utilisant le même ou un autre fichier BAR.
+</li>
+</ol>
+
+
+
+	<p>
+		<a href="overview.htm#anchorBack" title="Retour">Spécification du modèle Distribution d'enregistrements vers WebSphere MQ : unidirectionnel</a>
+	</p>
+</body>
+</html>

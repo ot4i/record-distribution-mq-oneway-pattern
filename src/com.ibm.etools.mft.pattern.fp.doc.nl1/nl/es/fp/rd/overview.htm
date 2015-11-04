@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-es" xml:lang="es-es">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009, 2012
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="copyright" content="Copyright IBM Corporation 2009" />
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009" />
+	<meta name="abstract" content="Distribución de registros"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/bip4.css" />
+	<title>Distribución de registros</title>
+	<script language="JavaScript" src="../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.overview">
+<h1 class="topictitle1">
+	<span>Distribución de registros</span></h1>
+<div>
+	<p class="shortdesc">
+	Utilice un patrón Distribución de registros para proporcionar un medio de procesar un archivo local o remoto como una serie de registros y aplicar cada registro para actualizar uno o varios sistemas con interfaces transaccionales. El patrón establece un puente entre una interfaz de sistema de archivos no transaccional e interfaces transaccionales con manejo de errores para garantizar que no se perderán datos.</p>
+</div>
+<div class="image"><img src="./fp_rd.gif" alt="Diagrama de la arquitectura de distribución de registros"></img></div>
+<div class="section">
+	<h2 >El contexto</h2>
+</div>
+<p>Este patrón y sus variaciones pueden aplicarse en los siguientes contextos:</p>
+	<ul>
+	<li>Integración de sistemas que sólo tengan prestaciones de integración basada en archivos con nuevos sistemas transaccionales. Este escenario normalmente forma parte de un programa de actualización en que la empresa tiene que pasar a un enfoque más transaccional y la tecnología tiene que acomodar los sistemas existentes.</li>
+	<li>La integración provisional de sistemas es necesaria mientras se actualizan los sistemas existentes para producir datos de transacción en tiempo casi real.</li>
+	<li>Proceso de archivos de transacciones de intercambio de datos electrónicos (EDI) que contienen lotes de registros de transacción que se deben procesar y direccionar individualmente.</li>
+	<li>Proceso de actualizaciones de &quot;fin de intervalo&quot;. Por ejemplo, las actualizaciones efectuadas al terminal el horario de oficina o la semana que se deben pasar a sistemas transaccionales y deben procesarse en modalidad de proceso por lotes en períodos de menor actividad.</li>
+	<li>Distribución de datos de referencia. Por ejemplo, precios y configuración de productos o catálogos de piezas, en particular cuando las actualizaciones están asociadas con una fecha de inicio de forma que el momento de la actualización es crítico.</li>
+</ul>
+<div class="section"><h2>El problema</h2>
+</div>
+<p>El patrón establece un puente entre dos estilos de integración, la basada en archivos y la basada en transacciones. Dado que el sistema de archivos no es transaccional, no es posible tener una transacción que establezca un puente entre la lectura de todos los registros de un archivo y la escritura de todos los registros en un destino. Por lo tanto, es necesario proporcionar un sistema de manejo de errores que pueda garantizar que los registros no se perderán. Los patrones de esta categoría responden al problema de evitar la pérdida de datos cuando se procesa un archivo y se distribuyen registros. Algunas implementaciones de patrones también responden al problema de la entrega única.
+</p>
+<p>Este patrón también responde al problema de direccionar transacciones diferentes en un archivo al destino correcto
+de WebSphere MQ.</p>
+
+<div class="section"><h2>Orientación sobre la selección</h2>
+
+<p>Utilice este patrón cuando:</p>
+<ul>
+<li>Tenga lotes de transacciones que se han recibido como archivos de sistemas locales o remotos.</li>
+<li>Las transacciones no puedan enviarse como transacciones individuales debido a:
+	<ul>
+	<li>Las limitaciones técnicas de los sistemas de origen que den soporte a las prestaciones de integración basada en archivos.</li>
+	<li>Requisitos empresariales que obligan a realizar procesos por lotes, por ejemplo, la recopilación de todas las transacciones en un día laborable.</li>
+	<li>La conformidad con las prácticas de trabajo existentes como, por ejemplo, la utilización de archivos que contengan transacciones EDI.</li>
+	</ul></li>
+<li>Los sistemas de destino están diseñados para aceptar transacciones individuales. Estos sistemas pueden aceptar entradas de sistemas en tiempo casi real y de archivos de proceso por lotes y, por consiguiente, presentan una interfaz transaccional.</li>
+<li>Tiene archivos de proceso por lotes que contienen transacciones que deben distribuirse en más de un sistema.</li>
+<li>Los registros se deben procesar y los fallos pueden manejarse volviendo a procesar todo el archivo.</li>
+</ul>
+<p>No utilice este patrón para:</p>
+<ul>
+<li>Proceso de archivos XML con registros incrustados. El mecanismo de análisis de registros no se aplica a estos análisis incrustados y necesitan patrones de proceso que extraigan los registros incrustados de un flujo de mensajes.</li>
+<li>Registros que se deben procesar sólo una vez.
+</li>
+</ul>
+
+</div>
+<div class="section"><h2><a name="Record Distributor_Solution">La solución</a></h2>
+<p>La solución es implementar un flujo de mensajes que lea un registro del archivo y lo direccione al destino de WebSphere MQ correcto o a una cola de mensajes erróneos en una sola transacción.</p>
+
+
+
+</div>
+</body>
+</html>

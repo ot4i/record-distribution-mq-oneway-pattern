@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="fr-fr">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="Utilisez le modèle Distribution d'enregistrements vers WebSphere MQ : unidirectionnel	pour lier deux styles d'intégration : l'intégration à base de fichier et intégration à base de transaction."/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Flux secondaire Journal du modèle Distribution d'enregistrements vers WebSphere MQ : unidirectionnel</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mqLog">
+<div class="section">
+	<h1 class="topictitle1">Flux secondaire Journal du modèle <span>Distribution d'enregistrements vers WebSphere MQ : unidirectionnel</span></h1>
+	<p>La consignation est contrôlée par la propriété <span class="msobjprop">LoggingOn</span> définie par l'utilisateur. 
+	 </p>
+	 <p> Les messages de journal sont écrits comme messages persistants WebSphere MQ dans une file d'attente WebSphere MQ.
+	 Ces messages de journal peuvent être traités séparément en fonction des pratiques standard de votre entreprise.</p>
+		
+	<p>Les informations suivantes sur le contexte sont situées dans l'en-tête <span class="uicontrol">MQRFH2</span> qui est écrit dans la file d'attente de journaux :</p>
+		<ul>
+		<li>Nom du courtier</li>
+		<li>Nom du flux de message</li>
+		<li>Horodatage</li>	
+	</ul>
+
+		<p>Les informations suivantes sur le fichier et les enregistrements se trouvent dans le corps XML du message écrit dans la file d'attente des journaux :</p>
+		<ul>	
+		<li>Directory</li>
+		<li>Nom de fichier</li>
+		<li>Total d'enregistrements</li>
+		<li>Valeur par défaut des enregistrements</li>
+		</ul>
+	<p>Un message de journal n'est envoyé à la file d'attente de journaux que lorsqu'un fichier entier est terminé avec succès. Tout traitement de fichier générant une erreur et annulant le fichier, générera un message d'erreur contenant les détails de l'emplacement où l'erreur s'est produite.</p>
+</div>
+<a href="overview.htm#anchorBack" title="Retour">Spécification du modèle Distribution d'enregistrements vers WebSphere MQ : unidirectionnel</a>
+</body>
+</html>

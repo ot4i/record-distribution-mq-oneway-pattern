@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de-de" xml:lang="de-de">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009"/>
+	<meta name="abstract" content="Details zum notwendigen Know-How und den erforderlichen Ressourcen für die Verwendung des Musters 'Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional)."/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css"/>
+	<title>Vorgaben für die Verwendung des Musters 'Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional)</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.constraints">
+	<h1 class="topictitle1">Vorgaben für die Verwendung des Musters <span>Record Distribution to WebSphere MQ: one-way</span> (Verteilung von Datensätzen an WebSphere MQ: unidirektional)</h1>
+
+<p class="shortdesc">Wenn Sie dieses Muster verwenden, gelten eine Reihe von Vorgaben.</p>
+<p>Sie können das Muster <span>Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional)</span> nur verwenden, wenn alle der folgenden Vorgaben erfüllt sind:</p>
+<ul>
+	<li>Es muss möglich sein, die Eingabedatei als Datensätze zu lesen.
+	Sie können Dateien verarbeiten, die Datensätze fester Länge, Datensätze variabler Länge, die durch ein anerkanntes Begrenzungszeichen getrennt sind, oder Datensätze variabler Länge, die mit einem Parser extrahiert werden können, enthalten; dies ist ein Verfahren, das als <span class="mftobjpropval">Syntaktisch analysierte Folge</span> bezeichnet wird. 
+	Dieses Verfahren kann zum Lesen einer Datei verwendet werden, die mehrere XML-Dokumente enthält und jedes Dokument als Datensatz zurückgibt.
+	Sie können dieses Muster nicht zum Extrahieren eingebetteter Datensätze verwenden, z. B. Datensätze in einem einzelnen XML-Dokument.</li>
+	<li>Wenn eine ferne Datei vom FTP-Service verarbeitet wird, muss der Broker dazu berechtigt sein, die Quellendatei zu löschen, da Quellendateien auf den Broker verschoben werden und nicht sofort gelesen werden.</li>
+	<li>Die Geschäftsfunktion, für die die Musterinstanz verwendet wird, muss mit der Neuverteilung von Datensätzen nach einem Systemfehler kompatibel sein. 
+	Dieses Muster verteilt die Datensätze zuverlässig, es können nach einem Systemfehler jedoch doppelte Datensätze vorkommen.</li>
+	<li>Die Geschäftsfunktion, für die die Musterinstanz verwendet wird, muss mit der Neuverteilung von Datensätzen nach einem Fehler kompatibel sein. Andernfalls können keine Datensätze aus der Datei gelesen oder bereits gelesene Datensätze erneut geschrieben werden.
+	In diesem Fall verschiebt dieses Muster die gesamte Datei in das Backout-Verzeichnis und schreibt einen Fehler in die Fehlerwarteschlange. Sie müssen dafür sorgen, dass die Datei nach der Fehlerbehebung erneut übergeben wird.
+	Nach der erneuten Übergabe einer Datei werden sämtliche Datensätze in der Datei erneut verarbeitet, was zu doppelten Nachrichten führen kann.</li>
+	<li>Wenn eine Protokollierung erforderlich ist, wird davon ausgegangen, dass das
+	von diesem Muster verwendete Format den Anforderungen Ihres Unternehmens entspricht.</li>
+</ul>
+	<p>
+	<a href="overview.htm#anchorBack" title="Zurück">Zurück zur Spezifikation des Musters 'Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional)</a>
+	</p>
+</body>
+</html>

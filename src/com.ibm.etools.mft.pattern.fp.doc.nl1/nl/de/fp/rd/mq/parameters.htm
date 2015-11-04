@@ -1,0 +1,1490 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="de-de" xmlns="http://www.w3.org/1999/xhtml" xml:lang="de-de">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009"/>
+	<meta name="security" content="public"/>
+	<meta name="Robots" content="index,follow"/>
+	<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+	<meta name="DC.Type" content="reference"/>
+	<meta name="DC.Title" content="Musterparameter für das Muster für die Verteilung von Datensätzen an WebSphere MQ: unidirektional"/>
+	<meta name="abstract" content="Tabellen mit Details zu den Musterparametern für das Muster für die Verteilung von Datensätzen an WebSphere MQ: unidirektional"/>
+	<meta name="description" content="Tabellen mit Details zu den Musterparametern für das Muster für die Verteilung von Datensätzen an WebSphere MQ: unidirektional"/>
+	<meta name="DC.Format" content="XHTML"/>
+	<meta name="DC.Language" content="de-de"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->	
+	<link rel="stylesheet" type="text/css" href="../../../css/style2.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css"/>
+	<title>Musterparameter für das Muster für die Verteilung von Datensätzen an WebSphere MQ: unidirektional</title>	
+	<script language="JavaScript" src="../../../help/LiveHelp.js"></script>
+	 <!-- START NON-TRANSLATABLE -->
+	<script language="JavaScript">
+	<!--
+
+	function getParameter(location, name) {
+		name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+		var search = "[\\?&]" + name + "=([^&#]*)";
+		var regex = new RegExp(search);
+		var results = regex.exec(location);
+		return (results == null ? true : (results[1] == "false" ? false : true));
+	}
+	
+	function addStyleSheet() {
+		if (getParameter(window.location.href, "everything") == false) {
+			var headId = document.getElementsByTagName("head")[0];         
+			var cssNode = document.createElement("link");
+			cssNode.type = "text/css";
+			cssNode.rel = "stylesheet";
+			cssNode.href = "../../../css/patterns.css";
+			cssNode.media = "screen";
+			headId.appendChild(cssNode);
+		}
+	}
+		
+	addStyleSheet(); // Depends on the query string!
+	
+	function getElementsByStyleClass (className) {
+  		var all = document.all ? document.all :
+    	document.getElementsByTagName('*');
+  		var elements = new Array();
+  		
+  		for (var e = 0; e < all.length; e++) {
+    		if (all[e].className == className) {
+      			elements[elements.length] = all[e];
+      		}
+      	}
+ 		return elements;
+	}
+	
+	function collapseAll() {
+		var elements = getElementsByStyleClass('twisty');
+		for (var e = 0; e < elements.length; e++) {
+			changeTwisty(elements[e], 'TWISTIE.COLLAPSEALL');
+		}
+	}
+	
+	function expandAll() {
+		var elements = getElementsByStyleClass('twisty');
+		for (var e = 0; e < elements.length; e++) {
+			changeTwisty(elements[e], 'TWISTIE.EXPANDALL');
+		}
+	}
+	
+	function toggleTwisty(group) {
+		changeTwisty(group, 'TWISTIE.TOGGLE');
+		if (typeof kc === "object" && typeof kc.resize === "function") kc.resize();
+	}
+
+	function changeTwisty(group, mode) {		
+		whichGroupId = group.parentNode.id;
+
+		whichGroupContainerId = whichGroupId + "Container";
+		whichGroupTwistyId = whichGroupId + "Twisty";
+		whichGroupTwistyImageId = whichGroupId + "Arrow";
+		groupContainerObj = document.getElementById(whichGroupContainerId);
+		twistyArrowContainerObj = document.getElementById(whichGroupTwistyId);
+		twistyArrowImageObj = document.getElementById(whichGroupTwistyImageId);
+		group.parentNode.style.height = "auto";
+
+		var toShow = false;
+		
+		if (mode == 'TWISTIE.TOGGLE') {
+			if (groupContainerObj.style.display == "none" || groupContainerObj.style.display == "") {
+				toShow = true;
+			} else {
+				toShow = false;
+			}
+		} else if (mode == 'TWISTIE.EXPANDALL') {
+			toShow = true;
+		}
+		
+		if (toShow) {
+			groupContainerObj.style.visibility = "visible";
+			groupContainerObj.style.display = "block";
+			twistyArrowImageObj.src = '../../../images/twisty-open.png'
+			group.parentNode.style.height = (groupContainerObj.offsetHeight + 30) +'px'; 
+	
+		} else {
+			groupContainerObj.style.visibility = "hidden";
+			groupContainerObj.style.display = "none";
+			twistyArrowImageObj.src = '../../../images/twisty-closed.png'
+		}
+	
+	}
+	//-->
+	</script>
+	 <!-- END NON-TRANSLATABLE -->
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.parametertable">
+	<!-- Page main title -->
+  	<div id="title" class="invisible">
+		<h1 class="patterns-title">Parameter für das Muster für die <span>Verteilung von Datensätzen an WebSphere MQ: unidirektional</span></h1>
+  	</div>
+
+	
+		
+				
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="fileInput">
+							<div class="twisty" onmouseup="toggleTwisty(this)"  onkeyup="toggleTwisty(this)" role="menubar" id="fileInputTwisty">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="fileInputArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar"  >Eingabedatei</div>
+							
+							
+									
+									
+									
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="fileInputContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Musterparameter</th>
+													  <th class="invisible" valign="top" width="*">M</th>
+													  <th class="invisible" valign="top" width="*">K</th>
+													  <th class="invisible" valign="top" width="*">Standard</th>
+													  <th valign="top" width="*">Beispiel</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Verzeichnis der Eingabedatei</th>
+															<td valign="top" width="*" class="invisible">
+																		Ja
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Ja
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		&nbsp;
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Die Speicherposition der Eingabedatei.</p>
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Dateimuster</th>
+															<td valign="top" width="*" class="invisible">
+																		Ja
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Ja
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">*</span>
+															</td>
+															<td valign="top" width="*">
+																
+    														<p>Ein Dateiname oder eine Zeichenfolge, die optionale Platzhalterzeichen enthält 														(Stern (*) oder Fragezeichen (?)) und
+    														die Datei oder Dateien angibt, die vom Eingabeverzeichnis aus verarbeitet werden soll bzw. sollen.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																FTP verwenden</th>
+															<td valign="top" width="*" class="invisible">
+																		Ja
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Ja
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				Nicht ausgewählt
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Mit diesem Parameter wird festgelegt, ob zum Abrufen ferner Dateien FTP verwendet wird.</p>
+
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Konfigurierbarer FTP-Service</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Ja
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">ftpservice</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Dieser konfigurierbare Service definiert, wie FTP zum Abrufen einer fernen Datei verwendet wird.</p>
+
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="recordDetection">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="recordDetectionTwisty">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="recordDetectionArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Eingabedatensatzverarbeitung</div>
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="recordDetectionContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Musterparameter</th>
+													  <th class="invisible" valign="top" width="*">M</th>
+													  <th class="invisible" valign="top" width="*">K</th>
+													  <th class="invisible" valign="top" width="*">Standard</th>
+													  <th valign="top" width="*">Beispiel</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Datensatzerkennung</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">Feste Länge (binär oder Text)</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Datensätze werden entsprechend der ausgewählten Datensatzerkennungsmethode aus der Datei gelesen.</p>
+    <p> Gültige Werte sind:</p>
+		                        <ul>
+		                        <li> <span class="msobjpropval">Feste Länge (binär oder Text)</span></li>
+		                        <li> <span class="msobjpropval">Mit Begrenzer (binär oder Text)</span></li>
+		                        <li> <span class="msobjpropval">Mit Begrenzer (XML)</span></li>
+		                        <li> <span class="msobjpropval">Syntaktisch analysiert (binär oder Text)</span></li>
+		                        <li> <span class="msobjpropval">Syntaktisch analysiert (XML)</span></li>
+		                        </ul>
+	<p>Wenn <span class="msobjpropval">Syntaktisch analysiert (binär oder Text)</span> ausgewählt ist, müssen die Parameter <span class="msobjprop">Eingabenachrichtengruppe</span>, <span class="msobjprop">Eingabenachrichtentyp</span> und <span class="msobjprop">Eingabenachrichtenformat</span> ebenfalls konfiguriert werden.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Satzlänge</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">80</span>
+															</td>
+															<td valign="top" width="*">
+																
+    												<p>Datensätze der erforderlichen Länge werden aus der Quellendatei gelesen.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Begrenzertyp</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="2*" class="invisible">
+																		<span class="msobjpropval">DOS- oder UNIX-Linienende</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Wenn Ihre Daten nicht den Standardwert verwenden, wählen Sie <span class="msobjpropval">Angepasster Begrenzer (hexadezimal)</span> aus.</p>
+
+															</td>
+														</tr>
+														
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Datensatzbegrenzer</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		&nbsp;
+															</td>
+															<td valign="top" width="*">
+																
+    													<p>Datensätze, die aus der Datei gelesen werden, werden durch den angegebenen Begrenzer getrennt, der hexadezimal angegeben wird. </p>
+    															<p>Für diesen Begrenzer muss eine gerade Zahl von maximal 32 Zeichen zwischen 0-9 bzw. A-F (Groß- oder Kleinschreibung) angegeben sein.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Eingabenachrichtengruppe</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		&nbsp;
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Datensätze werden aus der Datei gelesen, die auf der Definition in diesem Nachrichtensatz basiert.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Eingabenachrichtentyp</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		&nbsp;
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Datensätze werden diesem Nachrichtentyp entsprechend gelesen und syntaktisch analysiert.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Eingabenachrichtenformat</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		&nbsp;
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Datensätze werden diesem Nachrichtenformat entsprechend gelesen und syntaktisch analysiert.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																CCSID der Datei</th>
+															<td valign="top" width="*" class="invisible">
+																		Ja
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Ja
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">Systemstandardwert des Brokers</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Dieser Parameter definiert den codierten Zeichensatz, der für die Interpretation von Bytes der Datei verwendet wird, die gelesen wird.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Codierung der Datei</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Ja
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">Ermitteltes Brokersystem</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Dieser Parameter definiert das Schema für Codeumsetzung für die Zahlen und großen Zeichen, die für die Interpretation von Bytes der Datei verwendet werden, die gelesen wird. 
+    Gültige Werte sind: </p>
+    <ul>
+    <li><span class="msobjpropval">Ermitteltes Brokersystem</span></li>
+    <li><span class="msobjpropval">Little Endian, mit IEEE-Gleitkomma (546)</span></li>
+    <li><span class="msobjpropval">Big Endian, mit IEEE-Gleitkomma (273)</span></li>
+    <li><span class="msobjpropval">Big Endian, mit S390-Gleitkomma (785)</span></li>
+    </ul>
+      <p>Informationen zur Codierung finden Sie in der IBM Integration-Dokumentation im Abschnitt
+&quot;Daten mit Nachrichtenflüssen konvertieren&quot;.</p>
+		                        
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="routing">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="routingTwisty">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="routingArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Routing</div>
+							
+							
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="routingContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Musterparameter</th>
+													  <th class="invisible" valign="top" width="*">M</th>
+													  <th class="invisible" valign="top" width="*">K</th>
+													  <th class="invisible" valign="top" width="*">Standard</th>
+													  <th valign="top" width="*">Beispiel</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Routing</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">Kein Routing</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Dieser Parameter definiert die Routing-Methode, die verwendet werden soll. Gültige Werte sind:</p>
+							<ul>
+								<li>
+									<span class="msobjpropval">Kein Routing</span>
+								</li>
+								<li>
+									<span class="msobjpropval">Routen angeben</span>
+								</li>
+								<li>
+									<span class="msobjpropval">Routen suchen</span>
+								</li>
+							</ul>
+		                        
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="noRouting">
+							<div class="twisty" onmouseup="toggleTwisty(this)" id="noRoutingTwisty" onkeyup="toggleTwisty(this)" role="menubar">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="noRoutingArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Kein Routing</div>
+							
+							
+									
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="noRoutingContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Musterparameter</th>
+													  <th class="invisible" valign="top" width="*">M</th>
+													  <th class="invisible" valign="top" width="*">K</th>
+													  <th class="invisible" valign="top" width="*">Standard</th>
+													  <th valign="top" width="*">Beispiel</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Ausgabe-WS-Manager</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Ja
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Dieser Parameter gibt den Warteschlangenmanager an,
+										an den alle Ausgabenachrichten gesendet werden.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Ausgabewarteschlange</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Ja
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">OUTPUT</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Dieser Parameter gibt die Warteschlange an,	an die alle Ausgabenachrichten gesendet werden.</p>
+		                        
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="specifyRoutes">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="specifyRoutesTwisty">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="specifyRoutesArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Routen angeben</div>
+							
+							
+									
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="specifyRoutesContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Musterparameter</th>
+													  <th class="invisible" valign="top" width="*">M</th>
+													  <th class="invisible" valign="top" width="*">K</th>
+													  <th class="invisible" valign="top" width="*">Standard</th>
+													  <th valign="top" width="*">Beispiel</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Standard-WS-Manager</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Ja
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Dieser Parameter definiert den WS-Manager, an den Nachrichten gesendet werden, wenn die Kriterien für den Eigenschaftswert <span class="msobjpropval">Routen angeben</span> nicht erfüllt sind.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Standardwarteschlange</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Ja
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">DEFAULT</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Dieser Parameter definiert die Warteschlange, an die Nachrichten gesendet werden, wenn die Kriterien für den Eigenschaftswert <span class="msobjpropval">Routen angeben</span> nicht erfüllt sind.</p>
+		                        
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+					
+							    			<p>Die Parameter in der folgenden
+							    			<span class="msobjprop">Namensbereichstabelle</span> definieren die Namensbereichspräfixe und die Namensbereichs-URIs, die Sie in den XPath-Ausdrücken verwenden können, die die Schlüsselpositionen für Routen definieren. 
+Wenn eine Zeile eingefügt wird, müssen beide Parameter eingefügt werden.</p>
+<p>Sie können Werte hinzufügen, bearbeiten und löschen sowie die Reihenfolge der Werte in der Tabelle ändern.</p>
+
+<div class="tablenoborder">
+	<table cellpadding="4" cellspacing="0" summary="" width="100%" rules="all" frame="border" border="1">
+		<thead align="left">
+			<tr>
+				<th class="firstcol" align="left" valign="top" width="*">Tabellenparameter für Namespace</th>
+				<th class="invisible" valign="top" width="*">M</th>
+				<th class="invisible" valign="top" width="*">K</th>
+				<th class="invisible" valign="top" width="*">Standard</th>
+				<th valign="top" width="*">Beispiel</th>
+			</tr>
+		</thead>
+		<tbody>
+				<tr>
+					<th align="left" valign="top" width="*" class="firstcol">
+						Namensbereichspräfix
+					</th>
+					<td valign="top" width="*" class="invisible">
+								Ja
+					</td>
+					<td valign="top" width="*" class="invisible">
+								Nein
+					</td>
+					<td valign="top" width="*" class="invisible">
+										
+					</td>
+					<td valign="top" width="*">
+						
+    <p>Dieser Parameter definiert die Kennung für einen Namensbereich.</p>
+
+					</td>
+				</tr>
+				<tr>
+					<th align="left" valign="top" width="*" class="firstcol">
+						Namensbereichs-URI
+					</th>
+					<td valign="top" width="*" class="invisible">
+								Ja
+					</td>
+					<td valign="top" width="*" class="invisible">
+								Nein
+					</td>
+					<td valign="top" width="*" class="invisible">
+										
+					</td>
+					<td valign="top" width="*">
+						
+    <p>Dieser Parameter definiert den Namensbereich für die aktuelle Kennung.</p>
+
+					</td>
+				</tr>
+		</tbody>
+	</table>
+</div>
+    <p>Die <span class="msobjprop">Namensbereichstabelle</span> definiert die Namensbereiche, die für Sie in XPath-Ausdrücken in der <span class="msobjprop">Routing-Tabelle</span> verfügbar sind.</p> 
+	
+		                        			
+<div class="tablenoborder">
+	<table cellpadding="4" cellspacing="0" summary="" width="100%" rules="all" frame="border" border="1">
+		<thead align="left">
+			<tr>
+				<th class="firstcol" align="left" valign="top" width="*">Tabellenparameter für Routing</th>
+				<th class="invisible" valign="top" width="*">M</th>
+				<th class="invisible" valign="top" width="*">K</th>
+				<th class="invisible" valign="top" width="*">Standard</th>
+				<th valign="top" width="*">Beispiel</th>
+			</tr>
+		</thead>
+		<tbody>
+				<tr>
+					<th align="left" valign="top" width="*" class="firstcol">
+						Schlüsselposition
+					</th>
+					<td valign="top" width="*" class="invisible">
+								Ja
+					</td>
+					<td valign="top" width="*" class="invisible">
+								Nein
+					</td>
+					<td valign="top" width="*" class="invisible">
+										
+					</td>
+					<td valign="top" width="*">
+					        <p>Eine Schlüsselposition ist ein XPath-Ausdruck, der eine Position im weitergegebenen Datensatz definiert. Beispiel: <tt>$Root/XMLNSC/submitPORequest/partNo</tt>. </p>
+							<p>Unter "Route-Knoten" und "XPath verwenden" in der IBM Integration-Dokumentation finden
+Sie weitere Informationen zum Typ des zu verwendenden Ausdrucks.</p>
+							<p>
+							Namensbereiche können angegeben werden, wenn sie in der optionalen 										<span class="msobjprop">Namensbereichstabelle</span> angegeben sind.
+							</p>
+
+					</td>
+				</tr>
+				<tr>
+					<th align="left" valign="top" width="*" class="firstcol">
+						Schlüsselwert
+					</th>
+					<td valign="top" width="*" class="invisible">
+								Ja
+					</td>
+					<td valign="top" width="*" class="invisible">
+								Nein
+					</td>
+					<td valign="top" width="*" class="invisible">
+										
+					</td>
+					<td valign="top" width="*">
+						
+    <p>Dieser Parameter enthält den Wert, mit dem das Feld <span class="msobjprop">Schlüsselposition</span> der eingehenden Nachricht übereinstimmen muss, damit diese Route ausgewählt wird.</p>
+					</td>
+				</tr>
+				<tr>
+					<th align="left" valign="top" width="*" class="firstcol">
+						WS-Manager
+					</th>
+					<td valign="top" width="*" class="invisible">
+								Nein
+					</td>
+					<td valign="top" width="*" class="invisible">
+								Ja
+					</td>
+					<td valign="top" width="*" class="invisible">
+										
+					</td>
+					<td valign="top" width="*">
+						
+    <p>Dieser Parameter definiert den WS-Manager für ein Routing-Ziel.</p>
+
+					</td>
+				</tr>
+				<tr>
+					<th align="left" valign="top" width="*" class="firstcol">
+						Warteschlange
+					</th>
+					<td valign="top" width="*" class="invisible">
+								Ja
+					</td>
+					<td valign="top" width="*" class="invisible">
+								Ja
+					</td>
+					<td valign="top" width="*" class="invisible">
+										
+					</td>
+					<td valign="top" width="*">
+						
+    <p>Dieser Parameter definiert die Warteschlange für ein Routing-Ziel.</p>
+
+					</td>
+				</tr>
+		</tbody>
+	</table>
+</div>						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="lookupRoutes">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="lookupRoutesTwisty">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="lookupRoutesArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Routen suchen</div>
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="lookupRoutesContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Musterparameter</th>
+													  <th class="invisible" valign="top" width="*">M</th>
+													  <th class="invisible" valign="top" width="*">K</th>
+													  <th class="invisible" valign="top" width="*">Standard</th>
+													  <th valign="top" width="*">Beispiel</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Routing-Datenquelle</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Ja
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Dieser Parameter definiert die Datenquelle, aus der eine Route ausgewählt werden kann. 
+    Routing-Informationen werden in der Tabelle <tt>ROUTING_TABLE</tt> gesucht.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Routing-Datenkontext</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																Dieser Parameter definiert einen Routing-Kontext, durch den die
+										Tabelle <tt>ROUTING_TABLE</tt> für mehrere
+										Mediationsflüsse verwendet werden kann. 
+																<p>Nur Zeilen, deren Eintrag im Feld <tt>ROUTING_CONTEXT</tt>
+										mit dem Wert von <span class="msobjprop">Routing-Datenkontext</span> übereinstimmt,
+										werden für die Routing-Suche verwendet und dem Speichercache hinzugefügt.</p>
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Schlüsselposition 1</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Dieser Parameter definiert, wie der erste Schlüssel aus dem weitergeleiteten Nachrichtenelement extrahiert wird. Er ist als ESQL-Ausdruck definiert. </p>
+    <p>Der erste Schlüssel wird zur Auswahl für <tt>VARIABLE1</tt> eines Datenquellen-Routing-Eintrags verwendet.
+	Die Position muss im Format
+<tt>InputBody</tt>	oder <tt>InputRoot</tt> angegeben werden.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Schlüsselposition 2</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Dieser Parameter definiert, wie ein optionaler zweiter Schlüssel aus dem weitergeleiteten Nachrichtenelement extrahiert wird. Er ist als ESQL-Ausdruck definiert. </p>
+    <p>Der zweite Schlüssel wird zur Auswahl für <tt>VARIABLE2</tt> eines Datenquellen-Routing-Eintrags verwendet. 
+    Die Position muss im Format
+<tt>InputBody</tt>	oder <tt>InputRoot</tt> angegeben werden.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Standard-WS-Manager</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Ja
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Dieser Parameter definiert den WS-Manager, an den Nachrichten gesendet werden, wenn die Kriterien für den Eigenschaftswert <span class="msobjpropval">Routen suchen</span> nicht erfüllt sind.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Standardwarteschlange</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Ja
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">DEFAULT</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Dieser Parameter definiert die Warteschlange, an die Nachrichten gesendet werden, wenn die Kriterien für den Eigenschaftswert <span class="msobjpropval">Routen suchen</span> nicht erfüllt sind.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Cache-Aktualisierung</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				Nicht ausgewählt
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Wenn dieser Parameter ausgewählt ist, wird der Speichercache mit den Routing-Daten aus der Datenquelle aktualisiert, wenn eine Aktualisierungsnachricht empfangen wird.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Aktualisierungswarteschlange</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Ja
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">REFRESH</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Wenn <span class="msobjprop">Cache-Aktualisierung</span> ausgewählt ist, löst eine Nachricht, die an diese Warteschlange gesendet wird, eine Aktualisierung der speicherinternen Routing-Daten aus.</p>
+		                        
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="log">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="logTwisty">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="logArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Protokollierung</div>
+							
+							
+									
+									
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="logContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Musterparameter</th>
+													  <th class="invisible" valign="top" width="*">M</th>
+													  <th class="invisible" valign="top" width="*">K</th>
+													  <th class="invisible" valign="top" width="*">Standard</th>
+													  <th valign="top" width="*">Beispiel</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Protokollierung erforderlich</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				Nicht ausgewählt
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Dieser Musterparameter bestimmt, ob die Musterinstanz den Code für die Protokollierung enthält.</p>
+		                        <p>Wenn <span class="msobjprop">Protokollierung erforderlich</span> nicht ausgewählt ist,
+		                        wird kein untergeordneter Protokollnachrichtenfluss eingefügt.</p>
+		                        <p>Wenn <span class="msobjprop">Protokollierung erforderlich</span> ausgewählt ist,
+		                        wird ein untergeordneter Protokollnachrichtenfluss in den Nachrichtenfluss eingefügt und
+		                        für <span class="msobjprop">Protokoll-WS-Manager</span> und <span class="msobjprop">Protokollwarteschlange</span> müssen Werte festgelegt werden.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Protokoll-WS-Manager</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Ja
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Dieser Musterparameter definiert den WS-Manager für die Protokollierung. 
+		                        Er kann leer gelassen werden, wenn der Warteschlangenmanager des Brokers für die Protokollierung verwendet wird.</p>
+		                        <p>Dieser Parameter ist nur erforderlich, wenn <span class="msobjprop">Protokollierung erforderlich</span> ausgewählt ist.
+		                        </p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Protokollwarteschlange</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Ja
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">LOG</span>
+															</td>
+															<td valign="top" width="*">
+																
+								<p>Dieser Musterparameter definiert die Warteschlange für die Protokollierung.</p>
+								<p>Der Parameter ist nur erforderlich, wenn <span class="msobjprop">Protokollierung erforderlich</span> aktiviert ist.</p>
+		                        
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="errorHandling">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="errorHandlingTwisty">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="errorHandlingArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Fehlerbehandlung</div>
+							
+							
+									
+									
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="errorHandlingContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Musterparameter</th>
+													  <th class="invisible" valign="top" width="*">M</th>
+													  <th class="invisible" valign="top" width="*">K</th>
+													  <th class="invisible" valign="top" width="*">Standard</th>
+													  <th valign="top" width="*">Beispiel</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Fehlernachricht erforderlich</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				Ausgewählt
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Dieser Musterparameter definiert, ob die Musteranwendung die
+		                        Nachrichtenflusselemente erstellt, die die Fehlernachrichten erstellen.</p>
+		                        <p>Wenn <span class="msobjprop">Fehlernachricht erforderlich</span> ausgewählt ist, 		
+                          müssen für <span class="msobjprop">Fehler-WS-Manager</span>
+		                        und <span class="msobjprop">Fehlerwarteschlange</span> Werte festgelegt werden.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Fehler-WS-Manager</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Ja
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		&nbsp;
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Dieser Musterparameter definiert den WS-Manager für Fehlernachrichten. 
+		                        Er kann leer gelassen werden, wenn der Warteschlangenmanager des Brokers für die Protokollierung verwendet wird.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Fehlerwarteschlange</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Ja
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">ERROR</span>
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Dieser Musterparameter definiert die Warteschlange für Fehlernachrichten.</p>
+		                        <p>Dieser Parameter ist nur erforderlich, wenn <span class="msobjprop">Fehlernachricht erforderlich</span> ausgewählt ist.
+		                        </p>
+		                        
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="general">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="generalTwisty">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="generalArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Allgemein</div>
+							
+							
+									
+									
+									
+									
+									
+									
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="generalContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Musterparameter</th>
+													  <th class="invisible" valign="top" width="*">M</th>
+													  <th class="invisible" valign="top" width="*">K</th>
+													  <th class="invisible" valign="top" width="*">Standard</th>
+													  <th valign="top" width="*">Beispiel</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Brokerschema</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">mqsi</span>
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Wenn ein Brokerschema angegeben wird, werden alle Nachrichtenflüsse und ESQL-Dateien in                           diesem Schema erstellt. Wenn kein Schema angegeben wird,
+		                        wird das Standardbrokerschema verwendet.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Nachrichtenflusspräfix</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Wenn dieses Präfix festgelegt ist, wird es allen Nachrichtenflussnamen vorangestellt.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Nachrichtenflusssuffix</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Wenn festgelegt, erhalten die Namen aller Nachrichtenflüsse dieses
+		                        Suffix.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Warteschlangenpräfix</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Wenn dieses Präfix festgelegt ist, wird es allen Warteschlangennamen vorangestellt.
+		                        </p>
+		                        <p> Wenn Standardwarteschlangennamen verwendet werden, müssen das Präfix und/oder das Suffix verwendet werden, um Warteschlangennamen für die einzelnen Musterinstanzen zu identifizieren. 
+		                        </p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Warteschlangensuffix</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Wenn dieses Suffix festgelegt ist, wird es an alle Warteschlangennamen hinten angehängt.</p>
+								<p>Wenn Standardwarteschlangennamen verwendet werden, müssen das Präfix und/oder das Suffix verwendet werden, um Warteschlangennamen für die einzelnen Musterinstanzen zu identifizieren. 
+		                        </p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Kurzbeschreibung</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Diese Beschreibung wird zur Eigenschaft
+		                        <span class="msobjprop">Kurzbeschreibung</span> aller
+		                        Nachrichtenflüsse hinzugefügt, die generiert werden.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Ausführliche Beschreibung</th>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Nein
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Diese Beschreibung wird zur Eigenschaft
+		                        <span class="msobjprop">Ausführliche Beschreibung</span> aller
+		                        Nachrichtenflüsse hinzugefügt, die generiert werden.</p>
+		                        
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+
+	<div id="footnotes" class="invisible">
+		<div class="box first">
+		<div class="TitleBox"><!-- --></div>
+		<div class="FooterBox"><!-- --></div>
+		<div class="TL"><!-- --></div>
+		<div class="TR"><!-- --></div>
+		<div class="BL"><!-- --></div>
+		<div class="BR"><!-- --></div>
+		<div class="ContentBox">
+			<div class="invisible" >
+				<p class="shortdesc">
+						Alle Musterparameter sind mit ihren Standardwerten aufgelistet.
+					</p>
+					<p>
+					Die Spalte mit der Überschrift <b>O</b> gibt an, ob die Eigenschaft
+<dfn class="term">obligatorisch</dfn> ist. 
+					Die Spalte mit der Überschrift <b>K</b> gibt an, ob die
+Eigenschaft <dfn class="term">konfigurierbar</dfn> ist,	d. h., ob Sie den Wert ändern können, wenn
+Sie den Nachrichtenfluss	zur Brokerarchivdatei (BAR-Datei) hinzufügen.
+					</p>
+					<p>
+						Wenn kein Standardwert angegeben ist, ist der Standardwert eine leere Zeichenfolge.
+					</p>
+				</div>
+				<a href="overview.htm#anchorBack" title="Zurück">Zurück zur Spezifikation des Musters 'Record Distribution to WebSphere MQ: one-way' (Verteilung von Datensätzen an WebSphere MQ: unidirektional)</a>
+				<p></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

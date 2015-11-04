@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-tw" xml:lang="zh-tw">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009" />
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009" />
+	<meta name="abstract" content="Record Distribution to MQ 型樣的概觀"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Record Distribution to WebSphere MQ: one-way 型樣</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq">
+<h1 class="topictitle1"><span>Record Distribution to WebSphere MQ: one-way</span> 型樣</h1>
+<div>
+	<p class="shortdesc">使用 <span>Record Distribution to WebSphere MQ: one-way</span> 型樣，可以橋接檔案型及交易型樣式的整合。</p>
+	
+	<p> 使用此型樣的時機如下：</p>
+<ul>
+<li>您有好幾批交易是從本端或遠端系統以檔案形式接收。</li>
+<li>您的交易無法以個別交易傳送，原因是：<ul>
+<li>只支援檔案型整合功能的來源系統的技術限制。</li> 
+<li>強制執行批次的商業需求，例如，某個工作日內所有交易的集合。</li>
+<li>與現有工作中實務的相符性，例如，使用含有 EDI 交易的檔案。</li>
+</ul></li>
+<li>您的目標系統是設計成接受個別交易。這類系統可能是從接近即時系統及批次檔中取得輸入，因此會呈現交易式介面。</li>	
+<li>您的批次檔包含必須配送至一個以上系統的交易。</li>
+<li>必須處理記錄，但是可以透過重新處理整個檔案來處理任何失敗。</li>
+</ul>
+</div>
+
+<div class="section">
+	<h2 class="sectiontitle">解決方案</h2>
+</div>
+<p>解決方案是實作訊息流程，而此訊息流程是從檔案中讀取記錄，並根據遞送規則將每一筆記錄遞送至 WebSphere MQ 目的地，或在遞送規則中找不到相符項時遞送至預設目的地。</p>
+<div>
+<div class="image">
+	<img src="recorddistributor.gif"
+		alt="顯示型樣行為的圖表。服務要求會轉遞至結束服務提供者。" /></div>
+	<div>
+		<a href="recorddistributor.htm" title="「記錄配送者」訊息流程的相關設計資訊。">記錄配送者訊息流程</a></div>
+	<div>
+		<a href="recordprocessor.htm" title="「記錄處理器」訊息流程的相關設計資訊。">記錄處理器訊息流程</a></div>
+	<div>
+		<a href="logflow.htm" title="「日誌」子流程的相關設計資訊。">日誌子流程</a></div>
+		<div>
+		<a href="errorflow.htm" title="「錯誤」子流程的相關設計資訊。">錯誤子流程</a></div>
+		<div>
+		<a href="routeflow.htm" title="「路徑」子流程的相關設計資訊。">路徑子流程</a></div>
+	<div class="familylinks">
+		<a name="anchor1"></a>
+		<div class="section">
+			<h2 class="sectiontitle">相關作業</h2>
+		</div>
+		<p>
+			如需如何套用及使用此型樣的相關資訊，請閱讀下節。</p>
+		<a href="constraints.htm" title="使用型樣的限制">使用型樣的限制</a></div>
+	<div>
+		<a href="before.htm" title="在您可以使用型樣之前，必須知道及必須具有的資源">套用型樣之前要完成的作業</a></div>
+	<div>
+		<a href="parameters.htm" title="型樣的參數">型樣的參數</a></div>
+	<div>
+		<a href="after.htm" title="產生型樣之後要完成的作業">產生型樣之後要完成的作業</a></div>
+</div>
+</body>
+</html>

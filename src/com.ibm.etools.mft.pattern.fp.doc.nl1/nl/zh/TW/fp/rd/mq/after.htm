@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-tw" xml:lang="zh-tw">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009, 2010
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="產生 Record Distribution to WebSphere MQ: one-way 型樣之後要完成的作業。"/>
+	<meta name="description" content=""/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css"/>
+	<title>產生 Record Distribution to WebSphere MQ: one-way 型樣之後要完成的作業</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.after">
+	<h1 class="topictitle1">產生 <span>Record Distribution to WebSphere MQ: one-way</span> 型樣之後要完成的作業</h1>
+	<p class="shortdesc">在您產生此型樣之後必須完成的作業。</p>
+
+<ol>
+<li>建立分配管理系統保存檔 (BAR)。將產生的訊息流程新增至 BAR 檔。
+在「分配管理系統保存檔」編輯器中，您必須先選取<span class="uicontrol">編譯及行內資源</span>選項，然後再建置 BAR 檔。
+如果您已使用訊息集來定義記錄的剖析方式，則必須將訊息集新增至 BAR 檔案。</li>
+<li>配置分配管理系統保存檔。在您部署 <span>Record Distribution to WebSphere MQ: one-way</span> 型樣實例的訊息流程之前，並不需要進一步配置分配管理系統保存檔中的訊息流程，但是您可能會想要檢閱一些預設選項，以及配置環境的變更。
+<p>在<span class="uicontrol">分配管理系統保存檔</span>編輯器的<span class="uicontrol">管理</span>頁面中，可執行下列動作：</p>
+<ul>
+	<li>選用項目：使用 <span class="msobjprop">LoggingOn</span> 使用者定義的內容，以選取是要開啟還是關閉訊息流程的記載。</li>
+	<li>選用項目：使用 <span class="msobjprop">ErrorLoggingOn</span> 使用者定義的內容，以選取是否產生錯誤訊息。</li>
+	<li>選用項目：您也可以變更分配管理系統保存檔中的任何可配置內容，例如，安全內容或建立其他實例的內容。您必須確保所變更的任何值不會影響型樣實例的行為。</li>
+</ul></li>
+
+<li>在摘要檔中，檢視您必須建立的佇列清單。摘要檔位於 <i>InstanceName</i> 型樣實例專案的「型樣配置」資料夾中。</li>
+ 
+ <li>建立佇列。當您套用型樣時，會產生具有佇列名稱及佇列管理程式名稱的 WebSphere MQ 佇列清單，如果這些 WebSphere MQ 佇列尚未存在，則必須加以建立。此型樣需要的所有訊息設定都是明確設定於訊息上，而且與佇列設定無關。</li>
+
+<li>建立 <span>WebSphere MQ</span> 資源。
+您可以在指令行上使用程式及公用程式（例如 <span class="cmdname">runmqsc</span>），或使用「<span>WebSphere MQ</span> 探險家」圖形介面，以建立 <span>WebSphere MQ</span> 資源。
+如需建立 <span>WebSphere MQ</span> 資源的相關資訊，請參閱位於 <img src="../../../images/external_link.gif" alt="此鏈結將在新視窗中開啟" class="external_link" /><a href="http://www.ibm.com/software/integration/wmq/library/" target="_blank">WebSphere MQ Library</a> 網頁上的 <span>WebSphere MQ</span> Intercommunication。</li>
+<li>
+如果您在<span class="msobjprop">遞送</span>參數中使用<span class="msobjpropval">查閱路徑</span>值，則可以在資料庫中動態定義路徑，但是路徑不會列在摘要檔中。
+如果您已將路徑新增至資料庫，則必須建立對應的佇列及佇列管理程式。</li>
+<li>必要的話，設定遞送資料庫。
+如果在<span class="msobjprop">遞送</span>參數中選取<span class="msobjpropval">查閱路徑</span>值，則必須使用 ROUTING_TABLE 表格來設定資料來源。此表格必須包括下列直欄：
+<ul>
+<li>ROUTING_CONTEXT
+<p>使用的值可識別此流程的遞送登錄。</p>
+</li>
+<li>VARIABLE1
+<p>訊息元素的 <span class="msobjprop">KEY1</span> 內容必須符合的值。</p>
+</li>
+<li>VARIABLE2
+<p>訊息元素的 <span class="msobjprop">KEY2</span> 內容必須符合的值。</p>
+</li>
+<li>QUEUE_MANAGER
+<p>目的地的佇列管理程式。</p>
+</li>
+<li>QUEUE_NAME
+<p>目的地佇列。</p>
+</li>
+</ul>
+</li>
+<li>如果您已選擇使用 FTP 來取得輸入檔，則必須在符合型樣中所指定名稱的目標分配管理系統上，建立 FtpServer 可配置的服務。
+FileInput 節點需要此動作，才能連接至遠端 FTP 伺服器。</li>
+<li>部署 BAR 檔案。如果使用訊息集來定義記錄，則必須使用相同或不同的 BAR 檔案來部署此訊息集。</li>
+</ol>
+
+
+
+	<p>
+		<a href="overview.htm#anchorBack" title="上一步">回到 Record Distribution to WebSphere MQ: one-way 型樣規格</a></p>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-es" xml:lang="es-es">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009"/>
+	<meta name="abstract" content="Detalles sobre lo que necesita saber y qué recursos debe tener antes de poder utilizar el patrón Distribución de registro a WebSphere MQ: unidireccional."/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Tareas que deben completarse antes de aplicar el patrón Distribución de registros en WebSphere MQ: unidireccional</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.before">
+	<h1 class="topictitle1">Tareas que deben completarse antes de aplicar el patrón <span>Distribución de registros en WebSphere MQ: unidireccional</span></h1>
+	<p class="shortdesc">Antes de aplicar el patrón para producir una instancia de patrón, debe determinar cuáles de las tareas siguientes son necesarias. Si es preciso, realice las tareas siguientes:</p>
+
+<ul>
+<li>Identifique que este patrón cumple los requisitos empresariales y puede estar soportado por creadores de archivos y consumidores de mensajes.</li>
+<li>Asigne un nombre a la instancia de patrón. 
+Identifique el fin de la aplicación de patrón para que pueda decidir cuál es el nombre adecuado.</li>
+<li>Decida si necesita un registro. 
+Si el registro es necesario, debe decidir a qué gestor de colas y cola se enviarán los mensajes de registro. El registro puede efectuarse en una cola de registro general, que ya exista para otros flujos de intermediario o en una cola que se haya creado para la instancia del patrón.</li>
+<li>Decida si necesita mensajes de error. 
+Si los mensajes de error son necesarios, debe decidir a qué gestor de colas y cola se enviarán los mensajes de error.</li>
+<li>Decida cómo se detectarán los registros y, si es necesario, prepare un conjunto de mensajes para definir cómo se analizarán los registros. </li>
+<li>Decidir si la validación es necesaria y, si lo es, prepare un conjunto de mensajes para definir cómo se analizarán los registros.</li>
+<li>Determine si los archivos que se van a procesar son locales o remotos. 
+Si se van a procesar archivos remotos, es preciso identificar el nombre del servicio configurable.</li>
+<li>Decida si hay varios destinos posibles. Si hay varios destinos posibles, seleccione el enfoque de direccionamiento que va a utilizar.
+	<ul>
+	<li>Si tiene un número limitado de rutas en que los destinos no cambian con frecuencia, establezca el parámetro <span class="msobjprop">Direccionamiento</span> en <span class="msobjpropval">Especificar rutas</span>.</li>
+	<li>Si el conjunto de rutas de destino no está totalmente determinado o puede cambiar con frecuencia, establezca el parámetro
+<span class="msobjprop">Direccionamiento</span> en <span class="msobjpropval">Buscar rutas</span>. Si este valor es seleccionado, el nombre del origen de datos debe ser conocido.</li>
+	</ul></li>
+
+</ul>
+<p>
+		<a href="overview.htm#anchorBack" title="Volver">Volver a la especificación del patrón Distribución de registros en WebSphere MQ: unidireccional</a>
+</p>
+</body>
+</html>

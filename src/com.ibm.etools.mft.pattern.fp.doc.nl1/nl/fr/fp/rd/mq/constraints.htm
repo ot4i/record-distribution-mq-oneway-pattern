@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="fr-fr">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009"/>
+	<meta name="abstract" content="Informations dont vous devez avoir connaissance et ressources dont vous devez disposer pour pouvoir utiliser le modèle Distribution d'enregistrements vers WebSphere MQ : unidirectionnel."/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css"/>
+	<title>Contraintes d'utilisation du modèle Distribution d'enregistrements vers WebSphere MQ : unidirectionnel</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.constraints">
+	<h1 class="topictitle1">Contraintes d'utilisation du modèle <span>Distribution d'enregistrements vers WebSphere MQ : unidirectionnel</span></h1>
+
+<p class="shortdesc">Il existe certaines contraintes lorsque vous utilisez ce modèle.</p>
+<p>Vous ne pouvez utiliser le modèle <span>Distribution d'enregistrements vers WebSphere MQ : unidirectionnel </span> que si toutes les contraintes suivantes sont respectées :</p>
+<ul>
+	<li>Vous devez pouvoir lire le fichier en entrée sous forme d'enregistrements.
+	Vous pouvez traiter les fichiers qui contiennent des enregistrements de longueur fixe, des enregistrements de longueur variable séparés par un délimiteur identifié ou des enregistrements de longueur variable pouvant être extraits par un analyseur syntaxique, une technique appelée
+	<span class="mftobjpropval">Séquence d'enregistrement analysée</span>. 
+	Vous pouvez utiliser cette technique pour lire un fichier qui contient plusieurs documents XML en retournant chaque document sous la forme d'un enregistrement.
+	Vous ne pouvez pas utiliser ce modèle pour extraire des enregistrements imbriqués, tels que des enregistrements dans un document XML.</li>
+	<li>Si un fichier distant est traité par le service FTP, le courtier doit pouvoir supprimer le fichier source, car les fichiers source sont transférés vers le courtier et ne sont pas lus sur place.</li>
+	<li>La fonction métier pour laquelle l'instance de modèle est utilisée doit être compatible avec la redistribution d'enregistrements à la suite d'un incident système. 
+	Ce modèle distribue les enregistrements de manière fiable, mais il ne fournit aucune protection contre les doublons après un incident système.</li>
+	<li>La fonction métier pour laquelle l'instance de modèle est utilisée doit être compatible avec la redistribution d'enregistrements à la suite d'un incident afin de lire un enregistrement depuis le fichier ou d'écrire un enregistrement qui n'a pas encore été lu.
+	Dans ce cas, ce modèle déplace la totalité du fichier dans le répertoire d'annulation et une erreur est écrite sur la file d'attente des erreurs. Vous devez faire en sorte que le fichier soit renvoyé une fois l'erreur corrigée.
+	Lorsqu'un fichier est renvoyé, tous les enregistrements du fichier sont retraités, ce qui peut entraîner des messages en double.</li>
+	<li>Si la consignation est nécessaire, le format utilisé par le modèle doit répondre aux conditions de votre environnement.</li>
+</ul>
+	<p>
+	<a href="overview.htm#anchorBack" title="Retour">Spécification de la Distribution d'enregistrements vers WebSphere MQ : modèle unidirectionnel</a>
+	</p>
+</body>
+</html>

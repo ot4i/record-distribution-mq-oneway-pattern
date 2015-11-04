@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja-jp" xml:lang="ja-jp">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="ファイル・ベースおよびトランザクション・ベースの 2 つの統合スタイルを橋渡しするために、「WebSphere MQ へのレコード配布: 一方向」パターンを使用します。"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>「WebSphere MQ へのレコード配布: 一方向」パターンのログ・サブフロー</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mqLog">
+<div class="section">
+	<h1 class="topictitle1">「<span>WebSphere MQ へのレコード配布: 一方向</span>」パターンのログ・サブフロー</h1>
+	<p>ロギングは、ユーザー定義のプロパティー	<span class="msobjprop">LoggingOn</span> によって制御されます。
+	 </p>
+	 <p> ログ・メッセージは、永続	WebSphere MQ メッセージとして	WebSphere MQ キューに書き込まれます。
+これらのログ・メッセージを、組織内の標準的な手法に従って個別に処理することができます。</p>
+		
+	<p>ログ・キューに書き込まれるメッセージの <span class="uicontrol">MQRFH2</span>
+	ヘッダーには、コンテキストについての次のような詳細が含められます。</p>
+		<ul>
+		<li>ブローカー名</li>
+		<li>メッセージ・フロー名
+</li>
+		<li>タイム・スタンプ</li>	
+	</ul>
+
+		<p>ログ・キューに書き込まれるメッセージの XML 本体には、ファイルとレコードについての次のような詳細が含められます。</p>
+		<ul>	
+		<li>ディレクトリー
+</li>
+		<li>ファイル名
+</li>
+		<li>レコード合計</li>
+		<li>デフォルトのレコード</li>
+		</ul>
+	<p>ログ・メッセージがログ・キューに送られるのは、ファイル全体が正常に完了したときだけです。
+いずれかのファイル処理によってエラーが発生し、ファイルがバックアウトされると、エラーが発生した場所に関する詳細を含むエラー・メッセージが生成されます。
+</p>
+</div>
+		<a href="overview.htm#anchorBack" title="戻る">「WebSphere MQ へのレコード配布: 一方向」パターンの仕様に戻る</a>
+</body>
+</html>

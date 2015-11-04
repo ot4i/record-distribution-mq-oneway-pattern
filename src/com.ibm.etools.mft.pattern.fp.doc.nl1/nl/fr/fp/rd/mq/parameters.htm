@@ -1,0 +1,1472 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us" xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr-fr">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009"/>
+	<meta name="security" content="public"/>
+	<meta name="Robots" content="index,follow"/>
+	<meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+	<meta name="DC.Type" content="référence"/>
+	<meta name="DC.Title" content="Paramètres du modèle pour le modèle  Distribution d'enregistrements vers WebSphere MQ : unidirectionnel"/>
+	<meta name="abstract" content="Tables contenant les détails des paramètres du modèle du modèle Distribution d'enregistrements vers WebSphere MQ : unidirectionnel"/>
+	<meta name="description" content="Tables contenant les détails des paramètres du modèle du modèle Distribution d'enregistrements vers WebSphere MQ : unidirectionnel"/>
+	<meta name="DC.Format" content="XHTML"/>
+	<meta name="DC.Language" content="en-us"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->	
+	<link rel="stylesheet" type="text/css" href="../../../css/style2.css" media="screen"/>
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css"/>
+	<title>Paramètres du modèle pour le modèle  Distribution d'enregistrements vers WebSphere MQ : unidirectionnel</title>	
+	<script language="JavaScript" src="../../../help/LiveHelp.js"></script>
+	 <!-- START NON-TRANSLATABLE -->
+	<script language="JavaScript">
+	<!--
+
+	function getParameter(location, name) {
+		name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+		var search = "[\\?&]" + name + "=([^&#]*)";
+		var regex = new RegExp(search);
+		var results = regex.exec(location);
+		return (results == null ? true : (results[1] == "false" ? false : true));
+	}
+	
+	function addStyleSheet() {
+		if (getParameter(window.location.href, "everything") == false) {
+			var headId = document.getElementsByTagName("head")[0];         
+			var cssNode = document.createElement("link");
+			cssNode.type = "text/css";
+			cssNode.rel = "stylesheet";
+			cssNode.href = "../../../css/patterns.css";
+			cssNode.media = "screen";
+			headId.appendChild(cssNode);
+		}
+	}
+		
+	addStyleSheet(); // Depends on the query string!
+	
+	function getElementsByStyleClass (className) {
+  		var all = document.all ? document.all :
+    	document.getElementsByTagName('*');
+  		var elements = new Array();
+  		
+  		for (var e = 0; e < all.length; e++) {
+    		if (all[e].className == className) {
+      			elements[elements.length] = all[e];
+      		}
+      	}
+ 		return elements;
+	}
+	
+	function collapseAll() {
+		var elements = getElementsByStyleClass('twisty');
+		for (var e = 0; e < elements.length; e++) {
+			changeTwisty(elements[e], 'TWISTIE.COLLAPSEALL');
+		}
+	}
+	
+	function expandAll() {
+		var elements = getElementsByStyleClass('twisty');
+		for (var e = 0; e < elements.length; e++) {
+			changeTwisty(elements[e], 'TWISTIE.EXPANDALL');
+		}
+	}
+	
+	function toggleTwisty(group) {
+		changeTwisty(group, 'TWISTIE.TOGGLE');
+		if (typeof kc === "object" && typeof kc.resize === "function") kc.resize();
+	}
+
+	function changeTwisty(group, mode) {		
+		whichGroupId = group.parentNode.id;
+
+		whichGroupContainerId = whichGroupId + "Container";
+		whichGroupTwistyId = whichGroupId + "Twisty";
+		whichGroupTwistyImageId = whichGroupId + "Arrow";
+		groupContainerObj = document.getElementById(whichGroupContainerId);
+		twistyArrowContainerObj = document.getElementById(whichGroupTwistyId);
+		twistyArrowImageObj = document.getElementById(whichGroupTwistyImageId);
+		group.parentNode.style.height = "auto";
+
+		var toShow = false;
+		
+		if (mode == 'TWISTIE.TOGGLE') {
+			if (groupContainerObj.style.display == "none" || groupContainerObj.style.display == "") {
+				toShow = true;
+			} else {
+				toShow = false;
+			}
+		} else if (mode == 'TWISTIE.EXPANDALL') {
+			toShow = true;
+		}
+		
+		if (toShow) {
+			groupContainerObj.style.visibility = "visible";
+			groupContainerObj.style.display = "block";
+			twistyArrowImageObj.src = '../../../images/twisty-open.png'
+			group.parentNode.style.height = (groupContainerObj.offsetHeight + 30) +'px'; 
+	
+		} else {
+			groupContainerObj.style.visibility = "hidden";
+			groupContainerObj.style.display = "none";
+			twistyArrowImageObj.src = '../../../images/twisty-closed.png'
+		}
+	
+	}
+	//-->
+	</script>
+	 <!-- END NON-TRANSLATABLE -->
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.parametertable">
+	<!-- Page main title -->
+  	<div id="title" class="invisible">
+		<h1 class="patterns-title">Paramètres pour le modèle
+		<span>Distribution d'enregistrements vers WebSphere MQ :</span> unidirectionnel</h1>
+  	</div>
+
+	
+		
+				
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="fileInput">
+							<div class="twisty" onmouseup="toggleTwisty(this)"  onkeyup="toggleTwisty(this)" role="menubar" id="fileInputTwisty">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="fileInputArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar"  >Fichier en entrée</div>
+							
+							
+									
+									
+									
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="fileInputContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Paramètres du modèle</th>
+													  <th class="invisible" valign="top" width="*">O</th>
+													  <th class="invisible" valign="top" width="*">C</th>
+													  <th class="invisible" valign="top" width="*">Valeur par défaut</th>
+													  <th valign="top" width="*">Description</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Répertoire du fichier en entrée</th>
+															<td valign="top" width="*" class="invisible">
+																		Oui
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Oui
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		&nbsp;
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Emplacement du fichier en entrée.</p>
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Modèle de fichier</th>
+															<td valign="top" width="*" class="invisible">
+																		Oui
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Oui
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">*</span>
+															</td>
+															<td valign="top" width="*">
+																
+    														<p>Nom de fichier ou chaîne contenant des caractères génériques facultatifs (astérisque (*) ou point d'interrogation (?))
+    														identifiant le fichier ou les fichiers à traiter depuis le répertoire d'entrée.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Utiliser FTP</th>
+															<td valign="top" width="*" class="invisible">
+																		Oui
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Oui
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				Effacé
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Ce paramètre indique si FTP est utilisé pour extraire les fichiers distants.</p>
+
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Service configurable FTP</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Oui
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">ftpservice</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Ce service configurable indique le mode d'utilisation de FTP pour extraire un fichier distant.</p>
+
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="recordDetection">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="recordDetectionTwisty">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="recordDetectionArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Traitement d'enregistrement en entrée</div>
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="recordDetectionContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Paramètre du modèle</th>
+													  <th class="invisible" valign="top" width="*">O</th>
+													  <th class="invisible" valign="top" width="*">C</th>
+													  <th class="invisible" valign="top" width="*">Valeur par défaut</th>
+													  <th valign="top" width="*">Description</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Détection d'enregistrement</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">Longueur fixe (binaire ou texte)</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Les enregistrements sont lus depuis le fichier en fonction de la méthode sélectionnée pour détecter les enregistrements.</p>
+    <p> Valeurs acceptées :</p>
+		                        <ul>
+		                        <li> <span class="msobjpropval">Longueur fixe (binaire ou texte)</span></li>
+		                        <li> <span class="msobjpropval">Délimité (binaire ou texte)</span></li>
+		                        <li> <span class="msobjpropval">Délimité (XML)</span></li>
+		                        <li> <span class="msobjpropval">Analysé (binaire ou texte)</span></li>
+		                        <li> <span class="msobjpropval">Analysé (XML)</span></li>
+		                        </ul>
+	<p>Si la valeur <span class="msobjpropval">Analysé (binaire ou texte)</span> est sélectionnée, les paramètres  <span class="msobjprop">ensemble de messages en entrée</span>, <span class="msobjprop">type de message en entrée</span>,
+et <span class="msobjprop">format de message en entrée</span> doivent également être configurés.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Longueur d'enregistrement</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">80</span>
+															</td>
+															<td valign="top" width="*">
+																
+    												<p>Les enregistrements ayant la longueur appropriée sont lus dans le fichier source.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Type de délimiteur</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="2*" class="invisible">
+																		<span class="msobjpropval">Fin de ligne DOS ou UNIX</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Si vos données n'utilisent pas la valeur par défaut, sélectionnez <span class="msobjpropval">Délimiteur personnalisé (hexadécimal)</span>.</p>
+
+															</td>
+														</tr>
+														
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Délimiteur d'enregistrement</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		&nbsp;
+															</td>
+															<td valign="top" width="*">
+																
+    													<p>Les enregistrements lus dans le fichier sont séparés par le délimiteur défini exprimé sous la forme d'une valeur hexadécimale. </p>
+    															<p>Ce délimiteur doit être spécifié sous forme de nombre pair d'un maximum de 32 caractères, dont chacun doit être compris entre 0-9 ou A-F (en majuscule ou minuscule).</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Ensemble de messages d'entrée</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		&nbsp;
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Les enregistrements sont lus à partir d'un fichier basé sur une définition dans cet ensemble de messages.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Type de message d'entrée</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		&nbsp;
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Les enregistrements sont lus et analysés en fonction de ce type de message.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Format de message d'entrée</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		&nbsp;
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Les enregistrements sont lus et analysés en fonction de ce format de message.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																CCSID du fichier</th>
+															<td valign="top" width="*" class="invisible">
+																		Oui
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Oui
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">Valeur par défaut du système de courtier</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Ce paramètre définit le jeu de caractères codés utilisé pour interpréter les octets du fichier à lire.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Codage du fichier</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Oui
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">Système de courtier déterminé</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Ce paramètre définit le schéma de codage des nombres et des caractères utilisés pour interpréter les octets du fichier à lire. 
+    Valeurs acceptées : </p>
+    <ul>
+    <li><span class="msobjpropval">Système de courtier déterminé</span></li>
+    <li><span class="msobjpropval">Format Little endian avec virgule flottante IEEE (546)</span></li>
+    <li><span class="msobjpropval">Format Big endian avec virgule flottante IEEE (273)</span></li>
+    <li><span class="msobjpropval">Format Big endian avec virgule flottante S390 (785)</span></li>
+    </ul>
+      <p>Pour plus d'informations sur le codage, voir &quot;Conversion des données avec les flux de messages&quot; dans la documentation IBM Integration.</p>
+		                        
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="routing">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="routingTwisty">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="routingArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Routage</div>
+							
+							
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="routingContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Paramètre du modèle</th>
+													  <th class="invisible" valign="top" width="*">O</th>
+													  <th class="invisible" valign="top" width="*">C</th>
+													  <th class="invisible" valign="top" width="*">Valeur par défaut</th>
+													  <th valign="top" width="*">Description</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Routage</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">Aucun routage</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Ce paramètre définit la méthode de routage à utiliser. Valeurs acceptées :</p>
+							<ul>
+								<li>
+									<span class="msobjpropval">Aucun routage</span>
+								</li>
+								<li>
+									<span class="msobjpropval">Indiquer les routes</span>
+								</li>
+								<li>
+									<span class="msobjpropval">Rechercher les routes</span>
+								</li>
+							</ul>
+		                        
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="noRouting">
+							<div class="twisty" onmouseup="toggleTwisty(this)" id="noRoutingTwisty" onkeyup="toggleTwisty(this)" role="menubar">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="noRoutingArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Aucun routage</div>
+							
+							
+									
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="noRoutingContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Paramètre du modèle</th>
+													  <th class="invisible" valign="top" width="*">O</th>
+													  <th class="invisible" valign="top" width="*">C</th>
+													  <th class="invisible" valign="top" width="*">Valeur par défaut</th>
+													  <th valign="top" width="*">Description</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Gestionnaire de file d'attente de sortie</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Oui
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Ce paramètre définit le gestionnaire de files d'attente auquel tous les messages sortants sont envoyés.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																File d'attente de sortie</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Oui
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">OUTPUT</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Ce paramètre définit la file d'attente à laquelle sont envoyés tous les messages de sortie.</p>
+		                        
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="specifyRoutes">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="specifyRoutesTwisty">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="specifyRoutesArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Indiquer les routes</div>
+							
+							
+									
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="specifyRoutesContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Paramètre du modèle</th>
+													  <th class="invisible" valign="top" width="*">O</th>
+													  <th class="invisible" valign="top" width="*">C</th>
+													  <th class="invisible" valign="top" width="*">Valeur par défaut</th>
+													  <th valign="top" width="*">Description</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Gestionnaire de files d'attente par défaut</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Oui
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Ce paramètre définit le gestionnaire de files d'attente qui reçoit les messages lorsque les critères pour la propriété <span class="msobjpropval">Spécifier les routes</span> ne sont pas satisfaits.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																File d'attente par défaut</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Oui
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">DEFAULT</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Ce paramètre définit la file d'attente qui reçoit les messages lorsque les critères de la propriété <span class="msobjpropval">Indiquer les routes</span> ne sont pas satisfaits.</p>
+		                        
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+					
+							    			<p>Les paramètres qui figurent dans la 	<span class="msobjprop">table Espace de nom</span> suivante définissent les préfixes d'espace de nom et les URI d'espace de nom que vous pouvez utiliser dans les expressions XPath qui définissent les emplacements de clés des routes. 
+Si une ligne est incluse, les deux paramètres doivent être inclus.</p>
+<p>Vous pouvez ajouter, modifier et supprimer les valeurs et changer l'ordre des valeurs dans la table.</p>
+
+<div class="tablenoborder">
+	<table cellpadding="4" cellspacing="0" summary="" width="100%" rules="all" frame="border" border="1">
+		<thead align="left">
+			<tr>
+				<th class="firstcol" align="left" valign="top" width="*">Paramètre de table d'espace de nom</th>
+				<th class="invisible" valign="top" width="*">O</th>
+				<th class="invisible" valign="top" width="*">C</th>
+				<th class="invisible" valign="top" width="*">Valeur par défaut</th>
+				<th valign="top" width="*">Description</th>
+			</tr>
+		</thead>
+		<tbody>
+				<tr>
+					<th align="left" valign="top" width="*" class="firstcol">
+						Préfixe d'espace de nom
+					</th>
+					<td valign="top" width="*" class="invisible">
+								Oui
+					</td>
+					<td valign="top" width="*" class="invisible">
+								Non
+					</td>
+					<td valign="top" width="*" class="invisible">
+										
+					</td>
+					<td valign="top" width="*">
+						
+    <p>Ce paramètre définit l'étiquette de l'espace de nom.</p>
+
+					</td>
+				</tr>
+				<tr>
+					<th align="left" valign="top" width="*" class="firstcol">
+						URI d'espace de nom
+					</th>
+					<td valign="top" width="*" class="invisible">
+								Oui
+					</td>
+					<td valign="top" width="*" class="invisible">
+								Non
+					</td>
+					<td valign="top" width="*" class="invisible">
+										
+					</td>
+					<td valign="top" width="*">
+						
+    <p>Ce paramètre définit l'espace de nom de l'étiquette en cours.</p>
+
+					</td>
+				</tr>
+		</tbody>
+	</table>
+</div>
+    <p>La 	<span class="msobjprop">table Espace de nom</span> définit les espaces de nom que vous pouvez utiliser dans les expressions XPath dans la <span class="msobjprop">table Routage</span>.</p> 
+	
+		                        			
+<div class="tablenoborder">
+	<table cellpadding="4" cellspacing="0" summary="" width="100%" rules="all" frame="border" border="1">
+		<thead align="left">
+			<tr>
+				<th class="firstcol" align="left" valign="top" width="*">Paramètre de table de routage</th>
+				<th class="invisible" valign="top" width="*">O</th>
+				<th class="invisible" valign="top" width="*">C</th>
+				<th class="invisible" valign="top" width="*">Valeur par défaut</th>
+				<th valign="top" width="*">Description</th>
+			</tr>
+		</thead>
+		<tbody>
+				<tr>
+					<th align="left" valign="top" width="*" class="firstcol">
+						Emplacement de clé
+					</th>
+					<td valign="top" width="*" class="invisible">
+								Oui
+					</td>
+					<td valign="top" width="*" class="invisible">
+								Non
+					</td>
+					<td valign="top" width="*" class="invisible">
+										
+					</td>
+					<td valign="top" width="*">
+					        <p>Un emplacement de clé est une expression XPath qui définit un emplacement dans l'enregistrement propagé. Par exemple, <tt>$Root/XMLNSC/submitPORequest/partNo</tt>. </p>
+							<p>Pour plus d'informations sur le type d'expression à utiliser, voir "Noeud de route" et "Utilisation de XPath" dans la documentation IBM Integration.</p>
+							<p>
+							Vous pouvez inclure des espaces de nom s'ils sont définis dans la          	         <span class="msobjprop">table Espace de nom</span> facultative.
+							</p>
+
+					</td>
+				</tr>
+				<tr>
+					<th align="left" valign="top" width="*" class="firstcol">
+						Valeur de clé
+					</th>
+					<td valign="top" width="*" class="invisible">
+								Oui
+					</td>
+					<td valign="top" width="*" class="invisible">
+								Non
+					</td>
+					<td valign="top" width="*" class="invisible">
+										
+					</td>
+					<td valign="top" width="*">
+						
+    <p>Ce paramètre contient la valeur à laquelle doit correspondre la zone <span class="msobjprop">Emplacement de clé</span> dans le message entrant pour sélectionner la route.</p>
+					</td>
+				</tr>
+				<tr>
+					<th align="left" valign="top" width="*" class="firstcol">
+						Gestionnaire de files d'attente
+					</th>
+					<td valign="top" width="*" class="invisible">
+								Non
+					</td>
+					<td valign="top" width="*" class="invisible">
+								Oui
+					</td>
+					<td valign="top" width="*" class="invisible">
+										
+					</td>
+					<td valign="top" width="*">
+						
+    <p>Ce paramètre définit le gestionnaire de files d'attente d'une destination de routage.</p>
+
+					</td>
+				</tr>
+				<tr>
+					<th align="left" valign="top" width="*" class="firstcol">
+						File d'attente
+					</th>
+					<td valign="top" width="*" class="invisible">
+								Oui
+					</td>
+					<td valign="top" width="*" class="invisible">
+								Oui
+					</td>
+					<td valign="top" width="*" class="invisible">
+										
+					</td>
+					<td valign="top" width="*">
+						
+    <p>Ce paramètre définit la file d'attente d'une destination de routage.</p>
+
+					</td>
+				</tr>
+		</tbody>
+	</table>
+</div>						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="lookupRoutes">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="lookupRoutesTwisty">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="lookupRoutesArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Rechercher les routes</div>
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="lookupRoutesContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Paramètre du modèle</th>
+													  <th class="invisible" valign="top" width="*">O</th>
+													  <th class="invisible" valign="top" width="*">C</th>
+													  <th class="invisible" valign="top" width="*">Valeur par défaut</th>
+													  <th valign="top" width="*">Description</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Source des données de routage</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Oui
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Ce paramètre définit la source de données dans laquelle une route peut être sélectionnée. 
+    Les informations de routage sont recherchées dans la table <tt>ROUTING_TABLE</tt>.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Contexte des données de routage</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																Ce paramètre définit un contexte de routage pour que vous puissiez utiliser                     une table <tt>ROUTING_TABLE</tt>
+										pour plusieurs flux de médiation. 
+																<p>Seules les lignes dans lesquelles la zone <tt>ROUTING_CONTEXT</tt> correspond à la valeur <span class="msobjprop">Contexte de routage</span> sont sélectionnées pour la recherche de routes et ajoutées à la mémoire cache interne.</p>
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Emplacement de clé 1</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Ce paramètre définit le mode d'extraction de la première clé de l'élément de message propagé. Il est défini sous la forme d'une expression ESQL. </p>
+    <p>La première clé est utilisée pour sélectionner <tt>VARIABLE1</tt> dans une entrée de routage.
+	L'emplacement doit être sous la forme <tt>InputBody</tt>
+										ou <tt>InputRoot</tt>.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Emplacement de clé 2</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Ce paramètre définit le mode d'extraction de la seconde clé de l'élément de message propagé. Il est défini sous la forme d'une expression ESQL. </p>
+    <p>La deuxième clé est utilisée pour sélectionner <tt>VARIABLE2</tt> dans une entrée de routage source. 
+    L'emplacement doit être sous la forme <tt>InputBody</tt>
+										ou <tt>InputRoot</tt>.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Gestionnaire de files d'attente par défaut</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Oui
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Ce paramètre définit le gestionnaire de files d'attente qui reçoit les messages lorsque les critères de la propriété <span class="msobjpropval">Consulter les routes</span> ne sont pas satisfaits.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																File d'attente par défaut</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Oui
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">DEFAULT</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Ce paramètre définit la file d'attente qui reçoit les messages lorsque les critères de la propriété <span class="msobjpropval">Consulter les routes</span> ne sont pas satisfaits.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Régénérer le cache</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				Effacé
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Si ce paramètre est sélectionné, lorsqu'un message de régénération est reçu, la mémoire cache interne des données de routage est régénérée depuis la source de données.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																File d'attente de régénération</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Oui
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">REFRESH</span>
+															</td>
+															<td valign="top" width="*">
+																
+    <p>Si vous sélectionnez <span class="msobjprop">Régénérer le cache</span>, un message envoyé à cette file d'attente régénère les données de routage dans la mémoire interne.</p>
+		                        
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="log">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="logTwisty">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="logArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Consignation</div>
+							
+							
+									
+									
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="logContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Paramètre du modèle</th>
+													  <th class="invisible" valign="top" width="*">O</th>
+													  <th class="invisible" valign="top" width="*">C</th>
+													  <th class="invisible" valign="top" width="*">Valeur par défaut</th>
+													  <th valign="top" width="*">Description</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Consignation nécessaire</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				Effacé
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Ce paramètre indique si l'instance de modèle inclut le code de consignation.</p>
+		                        <p>Si <span class="msobjprop">Consignation nécessaire</span> est désélectionné, aucun flux secondaire Journal n'est inclus.</p>
+		                        <p>Si <span class="msobjprop">Consignation nécessaire</span> est sélectionné, un flux secondaire Journal est inclus dans le flux de messages et vous devez définir les valeurs de <span class="msobjprop">Gestionnaire de files d'attente de consignation</span> et <span class="msobjprop">File d'attente de journaux</span>.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Gestionnaire de files d'attente de journaux</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Oui
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Ce paramètre du modèle définit le gestionnaire de files d'attente de la consignation. 
+		                        Vous pouvez ne pas le définir si vous utilisez le gestionnaire de files d'attente du courtier pour la consignation.</p>
+		                        <p>Vous devez le définir uniquement si vous sélectionnez <span class="msobjprop">Consignation nécessaire</span>.
+		                        </p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																File d'attente de consignation</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Oui
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">LOG</span>
+															</td>
+															<td valign="top" width="*">
+																
+								<p>Ce paramètre définit la file d'attente de consignation.</p>
+								<p>Vous devez définir ce paramètre uniquement si vous définissez <span class="msobjprop">Consignation nécessaire</span>.</p>
+		                        
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="errorHandling">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="errorHandlingTwisty">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="errorHandlingArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Traitement d'erreurs</div>
+							
+							
+									
+									
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="errorHandlingContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Paramètre du modèle</th>
+													  <th class="invisible" valign="top" width="*">O</th>
+													  <th class="invisible" valign="top" width="*">C</th>
+													  <th class="invisible" valign="top" width="*">Valeur par défaut</th>
+													  <th valign="top" width="*">Description</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Message d'erreur nécessaire</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				Sélectionné
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Ce paramètre de modèle indique si l'application de modèle crée les éléments de flux de messages qui créent les messages d'erreur.</p>
+		                        <p>Si vous sélectionnez <span class="msobjprop">Message d'erreur nécessaire</span>, vous devez définir des valeurs pour <span class="msobjprop">Gestionnaire de files d'attente des erreurs</span> et <span class="msobjprop">File d'attente des erreurs</span>.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Gestionnaire de files d'attente d'erreurs</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Oui
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		&nbsp;
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Ce paramètre de modèle définit le gestionnaire de files d'attente des messages d'erreur. 
+		                        Vous pouvez ne pas le définir si vous utilisez le gestionnaire de files d'attente du courtier pour la consignation.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																File d'attente d'erreurs</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Oui
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">ERROR</span>
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Ce paramètre du modèle définit la file d'attente des messages d'erreur.</p>
+		                        <p>Vous devez le définir uniquement si vous sélectionnez <span class="msobjprop">Message d'erreur nécessaire</span>.
+		                        </p>
+		                        
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+	
+		
+			<div class="box first">
+				<div class="TitleBox"><!-- --></div>
+				<div class="FooterBox"><!-- --></div>
+				<div class="TL"><!-- --></div>
+				<div class="TR"><!-- --></div>
+				<div class="BL"><!-- --></div>
+				<div class="BR"><!-- --></div>
+				<div class="ContentBox">
+					<div class="border">
+						<div class="groupBox" id="general">
+							<div class="twisty" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" role="menubar" id="generalTwisty">
+								<img src="../../../images/twisty-closed.png"
+									name="b" id="generalArrow" alt=""></img>
+							</div>
+							<div class="twistyTitle" onmouseup="toggleTwisty(this)" onkeyup="toggleTwisty(this)" tabindex="0" role="menubar">Dispositions générales</div>
+							
+							
+									
+									
+									
+									
+									
+									
+									
+							
+							<div style="visibility: hidden; display: none;" class="groupBoxContainer" id="generalContainer">
+									<div class="tablenoborder">
+										<table summary="" width="100%" border="1" cellpadding="4" cellspacing="0" frame="border" rules="all">
+											<thead align="left">
+												<tr>
+													  <th class="firstcol" align="left" valign="top" width="*">Paramètre du modèle</th>
+													  <th class="invisible" valign="top" width="*">O</th>
+													  <th class="invisible" valign="top" width="*">C</th>
+													  <th class="invisible" valign="top" width="*">Valeur par défaut</th>
+													  <th valign="top" width="*">Description</th>
+												</tr>
+											</thead>
+											<tbody>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Schéma de courtier</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				<span class="msobjpropval">mqsi</span>
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Si un schéma de courtier est défini, tous les flux de messages et fichiers ESQL sont créés dans le schéma. Si aucun schéma n'est défini, le schéma de courtier par défaut est utilisé.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Préfixe de flux</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Si vous définissez ce préfixe, il est ajouté au début de tous les noms de flux de messages.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Suffixe de flux</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Si vous définissez ce suffixe, il est ajouté à la fin de tous les noms de flux de messages.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Préfixe de file d'attente</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Si vous définissez ce préfixe, il est ajouté au début de tous les noms de file d'attente.
+		                        </p>
+		                        <p> Si vous utilisez les noms de file d'attente par défaut, vous devez définir le préfixe, le suffixe ou les deux pour identifier les noms de file d'attente de chaque instance du modèle. 
+		                        </p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Suffixe de file d'attente</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Si vous définissez ce suffixe, il est ajouté à la fin de tous les noms de file d'attente.</p>
+								<p>Si vous utilisez les noms de file d'attente par défaut, vous devez définir le préfixe, le suffixe ou les deux pour identifier les noms de file d'attente de chaque instance du modèle. 
+		                        </p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Description abrégée</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Cette description est ajoutée à la propriété
+		                        <span class="msobjprop">Description abrégée</span> de tous les flux de messages générés.</p>
+		                        
+															</td>
+														</tr>
+														<tr>
+															<th align="left" valign="top" width="*" class="firstcol">
+																Description détaillée</th>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																		Non
+															</td>
+															<td valign="top" width="*" class="invisible">
+																				
+															</td>
+															<td valign="top" width="*">
+																
+		                        <p>Cette description est ajoutée à la propriété
+		                        <span class="msobjprop">Description détaillée</span> de tous les flux de messages générés.</p>
+		                        
+															</td>
+														</tr>
+											</tbody>
+										</table>
+								  	</div>
+								
+						  	</div>
+				  		</div>
+			  		</div>
+				</div>
+			</div>
+
+	<div id="footnotes" class="invisible">
+		<div class="box first">
+		<div class="TitleBox"><!-- --></div>
+		<div class="FooterBox"><!-- --></div>
+		<div class="TL"><!-- --></div>
+		<div class="TR"><!-- --></div>
+		<div class="BL"><!-- --></div>
+		<div class="BR"><!-- --></div>
+		<div class="ContentBox">
+			<div class="invisible" >
+				<p class="shortdesc">
+						Tous les paramètres du modèle sont répertoriés avec leur valeur par défaut.
+					</p>
+					<p>
+					La colonne avec l'en-tête <b>M</b> indique si la propriété est <dfn class="term">obligatoire</dfn>. 
+					La colonne avec l'en-tête <b>C</b> indique si la propriété est <dfn class="term">configurable</dfn>, ce qui signifie que vous pouvez modifier la valeur lorsque vous ajoutez le flux de messages au fichier d'archive du courtier (BAR).
+					</p>
+					<p>
+						Lorsqu'aucune valeur n'est définie, la valeur par défaut est une chaîne vide.
+					</p>
+				</div>
+				<a href="overview.htm#anchorBack" title="Retour">Spécification du modèle Distribution d'enregistrements vers WebSphere MQ : unidirectionnel</a>
+				<p></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

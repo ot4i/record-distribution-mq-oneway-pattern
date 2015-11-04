@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja-jp" xml:lang="ja-jp">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="「WebSphere MQ へのレコード配布: 一方向」パターンの経路サブフロー"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>「WebSphere MQ へのレコード配布: 一方向」パターンの経路サブフロー</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mqRoute">
+<div class="section">
+	<h1 class="topictitle1">「WebSphere MQ へのレコード配布: 一方向」パターンの経路サブフロー</h1>
+<p class="shortdesc">「<span>WebSphere MQ へのレコード配布: 一方向</span>」パターンの経路サブフローに関する詳細。</p>
+
+<p>経路サブフローの動作は、「<span class="msobjprop">ルーティング</span>」パターン・パラメーターの値によって次のように異なります。
+</p>
+<ul>
+<li><span class="msobjpropval">ルーティングなし</span>
+<p>「<span class="msobjpropval">ルーティングなし</span>」が選択されている場合、単一の MQOutput ノードが作成され、
+このノードが「<span class="msobjprop">出力キュー・マネージャー</span>」および「<span class="msobjprop">出力キュー</span>」パターン・パラメーターの値で構成されます。
+ルーティング・フローは、Passthrough ノードを含むサブフローです。
+このサブフローに他のすべての種類のルーティング・サブフローとの一貫性を持たせるため、デフォルト・ターミナルと経路ターミナルが含まれていますが、単一の経路ターミナルだけが使用されます。
+</p></li>
+
+
+<li><span class="msobjpropval">経路の指定</span>
+<p> 経路を定義する、以下の 4 つのパラメーターから成るグループです。</p>
+<ul>
+<li>「<span class="msobjprop">キーの位置</span>」は、現在のメッセージ・エレメント内のキーの位置を定義する式です。
+使用する式のタイプについて詳しくは、IBM Integration 資料の『Route ノード』および『XPath の使用』の項を参照してください。</li>
+<li>「<span class="msobjprop">キー値</span>」は、この経路が選択される場合に、キーの位置が一致しなければならない値を定義します。</li>
+<li>「<span class="msobjprop">キュー・マネージャー</span>」は経路をキュー・マネージャーとして定義します。</li>
+<li>「<span class="msobjprop">キュー</span>」は経路をキューとして定義します。</li>
+</ul>
+<p>定義される経路ごとに、経路サブフローおよび MQOutput ノードの Output ターミナルが作成され、接続されます。
+</p>
+<p>経路サブフローには、条件 <tt>KeyLocation = Key Value</tt> を満たす最初の Output ターミナルにルーティングするフィルターで構成される Route ノードが含まれます。
+メッセージ・エレメントがどの経路にも一致しない場合、ブローカー環境ツリー内の変数にこの状態が記録され、メッセージは Default ターミナルに渡されます。</p>
+<p><span class="msobjprop">キーの位置</span>を定義する XPath 式にネーム・スペース修飾子が含まれる場合、ネーム・スペースを定義するタグをネーム・スペース表に追加する必要があります。</p>
+
+<p>以下のメッセージに似た警告が Route ノードに関して出されることがあります。
+「<tt>フィルター・テーブル: フィルター・パターン: <span class="msobjpropval">Key location = Key value</span> XPath 中に <var>element_name</var> スキーマ・エレメントが見つかりませんでした。</tt>」
+この警告によって、パターン・インスタンスをデプロイして実行するときに問題が発生することはありません。</p>
+<p>「<span class="msobjpropval">経路の指定</span>」を選択して、異なる多数の経路を指定できます。</p></li>
+
+
+
+<li><span class="msobjpropval">経路の検索</span>
+<p>この値を選択した場合、メッセージ・データの値を使ってキュー・マネージャーおよびキューをデータベース・ルーティング・テーブルから検索することにより、経路が決定されます。
+効率を上げるために、ルーティング・テーブルに直接アクセスする代わりに、それを読み取ってメモリー内のキャッシュに入れます。</p>
+<p>この値が選択されている場合、経路サブフロー用に単一の Output ターミナルが作成されます。この Output ターミナルは、検索によってブローカー環境ツリーに置かれた宛先から成るリストを選択するように構成された単一の MQOutput ノードに接続されます。</p>
+<p>経路サブフローは、<span class="filepath">CacheQueueTable.valid</span> 共有行変数の値が <tt>NULL</tt> に設定されているかどうか確認することにより、
+キャッシュの最新表示が必要かどうかを確認します。
+この変数が <tt>NULL</tt> に設定されるのは、フローが開始され、「<span class="msobjprop">キャッシュの最新表示</span>」が有効で、最新表示メッセージが「<span class="msobjprop">最新表示キュー</span>」に既に送信された場合です。
+最新表示メッセージはこの値を <tt>NULL</tt> に設定します。</p>
+<p>キャッシュの最新表示が必要な場合、(「<span class="msobjprop">ルーティング・データ・ソース</span>」パターン・パラメーターで指定されている) データ・ソースの ROUTING_TABLE テーブルが検索されて、このフローのルーティング・コンテキストに一致するすべての行が検出されます。
+ルーティング・コンテキストは「<span class="msobjprop">ルーティング・データ・コンテキスト</span>」パターン・パラメーターによって定義され、ROUTING_CONTEXT フィールドがこのパラメーターとマッチするような行がメモリー内のキャッシュに読み取られます。
+キャッシュが不整合状態にある間の検索を防ぐために、これはアトミックに実行されます。</p>
+<p>キャッシュ・データの構造は次のとおりです。</p>
+<pre>VARIABLE1, VARIABLE2, QUEUE_MANAGER, QUEUE_NAME </pre>
+<p>検索は、パターン・パラメーターとして定義された ESQL 式を使用して、メッセージ・エレメントから 1 つまたは 2 つのキー値を抽出することによって実行されます。
+この検索は以下の形式のステートメントを使って定義されます。
+</p>
+<pre>SET KEY = &lt;pattern parameter&gt;</pre>
+<p>ルーティング・データから (1 つまたは複数の) 行を選択するために単一のキーが指定される場合、以下のような WHERE 節を使って選択します。
+</p>
+<pre>WHERE S.VARIABLE1 = KEY1</pre> 
+<p>2 番目のキーが指定される場合、以下のような WHERE 節を使って選択します。</p>
+<pre>WHERE S.VARIABLE1 = KEY1 and S.VARIABLE2 = KEY2</pre>
+<p>この選択によって、キュー・マネージャーおよびキューは MQOutput ノードによって使用される宛先のリストの中に設定されます。
+複数の行が返される可能性があり、宛先データには、選択されたすべての宛先が含まれます。
+一致が見つからない場合、ルーティング・エラーが発生し、経路サブフローの Failure ターミナルにメッセージが渡されます。</p></li>
+</ul>
+</div>
+		<a href="overview.htm#anchor1" title="戻る">「WebSphere MQ へのレコード配布: 一方向」パターンの仕様に戻る</a>
+</body>
+</html>

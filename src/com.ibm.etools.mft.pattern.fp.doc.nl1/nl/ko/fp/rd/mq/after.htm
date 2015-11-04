@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko-kr" xml:lang="ko-kr">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009, 2010
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="WebSphere MQ에 대한 레코드 분배: 단방향 패턴을 생성한 후 완료할 태스크입니다."/>
+	<meta name="description" content=""/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css"/>
+	<title>WebSphere MQ에 대한 레코드 분배: 단방향 패턴을 생성한 후 완료할 태스크</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.after">
+	<h1 class="topictitle1"><span>WebSphere MQ에 대한 레코드 분배: 단방향</span> 패턴을 생성한 후 완료할 태스크</h1>
+	<p class="shortdesc">해당 패턴을 생성한 후 완료해야 하는 태스크입니다.</p>
+
+<ol>
+<li>브로커 아카이브(BAR) 파일을 작성하십시오. 메시지 플로우가 브로커 아카이브 파일에 추가되어야 합니다.
+메시지 세트를 사용하여 레코드의 구문 분석 방법을 정의한 경우 해당 메시지 세트를 BAR 파일에 추가해야 합니다.</li>
+<li>브로커 아카이브 파일을 구성하십시오. <span>WebSphere MQ에 대한 레코드 분배: 단방향</span> 패턴 인스턴스를 위한
+메시지 플로우를 배치하기 전에 브로커 아카이브 파일에서 메시지 플로우를 추가 구성할 필요는 없지만, 몇 가지 기본 옵션을 검토하고
+사용자 환경에 맞게 변경할 수 있습니다.
+<p><span class="uicontrol">브로커 아카이브</span> 편집기의 <span class="uicontrol">관리</span> 페이지에서:</p>
+<ul>
+	<li>선택사항: <span class="msobjprop">LoggingOn</span>
+사용자 정의 특성을 사용하여 메시지 플로우에 대한 로그 기록의 사용
+여부를 선택하십시오.</li>
+	<li>선택사항: <span class="msobjprop">ErrorLoggingOn</span>
+사용자 정의 특성을 사용하여 오류 메시지의 생성 여부를
+선택하십시오.</li>
+	<li>선택사항: 브로커 아카이브에서 구성 가능한 특성을
+변경할 수도 있습니다(예: 보안 또는 추가 인스턴스 작성에 대한
+특성). 값을 변경해도 패턴 인스턴스의 작동에
+아무런 영향이 없도록 확인해야 합니다.</li>
+</ul></li>
+
+<li>요약 파일에서 작성해야 하는 큐 목록을 확인하십시오. 요약 파일은 <i>InstanceName</i> 패턴 인스턴스 프로젝트의
+패턴 구성 폴더에 있습니다.</li>
+ 
+ <li>큐를 작성하십시오. 패턴을 적용하면 큐 이름과 큐 관리자 이름을 포함한
+WebSphere MQ 큐 목록이 생성되며, WebSphere MQ 큐가 아직 없으면 WebSphere MQ 큐를
+작성해야 합니다. 패턴에 필요한 모든 메시지 설정은 메시지에 명시적으로
+설정되므로 큐 설정에 종속되지 않습니다.</li>
+
+<li><span>WebSphere MQ</span> 자원을 작성하십시오.
+명령행에서 <span class="cmdname">runmqsc</span>와 같은
+유틸리티와 프로그램을 사용하거나 <span>WebSphere MQ</span> 탐색기
+그래픽 인터페이스를 사용하여 <span>WebSphere MQ</span> 자원을
+작성할 수 있습니다.
+<span>WebSphere MQ</span> 자원 작성에 대한 자세한 정보는 <img src="../../../images/external_link.gif" alt="이 링크는 새 창에서 열립니다." class="external_link" />
+<a href="http://www.ibm.com/software/integration/wmq/library/" target="_blank">WebSphere MQ
+라이브러리 웹 페이지</a>에 있는 <span>WebSphere MQ</span> Intercommunication을 참조하십시오.</li>
+<li>
+<span class="msobjprop">라우팅</span> 매개변수에
+<span class="msobjpropval">라우트 찾아보기</span> 값을 사용하는 경우,
+데이터베이스에서 동적으로 라우트를 정의할 수 있지만
+해당 라우트가 요약 파일에 나열되지는 않습니다.
+데이터베이스에 라우트를 추가한 경우에는
+해당 큐 및 큐 관리자를 작성해야 합니다. </li>
+<li>필요하면 라우팅 데이터베이스를 설정하십시오.
+<span class="msobjpropval">라우트 검색</span> 값이 <span class="msobjprop">Routing</span> 매개변수에 선택되어 있으면,
+ROUTING_TABLE 테이블을 사용하여 데이터 소스를 설정해야 합니다. 이 테이블에는 다음과 같은 열이 있어야 합니다.
+<ul>
+<li>ROUTING_CONTEXT
+<p>플로우의 라우팅 입력 항목을 식별하는 값을 사용합니다.</p>
+</li>
+<li>VARIABLE1
+<p>메시지 요소의 <span class="msobjprop">KEY1</span> 특성이
+일치해야 하는 값입니다.</p>
+</li>
+<li>VARIABLE2
+<p>메시지 요소의 <span class="msobjprop">KEY2</span> 특성이
+일치해야 하는 값입니다.</p>
+</li>
+<li>QUEUE_MANAGER
+<p>목적지의 큐 관리자입니다.</p>
+</li>
+<li>QUEUE_NAME
+<p>목적지 큐입니다.</p>
+</li>
+</ul>
+</li>
+<li>FTP를 통해 입력 파일을 얻도록 선택한 경우 패턴에 지정된 이름과 일치하는 대상 브로커에 FtpServer 구성 가능 서비스를 작성해야 합니다.
+이 조치는 FileInput 노드에서 원격 FTP 서버에 연결할 때 필요합니다.</li>
+<li>BAR 파일을 배치하십시오. 레코드를 정의할 때 메시지 세트를 사용한 경우, 동일한 BAR 파일
+또는 다른 BAR 파일을 사용하여 이 메시지 세트를 배치해야 합니다.
+</li>
+</ol>
+
+
+
+	<p>
+		<a href="overview.htm#anchorBack" title="이전">WebSphere MQ에 대한 레코드 분배: 단방향 패턴 스펙으로 돌아가기</a>
+	</p>
+</body>
+</html>

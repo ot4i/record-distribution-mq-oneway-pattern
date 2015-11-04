@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="pt-br">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009, 2010
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="Tarefas para Concluir Após Gerar o Padrão de Record Distribution para WebSphere MQ: Unidirecional."/>
+	<meta name="description" content=""/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css"/>
+	<title>Tarefas para Concluir Após Gerar o Padrão de Record Distribution para WebSphere MQ: Unidirecional</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.after">
+	<h1 class="topictitle1">Tarefas para Concluir Após Gerar o Padrão de <span>Record Distribution para WebSphere MQ: Unidirecional</span></h1>
+	<p class="shortdesc">As tarefas que você deve concluir após ter gerado o padrão.</p>
+
+<ol>
+<li>Crie o arquivo broker archive (BAR). Inclua o fluxo de mensagens gerado em seu arquivo BAR. 
+No editor do Broker Archive, você deve selecionar a opção <span class="uicontrol">Compilar e Sequenciar Recursos</span> antes de construir o arquivo BAR. 
+Se tiver usado um conjunto de mensagens para definir como os registros são analisados, você deverá incluir o conjunto de mensagens no arquivo BAR.
+</li>
+<li>Configure o arquivo broker archive. A configuração adicional do fluxo de mensagens no arquivo bar
+não é necessária
+antes de implementar os fluxos de mensagens para sua instância padrão de <span>Record Distribution para WebSphere MQ: Unidirecional</span>,
+mas talvez você deseje revisar algumas das opções padrão e configurar alterações para seu ambiente.
+<p>Na página <span class="uicontrol">Gerenciar</span> do editor de <span class="uicontrol">Broker Archive</span>:</p>
+<ul>
+	<li>Opcional: Use a propriedade definida pelo usuário <span class="msobjprop">LoggingOn</span> para selecionar
+	  		se a criação de log está ativada ou desativada para o fluxo de mensagens.</li>
+	<li>Opcional: Use a propriedade definida pelo usuário <span class="msobjprop">ErrorLoggingOn</span> para
+	  		selecionar se as mensagens de erro são geradas.</li>
+	<li>Opcional: Também é possível alterar qualquer uma das propriedades configuráveis
+		no broker archive, por exemplo, propriedades para segurança ou criar
+		instâncias adicionais. É necessário assegurar que
+	  		quaisquer valores que você alterar não causem impacto no comportamento da instância padrão.</li>
+</ul></li>
+
+<li>No arquivo de resumo, visualize a lista de filas que você deve criar. O arquivo de resumo
+ 				está localizado na pasta Configuração de Padrão do
+ 				projeto de instância padrão <i>InstanceName</i>.</li>
+ 
+ <li>Crie as filas. Quando aplicar o padrão, uma lista de filas do WebSphere MQ será
+		gerada com nomes de filas e nomes de gerenciador de filas, estas filas do WebSphere MQ deverão ser criadas se
+		ainda não existirem. Todas as configurações de mensagem que são necessárias por padrão são
+configuradas explicitamente nas mensagens e não são dependentes das configurações de filas.</li>
+
+<li>Crie os recursos do <span>WebSphere MQ</span>. 
+É possível criar recursos do <span>WebSphere MQ</span>
+		 na linha de comandos,
+		usando programas e utilitários como
+		<span class="cmdname">runmqsc</span>, ou usando a
+		interface gráfica do <span>WebSphere MQ</span> Explorer. 
+Para obter informações adicionais sobre a criação de
+recursos do <span>WebSphere MQ</span>, consulte <span>WebSphere MQ</span> Intercommunication,
+disponível na página da Web da
+<img src="../../../images/external_link.gif" alt="Esse link é aberto em uma nova janela" class="external_link" />
+<a href="http://www.ibm.com/software/integration/wmq/library/" target="_blank">biblioteca do
+WebSphere MQ</a>.</li>
+<li>
+Se usar o valor de <span class="msobjpropval">Rotas de Consulta</span> no
+parâmetro <span class="msobjprop">Roteamento</span>,
+você poderá definir rotas dinamicamente no banco de dados
+mas as rotas não serão listadas no arquivo de resumo. 
+Se você tiver incluído rotas no banco de dados,
+deverá criar as filas e gerenciadores de filas correspondentes.   </li>
+<li>Configure um banco de dados de roteamento se necessário.
+Se o valor <span class="msobjpropval">Rotas de Consulta</span> for selecionado no
+parâmetro <span class="msobjprop">Roteamento</span>, a origem de dados
+deverá ser configurada com uma tabela ROUTING_TABLE. Esta tabela deve incluir as seguintes colunas:
+<ul>
+<li>ROUTING_CONTEXT
+<p>Use um valor que identifica as entradas de roteamento para este fluxo.</p>
+</li>
+<li>VARIABLE1
+<p>O valor ao qual a propriedade <span class="msobjprop">KEY1</span>
+do elemento de mensagem deve corresponder.</p>
+</li>
+<li>VARIABLE2
+<p>O valor ao qual a propriedade <span class="msobjprop">KEY2</span>
+do elemento de mensagem deve corresponder.</p>
+</li>
+<li>QUEUE_MANAGER
+<p>O gerenciador de filas do destino.</p>
+</li>
+<li>QUEUE_NAME
+<p>A fila de destino.</p>
+</li>
+</ul>
+</li>
+<li>Se tiver escolhido usar FTP para obter arquivos de entrada,
+você deverá criar um serviço configurável FtpServer
+no broker de destino correspondente ao nome especificado em seu padrão. 
+Esta ação é requerida pelo nó FileInput para conectar-se ao servidor FTP remoto.</li>
+<li>Implemente o arquivo BAR. Se um conjunto de mensagens for usado para definir registros, este conjunto de mensagens
+deverá ser implementado usando o mesmo ou outro arquivo BAR.
+</li>
+</ol>
+
+
+
+	<p>
+		<a href="overview.htm#anchorBack" title="Voltar">Voltar para a especificação de padrão do Record Distribution para WebSphere MQ: Unidirecional</a>
+	</p>
+</body>
+</html>

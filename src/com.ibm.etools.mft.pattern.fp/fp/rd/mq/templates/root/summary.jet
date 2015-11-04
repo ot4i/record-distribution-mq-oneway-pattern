@@ -1,0 +1,237 @@
+<%
+com.ibm.etools.mft.pattern.fp.plugin.PatternPlugin pattern = com.ibm.etools.mft.pattern.fp.plugin.PatternPlugin.getInstance();
+com.ibm.etools.mft.pattern.fp.rd.mq.PatternMessages messages = new com.ibm.etools.mft.pattern.fp.rd.mq.PatternMessages();
+%>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title><c:get select="$root/instanceName"/>_summary.html</title>
+	<link rel="stylesheet" href="summary.css" media="screen">
+</head>
+
+<script type="text/javascript">
+	function setStatus(txt){
+		window.status = txt;
+		window.status = "";
+	}
+</script>
+
+<body>
+<a name="NoPlace"></a>
+
+<div id="banner">
+	<h2><%= pattern.getMessage(context, "com.ibm.etools.mft.pattern.fp.rd.mq.summary.39", new Object[] { "$root/instanceName" }) %></h2>
+	<p><%= pattern.getMessage(context, "com.ibm.etools.mft.pattern.fp.rd.mq.summary.1", new Object[] { "$root/instanceName" }) %></p>
+</div>	
+
+<div class="section">
+	<div class="tl">
+		<h2><%= pattern.getString("com.ibm.etools.mft.pattern.fp.rd.mq.summary.2") %></h2>
+	</div>
+	<div class="content">
+		<p>
+			<%= pattern.getString("com.ibm.etools.mft.pattern.fp.rd.mq.summary.3") %>
+			<%= pattern.getMessage(context, "com.ibm.etools.mft.pattern.fp.rd.mq.summary.4", new Object[] { "$root/instanceName" }) %>
+		</p>
+		<p>
+			<ul>
+				<li>
+					<a href="#NoPlace" onclick="setStatus('/<c:get select="$root/instanceName"/>_Flows/<c:get select = "$root/@brokerSchema2"/><c:get select="$root/@recordDistributor"/>.msgflow')">
+						<c:get select="$root/@recordDistributor"/>
+					</a>
+				</li>
+				<li>
+					<a href="#NoPlace" onclick="setStatus('/<c:get select="$root/instanceName"/>_Flows/<c:get select = "$root/@brokerSchema2"/><c:get select="$root/@recordProcessor"/>.subflow')">
+						<c:get select="$root/@recordProcessor"/>
+					</a>
+				</li>
+			</ul>
+		</p>
+		<p>
+			<%= pattern.getString("com.ibm.etools.mft.pattern.fp.rd.mq.summary.5") %>
+		</p>
+		<p>
+			<ul>
+				<li>
+					<a href="#NoPlace" onclick="setStatus('/<c:get select="$root/instanceName"/>_Flows/<c:get select = "$root/@brokerSchema2"/><c:get select="$root/@error"/>.subflow')">
+						<c:get select="$root/@error"/>
+					</a>
+				</li>
+				<c:if test="$root/loggingRequired='true'">
+					<li>
+						<a href="#NoPlace" onclick="setStatus('/<c:get select="$root/instanceName"/>_Flows/<c:get select = "$root/@brokerSchema2"/><c:get select="$root/@log"/>.subflow')">
+							<c:get select="$root/@log"/>
+						</a>
+					</li>
+					<li>
+						<a href="#NoPlace" onclick="setStatus('/<c:get select="$root/instanceName"/>_Flows/<c:get select = "$root/@brokerSchema2"/><c:get select="$root/@route"/>.subflow')">
+							<c:get select="$root/@route"/>
+						</a>
+					</li>
+				</c:if>
+			</ul>
+		</p>
+	</div>
+</div>
+
+<div class="section">
+	<div class="tl">
+		<h2><%= pattern.getString("com.ibm.etools.mft.pattern.fp.rd.mq.summary.7") %></h2>
+	</div>
+	<div class="content">
+		<h3><%= pattern.getString("com.ibm.etools.mft.pattern.fp.rd.mq.summary.8") %></h3>
+		<p>
+			<%= pattern.getString("com.ibm.etools.mft.pattern.fp.rd.mq.summary.9") %>
+		</p>
+		<ul>
+			<c:if test="$root/loggingRequired='true'">
+				<li>
+					<c:choose>
+						<c:when test="string-length($root/logQueueManager) > 0">
+							<%= pattern.getMessage(context, "com.ibm.etools.mft.pattern.fp.rd.mq.summary.13.queueManager", new Object[] { "$root/queuePrefix", "$root/logQueue", "$root/queueSuffix", "$root/logQueueManager" }) %>
+						</c:when>
+						<c:otherwise>
+							<%= pattern.getMessage(context, "com.ibm.etools.mft.pattern.fp.rd.mq.summary.13", new Object[] { "$root/queuePrefix", "$root/logQueue", "$root/queueSuffix" }) %>
+						</c:otherwise>
+					</c:choose>
+				</li>
+			</c:if>
+			<c:if test="$root/errorMessageRequired='true'">
+				<li>
+					<c:choose>
+						<c:when test="string-length($root/errorQueueManager) > 0">
+							<%= pattern.getMessage(context, "com.ibm.etools.mft.pattern.fp.rd.mq.summary.14.queueManager", new Object[] { "$root/queuePrefix", "$root/errorQueue", "$root/queueSuffix", "$root/errorQueueManager" }) %> 
+						</c:when>
+						<c:otherwise>
+							<%= pattern.getMessage(context, "com.ibm.etools.mft.pattern.fp.rd.mq.summary.14", new Object[] { "$root/queuePrefix", "$root/errorQueue", "$root/queueSuffix" }) %> 
+						</c:otherwise>
+					</c:choose>
+				</li>
+			</c:if>
+			<c:if test="$root/routing = 'specifyRoutes'">
+				<li>
+					<c:choose>
+						<c:when test="string-length($root/defaultQueueManager) > 0">
+							<%= pattern.getMessage(context, "com.ibm.etools.mft.pattern.fp.rd.mq.summary.15.queueManager", new Object[] { "$root/queuePrefix", "$root/defaultQueue", "$root/queueSuffix", "$root/defaultQueueManager" }) %>
+						</c:when>
+						<c:otherwise>
+							<%= pattern.getMessage(context, "com.ibm.etools.mft.pattern.fp.rd.mq.summary.15", new Object[] { "$root/queuePrefix", "$root/defaultQueue", "$root/queueSuffix" }) %>
+						</c:otherwise>
+					</c:choose>
+				</li>
+			</c:if>
+			<c:if test="$root/routing = 'lookupRoutes'">
+				<li>
+					<c:choose>
+						<c:when test="string-length($root/defaultQueueManagerLookupRoutes) > 0">
+							<%= pattern.getMessage(context, "com.ibm.etools.mft.pattern.fp.rd.mq.summary.15.queueManager", new Object[] { "$root/queuePrefix", "$root/defaultQueueLookupRoutes", "$root/queueSuffix", "$root/defaultQueueManagerLookupRoutes" }) %>
+						</c:when>
+						<c:otherwise>
+							<%= pattern.getMessage(context, "com.ibm.etools.mft.pattern.fp.rd.mq.summary.15", new Object[] { "$root/queuePrefix", "$root/defaultQueueLookupRoutes", "$root/queueSuffix", "$root/defaultQueueManagerLookupRoutes" }) %>
+						</c:otherwise>
+					</c:choose>
+				</li>
+			</c:if>
+
+			<c:choose>
+				<c:when test="$root/routing = 'specifyRoutes'">
+					<c:iterate select ="$root/routeTable/row" var = "curOutput">
+						<li>
+							<%= pattern.getMessage(context, "com.ibm.etools.mft.pattern.fp.rd.mq.summary.16",
+                              new Object[] {"$root/queuePrefix", "$curOutput/queue", "$root/queueSuffix", "$curOutput/queueManager" }) %>
+						</li>
+					</c:iterate>
+		</ul>
+				</c:when>
+				<c:when test="$root/routing = 'lookupRoutes'">
+					<c:if test="$root/cacheRefresh = 'true'">
+						<li>
+							<%= pattern.getMessage(context, "com.ibm.etools.mft.pattern.fp.rd.mq.summary.19",
+                              new Object[] {"$root/queuePrefix", "$root/refreshQueue", "$root/queueSuffix" }) %>
+						</li>
+					</c:if>
+		</ul>
+					<p>
+						<%= pattern.getString("com.ibm.etools.mft.pattern.fp.rd.mq.summary.18") %>
+					</p>
+					<h3><%= pattern.getString("com.ibm.etools.mft.pattern.fp.rd.mq.summary.20") %></h3>
+					<p>
+						<%= pattern.getMessage(context, "com.ibm.etools.mft.pattern.fp.rd.mq.summary.21", new Object[] { "$root/routingDataSource" }) %>
+					</p>
+				</c:when>
+				<c:otherwise>
+					<li>
+						<%= pattern.getMessage(context, "com.ibm.etools.mft.pattern.fp.rd.mq.summary.16",
+                           new Object[] {"$root/queuePrefix", "root/outputQueue", "$root/queueSuffix", "$root/outputQueueManager" }) %>
+					</li>
+		</ul>
+				</c:otherwise>
+			</c:choose>
+			
+		<h3><%= pattern.getString("com.ibm.etools.mft.pattern.fp.rd.mq.summary.22") %></h3>
+		<p>
+			<%= pattern.getString("com.ibm.etools.mft.pattern.fp.rd.mq.summary.32") %>
+		</p>
+
+		<c:if test="$root/recordDetection = 'parsed'">
+			<p>
+				<%= pattern.getString("com.ibm.etools.mft.pattern.fp.rd.mq.summary.33") %>
+			</p>
+		</c:if>
+
+		<c:if test="$root/useftp = 'true'">
+			<p>
+				<%= pattern.getString("com.ibm.etools.mft.pattern.fp.rd.mq.summary.34")%>
+			</p>
+		</c:if>
+
+		<c:if test="$root/routing = 'lookupRoutes'">
+			<p>
+				<%= pattern.getString("com.ibm.etools.mft.pattern.fp.rd.mq.summary.35") %>
+			</p>
+		</c:if>
+	</div>
+</div>
+
+<div class="section">
+	<div class="tl">
+		<h2><%= pattern.getString("com.ibm.etools.mft.pattern.fp.rd.mq.summary.25") %></h2>
+	</div>
+	<div class="content">
+		<c:choose>
+			<c:when test="$root/loggingRequired='true'">
+				<p>
+					<%= pattern.getString("com.ibm.etools.mft.pattern.fp.rd.mq.summary.26") %>
+				</p>
+				<br>
+				<p>
+					<%= pattern.getString("com.ibm.etools.mft.pattern.fp.rd.mq.summary.27") %> 
+				</p>
+			</c:when>
+			<c:otherwise>
+				<p>
+					<%= pattern.getString("com.ibm.etools.mft.pattern.fp.rd.mq.summary.28") %>
+				</p>
+			</c:otherwise>
+		</c:choose>
+		<br>
+		<c:choose>
+			<c:when test="$root/errorMessageRequired='true'">
+				<p>
+					<%= pattern.getString("com.ibm.etools.mft.pattern.fp.rd.mq.summary.29") %>
+				</p>
+				<br>
+				<p>
+					<%= pattern.getString("com.ibm.etools.mft.pattern.fp.rd.mq.summary.30") %>
+				</p>
+			</c:when>
+			<c:otherwise>
+				<p>
+					<%= pattern.getString("com.ibm.etools.mft.pattern.fp.rd.mq.summary.31") %>
+				</p>
+			</c:otherwise>
+		</c:choose>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="pt-br">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009"/>
+	<meta name="abstract" content="Detalhes sobre o que é necessário saber e quais recursos você deve ter antes de poder usar o padrão de Record Distribution para WebSphere MQ: unidirecional."/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Tarefas para Concluir Antes de Aplicar o Padrão de Record Distribution para WebSphere MQ: Unidirecional</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.before">
+	<h1 class="topictitle1">Tarefas para Concluir Antes de Aplicar o
+Padrão de	<span>Record Distribution para WebSphere MQ: Unidirecional</span></h1>
+	<p class="shortdesc">Antes de aplicar o padrão para produzir uma instância padrão, é necessário determinar
+		quais das tarefas a seguir são necessárias. Se necessário, conclua as tarefas a seguir:</p>
+
+<ul>
+<li>Identifique se este padrão atende aos requisitos de negócios e
+pode ser suportado pelos criadores de arquivos e pelos consumidores de mensagens.</li>
+<li>Nomeie a instância padrão. 
+Identifique o propósito do aplicativo padrão para que você possa
+		decidir sobre um nome apropriado.</li>
+<li>Decida se você requer a criação de log. 
+Se a criação de log for necessária, é preciso decidir
+		  para qual gerenciador de filas e fila as mensagens de criação de log são enviadas. A criação de log pode ser para uma fila de logs gerais,
+que já existe
+para outros fluxos do broker ou para uma fila que seja criada para a instância padrão.</li>
+<li>Decida se você requer mensagens de erro. 
+Se mensagens de erro forem necessárias, você deverá decidir para qual gerenciador de filas e
+fila as mensagens de erro são enviadas.</li>
+<li>Decida como os registros são detectados e, se necessário,
+prepare um conjunto de mensagens para definir como os registros são analisados. </li>
+<li>Decida se a validação é necessária e, em caso afirmativo,
+prepare um conjunto de mensagens para definir como os registros são analisados.</li>
+<li>Determine se os arquivos que devem ser processados são locais ou remotos. 
+Se arquivos remotos precisarem ser processados, o nome do serviço configurável deverá ser identificado.</li>
+<li>Decida se existem múltiplos destinos possíveis. Se múltiplos destinos possíveis existirem,
+selecione a abordagem de roteamento a usar.
+	<ul>
+	<li>Se você tiver um número limitado de rotas em que
+	os destinos não são alterados frequentemente,
+	configure o parâmetro <span class="msobjprop">Roteamento</span> como
+	<span class="msobjpropval">Especificar Rotas</span>.</li>
+	<li>Se o conjunto de rotas de destino não for determinado totalmente ou puder ser alterado
+	frequentemente, configure o parâmetro <span class="msobjprop">Roteamento</span> como
+	<span class="msobjpropval">Consultar Rotas</span>. Se este valor for selecionado, o nome da origem de dados deverá ser conhecido.</li>
+	</ul></li>
+
+</ul>
+<p>
+		<a href="overview.htm#anchorBack" title="Voltar">Voltar para a especificação de padrão do Record Distribution para WebSphere MQ: Unidirecional</a>
+</p>
+</body>
+</html>

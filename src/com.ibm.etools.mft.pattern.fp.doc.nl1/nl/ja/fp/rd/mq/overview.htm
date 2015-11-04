@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja-jp" xml:lang="ja-jp">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009" />
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009" />
+	<meta name="abstract" content="MQ へのレコード配布パターンの概要"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>「WebSphere MQ へのレコード配布: 一方向」パターン</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq">
+<h1 class="topictitle1">「<span>WebSphere MQ へのレコード配布: 一方向</span>」パターン</h1>
+<div>
+	<p class="shortdesc">ファイル・ベースおよびトランザクション・ベースの統合スタイルを橋渡しするために、<span>「WebSphere MQ へのレコード配布: 一方向」</span>
+	パターンを使用します。</p>
+	
+	<p> 以下のような場合に、このパターンを使用します。</p>
+<ul>
+<li>多数のトランザクションがローカルまたはリモート・システムからファイルとして受信される場合。</li>
+<li>以下の理由により、トランザクションを個々のトランザクションとして送信できない場合。
+<ul>
+<li>ファイル・ベースの統合機能だけをサポートするソース・システムの技術上の制約。</li> 
+<li>バッチ処理を必要とするビジネス要件。
+例えば、1 作業日におけるすべてのトランザクションの収集。</li>
+<li>既存の作業手法への適合。
+例えば、EDI トランザクションを含むファイルの使用。</li>
+</ul></li>
+<li>個々のトランザクションを受け入れるようにターゲット・システムが設計されている場合。
+このようなシステムは準リアルタイム・システムおよびバッチ・ファイルから入力を受け取る可能性があるため、トランザクション・インターフェースを提供します。</li>	
+<li>1 つ以上のシステムに配布される必要のあるトランザクションを含むバッチ・ファイルがある場合。</li>
+<li>レコードを処理する必要があり、障害が発生した場合にはファイル全体の再処理によって対処できるような場合。</li>
+</ul>
+</div>
+
+<div class="section">
+	<h2 class="sectiontitle">ソリューション</h2>
+</div>
+<p>ソリューションとして実装されるメッセージ・フローは、ファイルからレコードを読み取り、ルーティング規則に従って各レコードを WebSphere MQ 宛先にルーティングします。
+一致するルーティング規則が見つからない場合は、デフォルト宛先に送ります。</p>
+<div>
+<div class="image">
+	<img src="recorddistributor.gif"		alt="パターンの動作を示す図。サービス要求がエンド・サービス・プロバイダーに転送されます。" /><!-- TCT MBR70 #59 -->
+</div>
+	<div>
+		<a href="recorddistributor.htm" title="レコード・ディストリビューター・メッセージ・フローについての設計情報。">レコード・ディストリビューター・メッセージ・フロー</a>
+	</div>
+	<div>
+		<a href="recordprocessor.htm" title="レコード・プロセッサー・メッセージ・フローについての設計情報。">レコード・プロセッサー・メッセージ・フロー</a>
+	</div>
+	<div>
+		<a href="logflow.htm" title="ログ・サブフローに関する設計情報。">ログ・サブフロー
+</a>
+</div>
+		<div>
+		<a href="errorflow.htm" title="エラー・サブフローに関する設計情報。">エラー・サブフロー
+</a>
+</div>
+		<div>
+		<a href="routeflow.htm" title="経路サブフローに関する設計情報。">経路サブフロー
+</a>
+</div>
+	<div class="familylinks">
+		<a name="anchor1"></a>
+		<div class="section">
+			<h2 class="sectiontitle">関連タスク</h2>
+		</div>
+		<p>
+このパターンの適用と使用の方法については、以下のセクションをお読みください。</p>
+			<a href="constraints.htm" title="パターンの使用に関する制約">パターンの使用に関する制約</a>
+</div>
+	<div>
+		<a href="before.htm" title="パターンを使用する前に知っておくべき事柄、および必要なリソース">パターンを適用する前に完了するタスク</a>
+	</div>
+	<div>
+		<a href="parameters.htm" title="パターンのパラメーター">パターンのパラメーター</a>
+</div>
+	<div>
+		<a href="after.htm" title="パターンを生成した後に完了するタスク">パターンを生成した後に完了するタスク</a>
+	</div>
+</div>
+</body>
+</html>

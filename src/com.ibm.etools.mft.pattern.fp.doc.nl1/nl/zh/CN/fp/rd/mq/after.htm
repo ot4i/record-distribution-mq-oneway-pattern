@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn" xml:lang="zh-cn">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009, 2010
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="生成 Record Distribution to WebSphere MQ: one-way 模式后要完成的任务。"/>
+	<meta name="description" content=""/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css"/>
+	<title>生成 Record Distribution to WebSphere MQ: one-way 模式后要完成的任务</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.after">
+	<h1 class="topictitle1">生成 <span>Record Distribution to WebSphere MQ: one-way</span> 模式后要完成的任务</h1>
+	<p class="shortdesc">生成该模式之后必须完成的任务。</p>
+
+<ol>
+<li>创建代理归档 (BAR) 文件。将生成的消息流添加到 BAR 文件中。在“代理归档”编辑器中，必须先选中<span class="uicontrol">编译并内联资源</span>选项，然后再构建 BAR 文件。如果已使用消息集定义了记录的解析方式，那么必须将消息集添加到 BAR 文件。</li>
+<li>配置代理归档文件。为 <span>Record Distribution to WebSphere MQ: one-way</span> 模式实例部署消息流之前，不需要在代理归档文件中进一步配置消息流，但应当针对您的环境复审一些缺省选项并配置更改。
+<p>在“<span class="uicontrol">代理归档</span>”编辑器的“<span class="uicontrol">管理</span>”页面中：</p>
+<ul>
+	<li>可选：使用用户定义的属性 <span class="msobjprop">LoggingOn</span> 来选择是要为消息流开启还是关闭记录。</li>
+	<li>可选：使用用户定义的属性 <span class="msobjprop">ErrorLoggingOn</span> 来选择是否生成错误消息。</li>
+	<li>可选：您还可以更改代理归档中的任何可配置属性，例如，安全性属性或用于创建其他实例的属性。您必须确保更改的任何值都不会影响模式实例的行为。</li>
+</ul></li>
+
+<li>在摘要文件中，查看您必须创建的队列列表。摘要文件位于 <i>InstanceName</i> 模式实例项目的模式配置文件夹中。</li>
+ 
+ <li>创建队列。应用模式时，将生成一个 WebSphere MQ 队列的列表，其中会列出队列名称和队列管理器名称；如果不存在这些 WebSphere MQ 队列，就必须加以创建。模式所需的所有消息设置都必须明确设置在消息上，且独立于队列的设置。
+</li>
+
+<li>创建 <span>WebSphere MQ</span> 资源。您可以使用程序和实用程序（如 <span class="cmdname">runmqsc</span>）在命令行上创建 <span>WebSphere MQ</span> 资源，也可以使用 <span>WebSphere MQ</span> Explorer 图形界面来完成创建。有关创建 <span>WebSphere MQ</span> 资源的更多信息，请参阅 <img src="../../../images/external_link.gif" alt="此链接在新窗口中打开" class="external_link" />
+<a href="http://www.ibm.com/software/integration/wmq/library/" target="_blank">WebSphere MQ
+Library Web 页面</a>上提供的 <span>WebSphere MQ</span> Intercommunication。</li>
+<li>
+如果在<span class="msobjprop">路由</span>参数中使用<span class="msobjpropval">查找路由</span>值，那么可以在数据库中动态定义路由，但路由不会在摘要文件中列出。如果已向数据库添加路由，那么必须创建对应的队列和队列管理器。</li>
+<li>如果需要，请设置路由数据库。如果在<span class="msobjprop">路由</span>参数中选择了<span class="msobjpropval">查找路由</span>值，那么必须用 ROUTING_TABLE 表来设置数据源。此表必须包含以下列：
+<ul>
+<li>ROUTING_CONTEXT
+<p>使用一个标识此流路由条目的值。</p>
+</li>
+<li>VARIABLE1
+<p>消息元素中的 <span class="msobjprop">KEY1</span> 属性必须匹配的值。</p>
+</li>
+<li>VARIABLE2
+<p>消息元素中的 <span class="msobjprop">KEY2</span> 属性必须匹配的值。</p>
+</li>
+<li>QUEUE_MANAGER
+<p>目标的队列管理器。</p>
+</li>
+<li>QUEUE_NAME
+<p>目标队列。</p>
+</li>
+</ul>
+</li>
+<li>如果选择使用 FTP 来获取输入文件，那么必须在与模式中指定的名称相匹配的目标代理上创建 FtpServer 可配置服务。FileInput 节点需要有此操作才能连接到远程 FTP 服务器。</li>
+<li>部署 BAR 文件。如果消息集用于定义记录，那么必须使用同一个或其他 BAR 文件来部署该消息集。
+</li>
+</ol>
+
+
+
+	<p>
+		<a href="overview.htm#anchorBack" title="返回">返回至 Record Distribution to WebSphere MQ: one-way 模式规范</a>
+	</p>
+</body>
+</html>

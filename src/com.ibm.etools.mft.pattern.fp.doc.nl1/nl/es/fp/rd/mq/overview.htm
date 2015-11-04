@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es-es" xml:lang="es-es">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009" />
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009" />
+	<meta name="abstract" content="Visión general del patrón Distribución de registros en MQ"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Patrón Distribución de registros en WebSphere MQ: unidireccional</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq">
+<h1 class="topictitle1">Patrón <span>Distribución de registros en WebSphere MQ: unidireccional</span></h1>
+<div>
+	<p class="shortdesc">Utilice el patrón <span>Distribución de registros en WebSphere MQ: unidireccional</span> para establecer un puente entre dos estilos de integración, la basada en archivos y la basada en transacciones. </p>
+	
+	<p> Utilice este patrón cuando:</p>
+<ul>
+<li>Tenga lotes de transacciones que se han recibido como archivos de sistemas locales o remotos.</li>
+<li>Las transacciones no puedan enviarse como transacciones individuales debido a:
+<ul>
+<li>las limitaciones técnicas de los sistemas de origen que den soporte a las prestaciones de integración basada en archivos.</li> 
+<li>los requisitos empresariales que obligan a realizar procesos por lotes, por ejemplo, la recopilación de todas las transacciones en un día laborable.</li>
+<li>la conformidad con las prácticas de trabajo existentes como, por ejemplo, la utilización de archivos que contengan transacciones EDI.</li>
+</ul></li>
+<li>Los sistemas de destino están diseñados para aceptar transacciones individuales. Estos sistemas pueden aceptar entradas de sistemas en tiempo casi real y de archivos de proceso por lotes y, por consiguiente, presentan una interfaz transaccional.</li>	
+<li>Tiene archivos de proceso por lotes que contienen transacciones que deben distribuirse a uno o más sistemas.</li>
+<li>Los registros se deben procesar pero los fallos pueden manejarse si se vuelve a procesar todo el archivo.</li>
+</ul>
+</div>
+
+<div class="section">
+	<h2 class="sectiontitle">Solución</h2>
+</div>
+<p>La solución es implementar un flujo de mensajes que lea registros de un archivo y direccione cada registro a un destino de WebSphere MQ
+de acuerdo con las normas de direccionamiento, o a un destino predeterminado si no se ha encontrado ninguna coincidencia en las normas de direccionamiento.</p>
+<div>
+<div class="image">
+	<img src="recorddistributor.gif"
+		alt="Un diagrama que muestra el comportamiento del patrón, las solicitudes de servicio se reenvían al proveedor de servicio final." />
+</div>
+	<div>
+		<a href="recorddistributor.htm" title="Información de diseño sobre el flujo de mensajes Record Distributor.">Flujo de mensajes Record Distributor</a>
+	</div>
+	<div>
+		<a href="recordprocessor.htm" title="Información de diseño sobre el flujo de mensajes Record Processor.">Flujo de mensajes Record Processor</a>
+	</div>
+	<div>
+		<a href="logflow.htm" title="Información de diseño sobre el subflujo Log.">Subflujo Log</a>
+	</div>
+		<div>
+		<a href="errorflow.htm" title="Información de diseño sobre el subflujo Error.">Subflujo Error</a>
+	</div>
+		<div>
+		<a href="routeflow.htm" title="Información de diseño sobre el subflujo Route.">Subflujo Route</a>
+	</div>
+	<div class="familylinks">
+		<a name="anchor1"></a>
+		<div class="section">
+			<h2 class="sectiontitle">Tareas relacionadas</h2>
+		</div>
+		<p>
+			Consulte la sección siguiente para obtener información sobre cómo aplicar y utilizar este patrón.
+		</p>
+		<a href="constraints.htm" title="Restricciones en el uso del patrón">
+			 Restricciones en el uso del patrón</a>
+	</div>
+	<div>
+		<a href="before.htm" title="Lo que tiene que saber y qué recursos debe tener antes de que pueda utilizar el patrón">
+			Tareas que deben completarse antes de aplicar el patrón</a>
+	</div>
+	<div>
+		<a href="parameters.htm" title="Parámetros para el patrón">
+			Parámetros para el patrón</a>
+	</div>
+	<div>
+		<a href="after.htm" title="Tareas que deben completarse después de generar el patrón"> 			Tareas que deben completarse después de generar el patrón</a>
+	</div>
+</div>
+</body>
+</html>

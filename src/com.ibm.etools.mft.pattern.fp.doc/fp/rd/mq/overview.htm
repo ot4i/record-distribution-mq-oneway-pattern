@@ -15,10 +15,10 @@ All Rights Reserved * Licensed Materials - Property of IBM
 	<!-- US Government Users Restricted Rights -->
 	<!-- Use, duplication or disclosure restricted by -->
 	<!-- GSA ADP Schedule Contract with IBM Corp. -->
-	<link rel="stylesheet" type="text/css" href="../css/ibmdita.css" />
-	<link rel="stylesheet" type="text/css" href="../css/bip4.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
 	<title>Record Distribution to WebSphere MQ: one-way pattern</title>
-	<script language="JavaScript" src="../help/LiveHelp.js" type="text/javascript"></script>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
 </head>
 <body id="com.ibm.etools.mft.pattern.fp.rd.mq">
 <h1 class="topictitle1"><span>Record Distribution to WebSphere MQ: one-way</span> pattern</h1>
@@ -40,12 +40,6 @@ within a working day.</li>
 near real-time systems and from batch files and therefore present a transactional interface.</li>	
 <li>You have batch files containing transactions that must be distributed to one or more systems.</li>
 <li>The records must be processed, but any failures can be handled by reprocessing the entire file.</li>
-</ul>
-<p>Check the target Integration node before deploying the generated application:</p>
-<ul>
-<li>You can deploy and run the application generated from the pattern instance to a V10 Integration Node that is configured to use the default Queue Manager.</li>
-<li>Select the target Integration Node in the <i>Integration Nodes</i> view and check if the value of the "Queue manager specified on the integration node" in the <i>Properties</i> view.</li>
-<li>If the Queue Manager is not set then you can right-click on the target Integration Node and select "Change" menu to set the Queue Manager name.</li>
 </ul>
 </div>
 

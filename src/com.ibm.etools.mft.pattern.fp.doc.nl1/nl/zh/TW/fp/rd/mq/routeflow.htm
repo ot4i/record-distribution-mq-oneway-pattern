@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-tw" xml:lang="zh-tw">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="Record Distribution to WebSphere MQ: one-way 型樣的路徑子流程"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Record Distribution to WebSphere MQ: one-way 型樣的路徑子流程</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mqRoute">
+<div class="section">
+	<h1 class="topictitle1">Record Distribution to WebSphere MQ: one-way 型樣的路徑子流程</h1>
+<p class="shortdesc"><span>Record Distribution to WebSphere MQ: one-way</span> 型樣的路徑子流程明細。</p>
+
+<p>路徑子流程的行為是視<span class="msobjprop">遞送</span>型樣參數的值而定：</p>
+<ul>
+<li><span class="msobjpropval">不遞送</span>
+<p>如果選取<span class="msobjpropval">不遞送</span>，則會建立單一 MQOutput 節點，並為其配置<span class="msobjprop">輸出佇列管理程式</span>及<span class="msobjprop">輸出佇列</span>型樣參數的值。遞送流程是包括 Passthrough 節點的子流程。
+同時包括預設及路徑端，讓此子流程與所有其他類型的遞送子流程一致，但是只會使用單一路徑端。</p></li>
+
+
+<li><span class="msobjpropval">指定路徑</span>
+<p> 定義路徑的四個參數群組：</p>
+<ul>
+<li><span class="msobjprop">索引鍵位置</span>是表示式，用來定義現行訊息元素內的索引鍵位置。
+如需要使用的表示式類型的相關資訊，請參閱 IBM Integration 說明文件中的「遞送節點」與「使用 XPath」。</li>
+<li><span class="msobjprop">索引鍵值</span>定義採用此路徑時，索引鍵位置必須符合的值。</li>
+<li><span class="msobjprop">佇列管理程式</span>將路徑定義為佇列管理程式。</li>
+<li><span class="msobjprop">佇列</span>將路徑定義為佇列。</li>
+</ul>
+<p>針對定義的每一個路徑，會建立及連接路徑子流程的「輸出」端及 MQOutput 節點。</p>
+<p>路徑子流程包含已配置過濾器的 Route 節點，而過濾器會遞送給滿足條件 <tt>KeyLocation = Key Value</tt> 的第一個「輸出」端。
+如果訊息元素不符合任何路徑，則會將此狀況記錄在分配管理系統環境樹狀結構的變數中，並將訊息傳遞給「預設」端。</p>
+<p>如果定義<span class="msobjprop">索引鍵位置</span>的 XPATH 表示式包括名稱空間限定元，則必須將定義名稱空間的標籤新增至「名稱空間」表格。</p>
+
+<p>您可能會在 Route 節點上看到與下列訊息類似的警告：<tt>過濾器表格：Filter 型樣：在 <span class="msobjpropval">Key location = Key value</span> XPath 中找不到 <var>element_name</var> 綱目元素。</tt>
+在您部署及執行型樣實例時，此警告不會造成任何問題。</p>
+<p>您可以選取<span class="msobjpropval">指定路徑</span>，以指定一些不同的路徑。</p></li>
+
+
+
+<li><span class="msobjpropval">查閱路徑</span>
+<p>如果選取此值，則會使用訊息資料中的值來查閱資料庫遞送表中的佇列管理程式及佇列，以決定路徑。遞送表並不是直接進行存取，而是讀取並快取至記憶體中，以取得最高效率。</p>
+<p>如果選取此值，則會建立路徑子流程的單一「輸出」端。「輸出」端會連接至單一 MQOutput 節點，而此節點已配置成採用已透過查閱放置於分配管理系統環境樹狀結構的目的地清單。</p>
+<p>路徑子流程會檢查快取是否需要重新整理，方法是檢查 <span class="filepath">CacheQueueTable.valid</span> 共用列變數的值是否設為 <tt>NULL</tt>。
+在流程開始時，以及在已啟用<span class="msobjprop">快取重新整理</span>且已將重新整理訊息傳送給<span class="msobjprop">重新整理佇列</span>時，此變數會設為 <tt>NULL</tt>。重新整理訊息會將此值設為 <tt>NULL</tt>。</p>
+<p>如果快取需要重新整理，則會搜尋資料來源的 ROUTING_TABLE 表格（指定於<span class="msobjprop">遞送資料來源</span>型樣參數），以尋找所有符合此流程的遞送環境定義的列。遞送環境定義是透過<span class="msobjprop">遞送資料環境定義</span>型樣參數所定義，而且會將 ROUTING_CONTEXT 欄位符合此參數的列讀入記憶體內快取中，這是自動完成的作業，以避免在快取處於不一致狀態時進行查閱。</p>
+<p>已快取資料的結構為：</p>
+<pre>VARIABLE1, VARIABLE2, QUEUE_MANAGER, QUEUE_NAME </pre>
+<p>查閱的執行是使用定義為型樣參數的 ESQL 表示式，從訊息元素中取出一或兩個索引鍵值。查閱的定義則是使用下列形式的陳述式：</p>
+<pre>SET KEY = &lt;型樣參數&gt;</pre>
+<p>如果指定單一索引鍵以從遞送資料選取一個以上的列，請使用下列 WHERE 子句以進行選取：</p>
+<pre>WHERE S.VARIABLE1 = KEY1</pre> 
+<p>如果指定第二個索引鍵，請使用下列 WHERE 子句以進行選取：</p>
+<pre>WHERE S.VARIABLE1 = KEY1 and S.VARIABLE2 = KEY2</pre>
+<p>此選擇會將佇列管理程式及佇列設定至 MQOutput 節點所使用的目的地清單。可以傳回多列，而且目的地資料包括所有選取的目的地。如果找不到相符項，則會發生遞送錯誤，而且會將訊息傳遞給路徑子流程的 failure 端。</p></li>
+</ul>
+</div>
+<a href="overview.htm#anchor1" title="上一步">回到 Record Distribution to WebSphere MQ: one-way 型樣規格</a>
+</body>
+</html>

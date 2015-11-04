@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<povs xmlns:patterns="http://www.ibm.com/patterns">
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.instanceName" name="instanceName"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.fileInput" name="directory"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.fileInput" name="filePattern"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.fileInput" name="useftp">
+        <master>
+            <slave handler="com.ibm.etools.patterns.dependency.Enable" id="ftpConfigurableSvc">
+                <argument type="master">true</argument>
+                <argument type="slave">true</argument>
+            </slave>
+        </master>
+    </simplePov>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.fileInput" name="ftpConfigurableSvc"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.recordDetection" name="recordDetect">
+        <master>
+            <slave handler="com.ibm.etools.patterns.dependency.Enable" id="recordLength">
+                <argument type="master">fixedLength</argument>
+                <argument type="slave">true</argument>
+            </slave>
+            <slave handler="com.ibm.etools.patterns.dependency.Select" id="messageSet"/>           
+            <slave handler="com.ibm.etools.patterns.dependency.Enable" id="messageType">
+                <argument type="master">parsed</argument>
+                <argument type="slave">true</argument>
+            </slave>
+            <slave handler="com.ibm.etools.patterns.dependency.Enable" id="messageFormat">
+                <argument type="master">parsed</argument>
+                <argument type="slave">true</argument>
+            </slave>
+            <slave handler="com.ibm.etools.patterns.dependency.Enable" id="delimiterType">
+                <argument type="master">delimited</argument>
+                <argument type="master">xmlDelimited</argument>
+                <argument type="slave">true</argument>
+            </slave>
+        </master>
+    </simplePov>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.recordDetection" name="recordLength"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.recordDetection" name="delimiterType">
+        <master>
+            <slave handler="com.ibm.etools.patterns.dependency.Enable" id="recordDelimiter">
+                <argument type="master">custom</argument>
+                <argument type="slave">true</argument>
+            </slave>
+        </master>
+    </simplePov>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.recordDetection" name="recordDelimiter"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.recordDetection" name="messageSet" 
+    	povEditorId="com.ibm.etools.mft.pattern.fp.edit.EditorAdapterMessageSetName">
+        <master>
+            <slave handler="com.ibm.etools.patterns.dependency.Select" id="messageType"/>
+            <slave handler="com.ibm.etools.patterns.dependency.Select" id="messageFormat"/>
+        </master>
+    </simplePov>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.recordDetection" name="messageType" 
+    	povEditorId="com.ibm.etools.mft.pattern.fp.edit.EditorAdapterMessageSetType"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.recordDetection" name="messageFormat" 
+    	povEditorId="com.ibm.etools.mft.pattern.fp.edit.EditorAdapterMessageSetFormat"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.recordDetection" name="CCSID"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.recordDetection" name="encoding"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.routing" name="routing">
+        <master>
+            <slave handler="com.ibm.etools.patterns.dependency.Enable" id="outputQueueManager">
+                <argument type="master">noRouting</argument>
+                <argument type="slave">true</argument>
+            </slave>
+            <slave handler="com.ibm.etools.patterns.dependency.Enable" id="outputQueue">
+                <argument type="master">noRouting</argument>
+                <argument type="slave">true</argument>
+            </slave>
+            <slave handler="com.ibm.etools.patterns.dependency.Enable" id="defaultQueueManager">
+                <argument type="master">specifyRoutes</argument>
+                <argument type="slave">true</argument>
+            </slave>
+            <slave handler="com.ibm.etools.patterns.dependency.Enable" id="defaultQueue">
+                <argument type="master">specifyRoutes</argument>
+                <argument type="slave">true</argument>
+            </slave>
+            <slave handler="com.ibm.etools.patterns.dependency.Enable" id="namespaceTable">
+                <argument type="master">specifyRoutes</argument>
+                <argument type="slave">true</argument>
+            </slave>
+            <slave handler="com.ibm.etools.patterns.dependency.Enable" id="routeTable">
+                <argument type="master">specifyRoutes</argument>
+                <argument type="slave">true</argument>
+            </slave>
+            <slave handler="com.ibm.etools.patterns.dependency.Enable" id="routingDataSource">
+                <argument type="master">lookupRoutes</argument>
+                <argument type="slave">true</argument>
+            </slave>
+            <slave handler="com.ibm.etools.patterns.dependency.Enable" id="routingContext">
+                <argument type="master">lookupRoutes</argument>
+                <argument type="slave">true</argument>
+            </slave>
+            <slave handler="com.ibm.etools.patterns.dependency.Enable" id="key1">
+                <argument type="master">lookupRoutes</argument>
+                <argument type="slave">true</argument>
+            </slave>
+            <slave handler="com.ibm.etools.patterns.dependency.Enable" id="key2">
+                <argument type="master">lookupRoutes</argument>
+                <argument type="slave">true</argument>
+            </slave>
+            <slave handler="com.ibm.etools.patterns.dependency.Enable" id="defaultQueueManagerLookupRoutes">
+                <argument type="master">lookupRoutes</argument>
+                <argument type="slave">true</argument>
+            </slave>
+            <slave handler="com.ibm.etools.patterns.dependency.Enable" id="defaultQueueLookupRoutes">
+                <argument type="master">lookupRoutes</argument>
+                <argument type="slave">true</argument>
+            </slave>
+            <slave handler="com.ibm.etools.patterns.dependency.Enable" id="cacheRefresh">
+                <argument type="master">lookupRoutes</argument>
+                <argument type="slave">true</argument>
+            </slave>
+        </master>
+    </simplePov>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.noRouting" name="outputQueueManager"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.noRouting" name="outputQueue"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.specifyRoutes" name="defaultQueueManager"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.specifyRoutes" name="defaultQueue"/>
+    <patterns:complexTablePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.specifyRoutes" name="namespaceTable">
+        <columnDescriptor configurable="true" default="" displayName="Namespace prefix" helpText="A Namespace prefix defines the tag for a name space." mandatory="true" name="nsPrefix" width="100"/>
+        <columnDescriptor configurable="true" default="" displayName="Namespace URI" helpText="A  Namespace URI defines the name space for the current tag." mandatory="false" name="nsURI" style="left" width="100"/>
+    </patterns:complexTablePov>
+    <patterns:complexTablePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.specifyRoutes" name="routeTable">
+        <columnDescriptor configurable="true" default="" displayName="Key location" helpText="         A Key location is an XPATH expression which defines a location within         the record that is being propagated, that determines the destination         for the element.                This parameter must specify either the value of an element, for example, $Element/TransactionType,         which holds the key, or the name, for example, local-name($element), in         which case it is the name that is used as the key.                        Namespaces may be included if they are specified in the optional namespace table.         " mandatory="true" name="keyLocation" width="100"/>
+        <columnDescriptor configurable="true" default="" displayName="Key value" helpText="This parameter contains the value that the key field in the incoming message must match to select this route.           This parameter is required only if the value of the Routing parameter is Specify Routes." mandatory="false" name="keyValue" style="left" width="100"/>
+        <columnDescriptor configurable="true" default="" displayName="Queue manager" helpText="This parameter defines the queue manager for a routing destination." mandatory="false" name="queueManager" style="left" width="100"/>
+        <columnDescriptor configurable="true" default="" displayName="Queue" helpText="This parameter defines the queue for a routing destination." mandatory="false" name="queue" style="left" width="100"/>
+    </patterns:complexTablePov>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.lookupRoutes" name="routingDataSource"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.lookupRoutes" name="routingContext"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.lookupRoutes" name="key1"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.lookupRoutes" name="key2"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.lookupRoutes" name="defaultQueueManagerLookupRoutes"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.lookupRoutes" name="defaultQueueLookupRoutes"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.lookupRoutes" name="cacheRefresh">
+        <master>
+            <slave handler="com.ibm.etools.patterns.dependency.Enable" id="refreshQueue">
+                <argument type="master">true</argument>
+                <argument type="slave">true</argument>
+            </slave>
+        </master>
+    </simplePov>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.lookupRoutes" name="refreshQueue"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.log" name="loggingRequired">
+        <master>
+            <slave handler="com.ibm.etools.patterns.dependency.Enable" id="logQueueManager">
+                <argument type="master">true</argument>
+                <argument type="slave">true</argument>
+            </slave>
+            <slave handler="com.ibm.etools.patterns.dependency.Enable" id="logQueue">
+                <argument type="master">true</argument>
+                <argument type="slave">true</argument>
+            </slave>
+        </master>
+    </simplePov>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.log" name="logQueueManager"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.log" name="logQueue"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.errorHandling" name="errorMessageRequired">
+        <master>
+            <slave handler="com.ibm.etools.patterns.dependency.Enable" id="errorQueueManager">
+                <argument type="master">true</argument>
+                <argument type="slave">true</argument>
+            </slave>
+            <slave handler="com.ibm.etools.patterns.dependency.Enable" id="errorQueue">
+                <argument type="master">true</argument>
+                <argument type="slave">true</argument>
+            </slave>
+        </master>
+    </simplePov>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.errorHandling" name="errorQueueManager"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.errorHandling" name="errorQueue"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.general" name="brokerSchema"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.general" name="flowPrefix"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.general" name="flowSuffix"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.general" name="queuePrefix"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.general" name="queueSuffix"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.general" name="shortDescription"/>
+    <simplePov groupId="com.ibm.etools.mft.pattern.fp.rd.mq.general" name="longDescription"/>
+    <Group description="description" expand="false" id="com.ibm.etools.mft.pattern.fp.rd.mq.instanceName" name="instanceName" visible="false"/>
+    <Group description="description" expand="false" id="com.ibm.etools.mft.pattern.fp.rd.mq.fileInput" name="fileInput" visible="true"/>
+    <Group description="description" expand="false" id="com.ibm.etools.mft.pattern.fp.rd.mq.recordDetection" name="recordDetection" visible="true"/>
+    <Group description="description" expand="true" id="com.ibm.etools.mft.pattern.fp.rd.mq.routing" name="routing" visible="false"/>
+    <Group description="description" expand="false" id="com.ibm.etools.mft.pattern.fp.rd.mq.noRouting" name="noRouting" visible="true"/>
+    <Group description="description" expand="false" id="com.ibm.etools.mft.pattern.fp.rd.mq.specifyRoutes" name="specifyRoutes" visible="true"/>
+    <Group description="description" expand="false" id="com.ibm.etools.mft.pattern.fp.rd.mq.lookupRoutes" name="lookupRoutes" visible="true"/>
+    <Group description="description" expand="false" id="com.ibm.etools.mft.pattern.fp.rd.mq.log" name="log" visible="true"/>
+    <Group description="description" expand="false" id="com.ibm.etools.mft.pattern.fp.rd.mq.errorHandling" name="errorHandling" visible="true"/>
+    <Group description="description" expand="false" id="com.ibm.etools.mft.pattern.fp.rd.mq.general" name="general" visible="true"/>
+   <ReferencedProject name="_Flows"/>    
+</povs>

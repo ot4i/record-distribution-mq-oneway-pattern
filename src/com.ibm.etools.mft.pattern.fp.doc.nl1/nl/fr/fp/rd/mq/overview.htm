@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="fr-fr">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009" />
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009" />
+	<meta name="abstract" content="Présentation du modèle Distribution d'enregistrements vers MQ"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Modèle Distribution d'enregistrements vers WebSphere MQ : unidirectionnel</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq">
+<h1 class="topictitle1">Modèle <span> Distribution d'enregistrements vers WebSphere MQ : unidirectionnel</span></h1>
+<div>
+	<p class="shortdesc">Utilisez le modèle <span>Distribution d'enregistrements vers WebSphere MQ : unidirectionnel</span>	pour lier des styles d'intégration à base de fichier et à base de transaction. </p>
+	
+	<p> Utilisez ce modèle lorsque :</p>
+<ul>
+<li>Vous disposez de lots de transactions reçus sous forme de fichiers de systèmes locaux ou distants.</li>
+<li>Les transactions ne peuvent pas être envoyées sous forme de transactions individuelles du fait :
+<ul>
+<li>des limitations techniques des systèmes source qui prennent en charge uniquement les fonctions d'intégration à base de fichier</li> 
+<li>des contraintes métier qui imposent l'utilisation de lots, par exemple, collecte de toutes les transactions au cours d'une journée de travail</li>
+<li>du respect des pratiques de travail, telles que l'utilisation de fichiers qui contiennent des transactions EDI</li>
+</ul></li>
+<li>des systèmes cible configurés pour accepter les transactions individuelles Ces systèmes peuvent utiliser les données de systèmes quasi temps réel et de fichiers de traitement par lots et ils présentent donc une interface transactionnelle.</li>	
+<li>Vous disposez de fichiers de lots qui contiennent des transactions qui doivent être distribuées à un ou plusieurs systèmes.</li>
+<li>Les enregistrements doivent être traités, mais tout incident peut être géré en retraitant l'ensemble du fichier.</li>
+</ul>
+</div>
+
+<div class="section">
+	<h2 class="sectiontitle">Solution</h2>
+</div>
+<p>La solution consiste à implémenter un flux de messages qui lit les enregistrements d'un fichier et route chaque enregistrement vers une destination WebSphere MQ en fonction de règles de routage ou vers une destination par défaut si aucune correspondance n'existe dans les règles de routage.</p>
+<div>
+<div class="image">
+	<img src="recorddistributor.gif"
+		alt="Diagramme montrant comment les demandes du service de modèle sont envoyées au fournisseur de service final." />
+</div>
+	<div>
+		<a href="recorddistributor.htm" title="Informations de conception sur le flux de messages Distributeur d'enregistrements.">Flux de messages Distributeur d'enregistrements</a>
+	</div>
+	<div>
+		<a href="recordprocessor.htm" title="Informations de conception sur le flux de messages Processeur d'enregistrements.">Flux de messages Processeur d'enregistrements</a>
+	</div>
+	<div>
+		<a href="logflow.htm" title="Informations de conception sur le flux secondaire Journal.">Flux secondaire Journal</a>
+	</div>
+		<div>
+		<a href="errorflow.htm" title="Informations de conception sur le flux secondaire Erreur.">Flux secondaire Erreur</a>
+	</div>
+		<div>
+		<a href="routeflow.htm" title="Informations de conception sur le flux secondaire Route.">Flux secondaire Route</a>
+	</div>
+	<div class="familylinks">
+		<a name="anchor1"></a>
+		<div class="section">
+			<h2 class="sectiontitle">Tâches connexes</h2>
+		</div>
+		<p>
+			Lisez la section suivante qui contient des informations sur l'application et l'utilisation de ce modèle.
+		</p>
+		<a href="constraints.htm" title="Contraintes d'utilisation du modèle"> 			Contraintes d'utilisation du modèle</a>
+	</div>
+	<div>
+		<a href="before.htm" title="Informations dont vous devez avoir connaissance et ressources dont vous devez disposer pour pouvoir utiliser le modèle">
+			Tâches à exécuter avant d'appliquer le modèle</a>
+	</div>
+	<div>
+		<a href="parameters.htm" title="Paramètres du modèle">
+			Paramètres du modèle</a>
+	</div>
+	<div>
+		<a href="after.htm" title="Tâches à exécuter après avoir généré le modèle"> 			Tâches à exécuter après avoir générer le modèle</a>
+	</div>
+</div>
+</body>
+</html>

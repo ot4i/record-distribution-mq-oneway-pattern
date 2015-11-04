@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-tw" xml:lang="zh-tw">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009"/>
+	<meta name="abstract" content="在您可以使用 Record Distribution to WebSphere MQ: one-way 型樣之前，必須知道及必須具有的資源的明細。"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css"/>
+	<title>使用 Record Distribution to WebSphere MQ: one-way 型樣的限制</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.constraints">
+	<h1 class="topictitle1">使用	<span>Record Distribution to WebSphere MQ: one-way</span> 型樣的限制</h1>
+
+<p class="shortdesc">當您使用此型樣時，將適用一些限制。</p>
+<p>只有在符合下列所有限制時，才能使用 <span>Record Distribution to WebSphere MQ: one-way</span> 型樣：</p>
+<ul>
+	<li>必須可以將輸入檔讀取為記錄。您可以處理的檔案內含固定長度記錄、以已知定界字元區隔的可變長度記錄，或剖析器可以取出的可變長度記錄，而這種技術稱為<span class="mftobjpropval">剖析的記錄順序</span>。此技術可以用來讀取含有多份 XML 文件的檔案，並將每份文件以記錄形式傳回。您不可以使用此型樣來取出內嵌的記錄，例如，單一 XML 文件內的記錄。</li>
+	<li>如果是透過 FTP 服務處理遠端檔案，則因為原始檔會移至分配管理系統，因此無法在原處進行讀取，所以必須允許分配管理系統刪除原始檔。</li>
+	<li>使用型樣實例的商業功能，必須與系統失敗後的記錄重新配送作業相容。此型樣會以可靠的方式配送記錄，但不保證系統失敗之後不會發生重複。</li>
+	<li>使用型樣實例的商業功能，必須與失敗後的記錄重新配送作業相容，才能讀取檔案中的記錄，或寫入已讀取的記錄。在此情況下，此型樣會將整個檔案移至取消目錄，並在錯誤佇列中寫入錯誤。您必須進行安排，以在更正錯誤之後重新提交檔案。重新提交檔案時，會處理檔案中的所有記錄，因此可能會導致重複的訊息。</li>
+	<li>如果需要記載，則會採用此型樣所使用的格式，以符合您自己環境的需求。</li>
+</ul>
+	<p>
+	<a href="overview.htm#anchorBack" title="上一步">回到 Record Distribution to WebSphere MQ: one-way 型樣規格</a></p>
+</body>
+</html>

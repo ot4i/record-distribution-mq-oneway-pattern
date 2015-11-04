@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja-jp" xml:lang="ja-jp">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2009"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009"/>
+	<meta name="abstract" content="「WebSphere MQ へのレコード配布: 一方向」パターンを使用する前に知っておくべき事柄や、必要なリソースについての詳細。"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>「WebSphere MQ へのレコード配布: 一方向」パターンを適用する前に完了するタスク</title>
+	<script language="JavaScript" src="../../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mq.before">
+	<h1 class="topictitle1">「<span>WebSphere MQ へのレコード配布: 一方向</span>」パターンを適用する前に完了するタスク</h1>
+	<p class="shortdesc">パターン・インスタンスを作成するためにパターンを適用する前に、以下のどのタスクが必要かを判別する必要があります。必要に応じて、以下のタスクを完了します。</p>
+
+<ul>
+<li>このパターンがビジネス要件を満たしていること、およびファイル作成者とメッセージ・コンシューマーの両方でサポートされることを確認します。</li>
+<li>パターン・インスタンスに名前を付けます。
+適切な名前を決定できるように、パターン適用の目的を確認してください。</li>
+<li>ロギングが必要かどうかを決定します。
+ロギングが必要な場合、ロギング・メッセージがどのキュー・マネージャーおよびキューに送付されるかを決定する必要があります。他のブローカー・フロー用に既に存在する汎用のログ・キューや、パターン・インスタンス用として作成されるキューに対してロギングを行うことができます。</li>
+<li>エラー・メッセージが必要かどうかを決定します。
+エラー・メッセージが必要な場合、どのキュー・マネージャーおよびキューにエラー・メッセージが送付されるかを決定する必要があります。</li>
+<li>レコードを検出する方法を決定します。
+また、必要に応じて、レコードの構文解析方法を定義するメッセージ・セットを準備します。</li>
+<li>妥当性検査が必要かどうかを決定します。
+また、必要に応じて、レコードの構文解析方法を定義するメッセージ・セットを準備します。</li>
+<li>処理されるファイルがローカル/リモートのどちらであるかを決定します。
+リモート・ファイルを処理する場合は、構成可能サービスの名前が識別される必要があります。</li>
+<li>可能な複数の宛先が存在するかどうかを決定します。
+可能な複数の宛先が存在する場合、使用するルーティング手法を選択します。
+<ul>
+	<li>経路の数が限られていて、宛先が頻繁には変更されない場合は、「<span class="msobjprop">ルーティング</span>」パラメーターを「<span class="msobjpropval">経路の指定</span>」に設定します。</li>
+	<li>ターゲット経路のセットが完全には決まっていない場合、または頻繁に変更される可能性がある場合には、「<span class="msobjprop">ルーティング</span>」パラメーターを「<span class="msobjpropval">経路の検索</span>」に設定します。
+この値を選択する場合、データ・ソースの名前が認識される必要があります。</li>
+	</ul></li>
+
+</ul>
+<p>
+		<a href="overview.htm#anchorBack" title="戻る">「WebSphere MQ へのレコード配布: 一方向」パターンの仕様に戻る</a>
+</p>
+</body>
+</html>

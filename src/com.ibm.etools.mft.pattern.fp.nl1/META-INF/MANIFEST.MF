@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Fragment.name
+Bundle-SymbolicName: com.ibm.etools.mft.pattern.fp.nl1
+Bundle-Version: 10.0.300.qualifier
+Bundle-Vendor: IBM
+Fragment-Host: com.ibm.etools.mft.pattern.fp;bundle-version="[10.0.0,11.0.0)"
+Bundle-ClassPath: nl1.jar

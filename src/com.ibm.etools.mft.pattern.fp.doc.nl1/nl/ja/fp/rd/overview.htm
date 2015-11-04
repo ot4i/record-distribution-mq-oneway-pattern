@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja-jp" xml:lang="ja-jp">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009, 2012
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="copyright" content="Copyright IBM Corporation 2009" />
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009" />
+	<meta name="abstract" content="レコード配布"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/bip4.css" />
+	<title>レコード配布</title>
+	<script language="JavaScript" src="../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.overview">
+<h1 class="topictitle1">
+	<span>レコード配布</span></h1>
+<div>
+	<p class="shortdesc">
+レコード配布パターンを使用すると、1 つのローカルまたはリモート・ファイルを一連のレコードとして処理し、トランザクション・インターフェースにより各レコードを適用して 1 つ以上のシステムを更新することができます。
+このパターンは、非トランザクション・ファイル・システム・インターフェースとトランザクション・インターフェースの間のブリッジとして機能し、データが失われないようにエラー処理を提供します。</p>
+</div>
+<div class="image"><img src="./fp_rd.gif" alt="レコード配布アーキテクチャーの図"></img></div>
+<div class="section">
+	<h2 >コンテキスト</h2>
+</div>
+<p>このパターンとその変形は、次のようなコンテキストで適用できます。</p>
+	<ul>
+	<li>ファイル・ベースの統合機能だけを持つシステムと、新しいトランザクション・システムとの統合。
+通常、このシナリオは、業務においてよりトランザクション的な手法に移行する必要が生じ、しかもテクノロジーにおいて既存のシステムを活用する必要があるような場合に、更新プログラムに含められます。</li>
+	<li>準リアルタイムのトランザクション・データを生成するために、既存のシステムがアップグレードされる際には、一時的なシステム統合が必要です。</li>
+	<li>個別に処理してルーティングする必要のある多数のトランザクション・レコードを含んでいる電子データ交換 (EDI) トランザクションのファイルの処理。</li>
+	<li>「間隔の終わり」更新の処理。例えば、営業日または週の終わりにおける更新。トランザクション・システムにこれらの更新を渡して、オフピーク期間にバッチ・モードで処理する必要があります。</li>
+	<li>参照データの配布。例えば製品の価格設定と部品構成のカタログ。特に、更新が開始日に関連しているために更新のタイミングが重要な場合。</li>
+</ul>
+<div class="section"><h2>問題</h2>
+</div>
+<p>このパターンは、ファイル・ベースおよびトランザクション・ベースの 2 つの統合スタイルを橋渡しします。
+ファイル・システムはトランザクション方式ではないため、ファイルからのすべてのレコードの読み取りと、ターゲットへのすべてのレコードの書き込みを橋渡しするトランザクションは存在し得ません。
+したがって、レコードが決して失われないように、エラー処理を提供する必要があります。
+このカテゴリーのパターンは、ファイルを処理してレコードを配布する際にデータを喪失しないようにする課題を扱います。
+さらに、パターン実装の中には、1 度限りの送達という課題を扱うものもあります。</p>
+<p>加えて、このパターンは、1 つのファイル内のさまざまなトランザクションを正しい WebSphere MQ 宛先にルーティングするという課題も扱います。</p>
+
+<div class="section"><h2>選択についてのガイダンス</h2>
+
+<p>以下のような場合に、このパターンを使用します。</p>
+<ul>
+<li>多数のトランザクションがローカルまたはリモート・システムからファイルとして受信される場合。</li>
+<li>以下の理由により、トランザクションを個々のトランザクションとして送信できない場合。
+<ul>
+	<li>ファイル・ベースの統合機能だけをサポートするソース・システムの技術上の制約。</li>
+	<li>バッチ処理を必要とするビジネス要件。
+例えば、1 作業日におけるすべてのトランザクションの収集。</li>
+	<li>既存の作業手法への適合。
+例えば、EDI トランザクションを含むファイルを使用すること。</li>
+	</ul></li>
+<li>個々のトランザクションを受け入れるようにターゲット・システムが設計されている場合。
+このようなシステムは準リアルタイム・システムおよびバッチ・ファイルから入力を受け取る可能性があるため、システムはトランザクション・インターフェースを提供します。</li>
+<li>複数のシステムに配布される必要のあるトランザクションを含むバッチ・ファイルがある場合。</li>
+<li>レコードを処理する必要があり、ファイル全体の再処理によって障害を扱うことができるような場合。</li>
+</ul>
+<p>以下のような用途では、このパターンを使用しないでください。</p>
+<ul>
+<li>埋め込みレコードを持つ XML ファイルの処理。
+そのような埋め込みレコードには、レコード構文解析メカニズムが適用されません。メッセージ・フロー内の埋め込みレコードを抽出するような処理パターンが必要です。</li>
+<li>1 度だけ処理する必要のあるレコード。
+</li>
+</ul>
+
+</div>
+<div class="section"><h2><a name="Record Distributor_Solution">ソリューション</a></h2>
+<p>ファイルからレコードを読み取り、適切な WebSphere MQ 宛先または正しくないメッセージ・キューに 1 つのトランザクションでルーティングするようなメッセージ・フローを、ソリューションとして実装します。</p>
+
+
+
+</div>
+</body>
+</html>

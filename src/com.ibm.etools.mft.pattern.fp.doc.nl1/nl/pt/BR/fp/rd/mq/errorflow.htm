@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="pt-br">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="Use o padrão de Record Distribution para WebSphere MQ: unidirecional para ligar dois estilos de integração, baseado em arquivo e baseado em transação."/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>Subfluxo de Erro para o Padrão de Record Distribution para WebSphere MQ: Unidirecional</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mqError">
+<div class="section">
+	<h1 class="topictitle1">Subfluxo de Erro para o Padrão de <span>Record Distribution para WebSphere MQ: Unidirecional</span></h1>
+	<p class="shortdesc">Este subfluxo testa se uma mensagem de erro deve ser gravada e é determinado
+	pela propriedade definida pelo usuário: <span class="msobjprop">ErrorLoggingOn</span>.</p>
+<p>Se um erro for capturado durante o processamento nos fluxos de mensagens, o subfluxo de Erro será chamado. 
+As ações a seguir são executadas pelo subfluxo de Erro:
+</p>	
+<ol>	
+<li>Se as mensagens de erro forem requeridas, uma mensagem de erro será preparada e gravada na fila de erros.
+Detalhes da exceção são gravadas como uma mensagem XML. Estes detalhes incluem:
+	<ul>
+	<li>Nome do broker</li>
+	<li>Nome do fluxo</li>
+	<li>Registro de data e hora</li>
+	<li>Diretório de arquivo</li>
+	<li>Nome do arquivo</li>
+	<li>Número do registro, quando o erro ocorreu</li>
+	<li>Número de registros gravados na fila padrão</li>
+	<li>Resumo dos dados da exceção</li>
+	</ul>
+<p>O resumo dos dados de exceção contém o rótulo do fluxo de mensagens, o número do erro, a descrição do texto
+	e uma lista de inserções fornecendo os detalhes adicionais.</p>
+</li>
+<li>Uma exceção é produzida, fazendo com que o fluxo finalize de maneira malsucedida. Esta ação move o arquivo para
+o subdiretório de restauração.</li>
+</ol>
+<div class="note"><span class="notetitle"> Nota: </span> Mensagens que não podem ser roteadas são gravadas em
+um destino padrão. Esta ação não é tratada como um erro.
+<p>Qualquer falha que para um registro que está sendo lido a partir do arquivo e gravado no disco é tratada como um erro.</p></div>
+</div>
+<a href="overview.htm#anchorBack" title="Voltar">Voltar para a especificação de padrão do Record Distribution para WebSphere MQ: Unidirecional</a>
+</body>
+</html>
+
+

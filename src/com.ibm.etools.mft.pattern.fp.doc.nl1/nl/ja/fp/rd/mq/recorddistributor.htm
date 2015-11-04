@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja-jp" xml:lang="ja-jp">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="copyright" content="Copyright IBM Corporation 2008"/>
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2008"/>
+	<meta name="abstract" content="ファイル・ベースおよびトランザクション・ベースの 2 つの統合スタイルを橋渡しするために、「WebSphere MQ へのレコード配布: 一方向」パターンを使用します。"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../../css/bip4.css" />
+	<title>「WebSphere MQ へのレコード配布: 一方向」パターンの RecordDistributor フロー</title>
+	<script language="JavaScript" src="help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.mqRecordDistributor">
+<div class="section">
+	<h1 class="topictitle1">「<span>WebSphere MQ へのレコード配布: 一方向</span>」パターンのレコード・ディストリビューター・フロー</h1>
+	<p class="shortdesc">「<span>WebSphere MQ へのレコード配布: 一方向</span>」パターンのレコード・ディストリビューター・フローに関する詳細。</p>
+	<p>このフローは以下のようなアクションを実行します。</p>
+	<ol>
+		<li>ファイル入力パラメーターに従って、処理対象のファイルが選択されます。</li>
+<li>レコード検出パラメーターに従って、レコードがファイルから読み取られます。
+各レコードは 1 つのトランザクション内で処理されます。
+妥当性検査が指定されている場合、メッセージ・セットに照らしてレコードが妥当性検査されます。</li>
+<li>正しい WebSphere MQ 宛先を決定するために経路サブフローが呼び出され、適切なターゲット・キューにレコードが書き込まれます。
+レコードがキューに書き込まれるとき、デフォルトでは、ファイルから読み取られたときと同じフォーマットに設定されます。
+必要に応じてレコード・プロセッサー・フローをカスタマイズすることにより、レコードを別のフォーマットに変換できます。</li>
+<li>「<span class="msobjpropval">ルーティングなし</span>」が選択されている場合、レコードはデフォルトのメッセージ・キューに書き込まれます。</li>
+<li>レコードを読み取る障害やレコードをキューに書き込む障害などのエラーが発生した場合、エラー・メッセージが書き込まれて、フローはバックアウトされます。
+ファイルはバックアウト・ディレクトリーに書き込まれます。</li>
+<li>すべてのデータが処理されると、ログ・サブフローが呼び出されて完了を記録します。
+いずれかのレコードがデフォルト・メッセージ・キューに書き込まれた場合は、このアクションが記録されます。</li>
+<li>フローが正常に終了して、ファイルがアーカイブ・サブディレクトリーに移動されます。</li>
+	</ol>
+</div>
+		<a href="overview.htm#anchorBack" title="戻る">「WebSphere MQ へのレコード配布: 一方向」パターンの仕様に戻る</a>
+</body>
+</html>

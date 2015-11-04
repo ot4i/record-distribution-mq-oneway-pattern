@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-tw" xml:lang="zh-tw">
+<head><!-- 
+
+(C) COPYRIGHT International Business Machines Corp., 2009, 2012
+
+All Rights Reserved * Licensed Materials - Property of IBM
+
+-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="copyright" content="Copyright IBM Corporation 2009" />
+	<meta name="DC.Rights.Owner" content="Copyright IBM Corporation 2009" />
+	<meta name="abstract" content="Record Distribution"/>
+	<!-- Licensed Materials Property of IBM -->
+	<!-- US Government Users Restricted Rights -->
+	<!-- Use, duplication or disclosure restricted by -->
+	<!-- GSA ADP Schedule Contract with IBM Corp. -->
+	<link rel="stylesheet" type="text/css" href="../../css/ibmdita.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/bip4.css" />
+	<title>Record Distribution</title>
+	<script language="JavaScript" src="../../help/LiveHelp.js" type="text/javascript"></script>
+</head>
+<body id="com.ibm.etools.mft.pattern.fp.rd.overview">
+<h1 class="topictitle1">
+	<span>Record Distribution</span></h1>
+<div>
+	<p class="shortdesc">
+	使用 Record Distribution 型樣，可以提供方法，將本端或遠端檔案處理為一系列的記錄，以及套用每一筆記錄，來使用交易式介面更新一個以上的系統。此型樣會橋接非交易式檔案系統介面和具有錯誤處理的交易式介面，以確保資料未遺失。</p>
+</div>
+<div class="image"><img src="./fp_rd.gif" alt="記錄配送架構圖"></img></div>
+<div class="section">
+	<h2 >環境定義</h2>
+</div>
+<p>此型樣及其變異可以套用至下列環境定義：</p>
+	<ul>
+	<li>整合只有檔案型整合功能的系統與新交易式系統。此實務範例一般是更新程式的一部分，其中，企業必須移至較交易式的方式，而且技術必須符合現有的系統。</li>
+	<li>升級現有系統以產生接近即時交易資料時，需要系統的過渡整合。</li>
+	<li>處理「電子資料交換 (EDI)」交易的檔案，內含必須個別處理及遞送的交易記錄的批次。</li>
+	<li>處理「間隔結束」更新項目。例如，在工作日或週結束時必須傳遞給交易式系統且必須在離峰期間以批次模式處理的更新項目。</li>
+	<li>參照資料的配送。例如，零件型錄的產品計價及配置，特別是更新項目與開始日期相關聯，因此更新項目的計時十分重要時。</li>
+</ul>
+<div class="section"><h2>問題</h2>
+</div>
+<p>此型樣橋接兩種樣式的整合（檔案型及交易型）。因為檔案系統不是交易式，所以其交易無法橋接檔案中所有記錄的讀數並將所有記錄寫入目標。因此，需要提供錯誤處理，以確保記錄未遺失。此種類中的型樣可解決在處理檔案及配送記錄時不遺失資料的問題。部分型樣實作也可解決只遞送一次的問題。
+</p>
+<p>此型樣也會解決將檔案內的不同交易遞送至正確 WebSphere MQ 目的地的問題。</p>
+
+<div class="section"><h2>選擇指引</h2>
+
+<p>使用此型樣的時機如下：</p>
+<ul>
+<li>您有好幾批交易是從本端或遠端系統以檔案形式接收。</li>
+<li>您的交易無法以個別交易傳送，原因是：<ul>
+	<li>只支援檔案型整合功能的來源系統的技術限制。</li>
+	<li>強制執行批次的商業需求，例如，某個工作日內所有交易的集合。</li>
+	<li>與現有工作中實務的相符性，例如，使用含有 EDI 交易的檔案。</li>
+	</ul></li>
+<li>您的目標系統是設計成接受個別交易。這類系統可能是從接近即時系統及批次檔中取得輸入，因此系統會呈現交易式介面。</li>
+<li>您的批次檔包含必須配送至多個系統的交易。</li>
+<li>必須處理您的記錄，而且可以透過重新處理整個檔案來處理失敗。</li>
+</ul>
+<p>請不要將此型樣用於下列項目：</p>
+<ul>
+<li>處理具有內嵌記錄的 XML 檔案。記錄剖析機制不會套用至這些內嵌記錄，而且這些記錄需要處理可取出訊息流程中內嵌記錄的型樣。</li>
+<li>只需要處理一次的記錄。</li>
+</ul>
+
+</div>
+<div class="section"><h2><a name="Record Distributor_Solution">解決方案</a></h2>
+<p>解決方案是實作訊息流程，而此訊息流程是從檔案中讀取記錄，並在單一交易中將它遞送至正確 WebSphere MQ 目的地或不正確訊息佇列。</p>
+
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,369 @@
+package org.eclipse.jet.compiled;
+
+import org.eclipse.jet.JET2Context;
+import org.eclipse.jet.JET2Template;
+import org.eclipse.jet.JET2Writer;
+import org.eclipse.jet.taglib.RuntimeTagElement;
+import org.eclipse.jet.taglib.TagInfo;
+
+public class _jet_Logesql implements JET2Template {
+    private static final String _jetns_c = "org.eclipse.jet.controlTags"; //$NON-NLS-1$
+
+    public _jet_Logesql() {
+        super();
+    }
+
+    private static final String NL = System.getProperty("line.separator"); //$NON-NLS-1$
+    
+    private static final TagInfo _td_c_if_1_1 = new TagInfo("c:if", //$NON-NLS-1$
+            1, 1,
+            new String[] {
+                "test", //$NON-NLS-1$
+            },
+            new String[] {
+                "boolean($root/brokerSchema)", //$NON-NLS-1$
+            } );
+    private static final TagInfo _td_c_if_3_1 = new TagInfo("c:if", //$NON-NLS-1$
+            3, 1,
+            new String[] {
+                "test", //$NON-NLS-1$
+            },
+            new String[] {
+                "string-length($root/brokerSchema) > 0", //$NON-NLS-1$
+            } );
+    private static final TagInfo _td_c_get_5_15 = new TagInfo("c:get", //$NON-NLS-1$
+            5, 15,
+            new String[] {
+                "select", //$NON-NLS-1$
+            },
+            new String[] {
+                "$root/brokerSchema", //$NON-NLS-1$
+            } );
+    private static final TagInfo _td_c_get_8_18 = new TagInfo("c:get", //$NON-NLS-1$
+            8, 18,
+            new String[] {
+                "select", //$NON-NLS-1$
+            },
+            new String[] {
+                "$root/@patternName", //$NON-NLS-1$
+            } );
+    private static final TagInfo _td_c_get_8_63 = new TagInfo("c:get", //$NON-NLS-1$
+            8, 63,
+            new String[] {
+                "select", //$NON-NLS-1$
+            },
+            new String[] {
+                "$root/@patternVersion", //$NON-NLS-1$
+            } );
+    private static final TagInfo _td_c_get_9_23 = new TagInfo("c:get", //$NON-NLS-1$
+            9, 23,
+            new String[] {
+                "select", //$NON-NLS-1$
+            },
+            new String[] {
+                "$root/@patternName", //$NON-NLS-1$
+            } );
+    private static final TagInfo _td_c_get_10_26 = new TagInfo("c:get", //$NON-NLS-1$
+            10, 26,
+            new String[] {
+                "select", //$NON-NLS-1$
+            },
+            new String[] {
+                "$root/@patternVersion", //$NON-NLS-1$
+            } );
+    private static final TagInfo _td_c_choose_35_1 = new TagInfo("c:choose", //$NON-NLS-1$
+            35, 1,
+            new String[] {
+            },
+            new String[] {
+            } );
+    private static final TagInfo _td_c_when_36_1 = new TagInfo("c:when", //$NON-NLS-1$
+            36, 1,
+            new String[] {
+                "test", //$NON-NLS-1$
+            },
+            new String[] {
+                "$root/routing = 'noRouting'", //$NON-NLS-1$
+            } );
+    private static final TagInfo _td_c_otherwise_42_1 = new TagInfo("c:otherwise", //$NON-NLS-1$
+            42, 1,
+            new String[] {
+            },
+            new String[] {
+            } );
+
+    public void generate(final JET2Context context, final JET2Writer __out) {
+        JET2Writer out = __out;
+        RuntimeTagElement _jettag_c_if_1_1 = context.getTagFactory().createRuntimeTag(_jetns_c, "if", "c:if", _td_c_if_1_1); //$NON-NLS-1$ //$NON-NLS-2$
+        _jettag_c_if_1_1.setRuntimeParent(null);
+        _jettag_c_if_1_1.setTagInfo(_td_c_if_1_1);
+        _jettag_c_if_1_1.doStart(context, out);
+        while (_jettag_c_if_1_1.okToProcessBody()) {
+            // Tag exists 
+            RuntimeTagElement _jettag_c_if_3_1 = context.getTagFactory().createRuntimeTag(_jetns_c, "if", "c:if", _td_c_if_3_1); //$NON-NLS-1$ //$NON-NLS-2$
+            _jettag_c_if_3_1.setRuntimeParent(_jettag_c_if_1_1);
+            _jettag_c_if_3_1.setTagInfo(_td_c_if_3_1);
+            _jettag_c_if_3_1.doStart(context, out);
+            while (_jettag_c_if_3_1.okToProcessBody()) {
+                // and has a value
+                out.write("BROKER SCHEMA ");  //$NON-NLS-1$        
+                RuntimeTagElement _jettag_c_get_5_15 = context.getTagFactory().createRuntimeTag(_jetns_c, "get", "c:get", _td_c_get_5_15); //$NON-NLS-1$ //$NON-NLS-2$
+                _jettag_c_get_5_15.setRuntimeParent(_jettag_c_if_3_1);
+                _jettag_c_get_5_15.setTagInfo(_td_c_get_5_15);
+                _jettag_c_get_5_15.doStart(context, out);
+                _jettag_c_get_5_15.doEnd();
+                out.write(NL);         
+                _jettag_c_if_3_1.handleBodyContent(out);
+            }
+            _jettag_c_if_3_1.doEnd();
+            _jettag_c_if_1_1.handleBodyContent(out);
+        }
+        _jettag_c_if_1_1.doEnd();
+        out.write("--  Generated by ");  //$NON-NLS-1$        
+        RuntimeTagElement _jettag_c_get_8_18 = context.getTagFactory().createRuntimeTag(_jetns_c, "get", "c:get", _td_c_get_8_18); //$NON-NLS-1$ //$NON-NLS-2$
+        _jettag_c_get_8_18.setRuntimeParent(null);
+        _jettag_c_get_8_18.setTagInfo(_td_c_get_8_18);
+        _jettag_c_get_8_18.doStart(context, out);
+        _jettag_c_get_8_18.doEnd();
+        out.write(" Version ");  //$NON-NLS-1$        
+        RuntimeTagElement _jettag_c_get_8_63 = context.getTagFactory().createRuntimeTag(_jetns_c, "get", "c:get", _td_c_get_8_63); //$NON-NLS-1$ //$NON-NLS-2$
+        _jettag_c_get_8_63.setRuntimeParent(null);
+        _jettag_c_get_8_63.setTagInfo(_td_c_get_8_63);
+        _jettag_c_get_8_63.doStart(context, out);
+        _jettag_c_get_8_63.doEnd();
+        out.write(NL);         
+        out.write("--  $MQSI patternName=");  //$NON-NLS-1$        
+        RuntimeTagElement _jettag_c_get_9_23 = context.getTagFactory().createRuntimeTag(_jetns_c, "get", "c:get", _td_c_get_9_23); //$NON-NLS-1$ //$NON-NLS-2$
+        _jettag_c_get_9_23.setRuntimeParent(null);
+        _jettag_c_get_9_23.setTagInfo(_td_c_get_9_23);
+        _jettag_c_get_9_23.doStart(context, out);
+        _jettag_c_get_9_23.doEnd();
+        out.write(" MQSI$");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("--  $MQSI patternVersion=");  //$NON-NLS-1$        
+        RuntimeTagElement _jettag_c_get_10_26 = context.getTagFactory().createRuntimeTag(_jetns_c, "get", "c:get", _td_c_get_10_26); //$NON-NLS-1$ //$NON-NLS-2$
+        _jettag_c_get_10_26.setRuntimeParent(null);
+        _jettag_c_get_10_26.setTagInfo(_td_c_get_10_26);
+        _jettag_c_get_10_26.doStart(context, out);
+        _jettag_c_get_10_26.doEnd();
+        out.write(" MQSI$I$");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("CREATE Compute MODULE CreateLogMessage");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write(NL);         
+        out.write("CREATE FUNCTION main() RETURNS BOOLEAN");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\t\t\tBEGIN");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\t\t\tSET OutputRoot.Properties = NULL;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("-- Create Headers");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\t\t\tCREATE FIRSTCHILD OF OutputRoot DOMAIN ('MQMD') NAME 'MQMD';");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\t\t\tDECLARE MQMDRef REFERENCE TO OutputRoot.MQMD;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\t\t\tSET MQMDRef.Version = MQMD_CURRENT_VERSION;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\t\t\tSET MQMDRef.CodedCharSetId = InputRoot.Properties.CodedCharSetId;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\t\t\tSET MQMDRef.Encoding = InputRoot.Properties.Encoding;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\t\t\tSET MQMDRef.Format = MQFMT_RF_HEADER_2;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\t\t\tDECLARE OutRef REFERENCE TO OutputRoot;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\t\t\tCREATE NEXTSIBLING OF MQMDRef AS OutRef DOMAIN('MQRFH2') NAME 'MQRFH2';");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\t\t\tSET OutputRoot.MQRFH2.(MQRFH2.Field)Version = 2;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("-- Define basic logging data");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\t\t\tSET OutRef.CodedCharSetId = InputRoot.Properties.CodedCharSetId;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\t\t\tSET OutRef.Encoding = InputRoot.Properties.Encoding;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\t\t\tSET OutRef.usr.BrokerName = SQL.BrokerName;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\t\t\tSET OutRef.usr.MessageFlowLabel = SQL.MessageFlowLabel;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\t\t\tSET OutRef.usr.DTSTAMP = CURRENT_TIMESTAMP;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\t\t\tCREATE NEXTSIBLING OF OutRef AS OutRef DOMAIN('XMLNSC') NAME 'XMLNSC';\t\t\t");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("-- Add file and record information");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("-- Do not log file contents as these are available in the archive directory");  //$NON-NLS-1$        
+        out.write(NL);         
+        RuntimeTagElement _jettag_c_choose_35_1 = context.getTagFactory().createRuntimeTag(_jetns_c, "choose", "c:choose", _td_c_choose_35_1); //$NON-NLS-1$ //$NON-NLS-2$
+        _jettag_c_choose_35_1.setRuntimeParent(null);
+        _jettag_c_choose_35_1.setTagInfo(_td_c_choose_35_1);
+        _jettag_c_choose_35_1.doStart(context, out);
+        JET2Writer _jettag_c_choose_35_1_saved_out = out;
+        while (_jettag_c_choose_35_1.okToProcessBody()) {
+            out = out.newNestedContentWriter();
+            RuntimeTagElement _jettag_c_when_36_1 = context.getTagFactory().createRuntimeTag(_jetns_c, "when", "c:when", _td_c_when_36_1); //$NON-NLS-1$ //$NON-NLS-2$
+            _jettag_c_when_36_1.setRuntimeParent(_jettag_c_choose_35_1);
+            _jettag_c_when_36_1.setTagInfo(_td_c_when_36_1);
+            _jettag_c_when_36_1.doStart(context, out);
+            JET2Writer _jettag_c_when_36_1_saved_out = out;
+            while (_jettag_c_when_36_1.okToProcessBody()) {
+                out = out.newNestedContentWriter();
+                out.write("\t\t\t-- Log data on file and records in XMLNSC body");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\tSET OutputRoot.XMLNSC.Log.Directory = InputLocalEnvironment.File.Directory;");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\tSET OutputRoot.XMLNSC.Log.FileName = InputLocalEnvironment.File.Name;");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\tSET OutputRoot.XMLNSC.Log.RecordTotal = InputLocalEnvironment.File.Record;");  //$NON-NLS-1$        
+                out.write(NL);         
+                _jettag_c_when_36_1.handleBodyContent(out);
+            }
+            out = _jettag_c_when_36_1_saved_out;
+            _jettag_c_when_36_1.doEnd();
+            RuntimeTagElement _jettag_c_otherwise_42_1 = context.getTagFactory().createRuntimeTag(_jetns_c, "otherwise", "c:otherwise", _td_c_otherwise_42_1); //$NON-NLS-1$ //$NON-NLS-2$
+            _jettag_c_otherwise_42_1.setRuntimeParent(_jettag_c_choose_35_1);
+            _jettag_c_otherwise_42_1.setTagInfo(_td_c_otherwise_42_1);
+            _jettag_c_otherwise_42_1.doStart(context, out);
+            JET2Writer _jettag_c_otherwise_42_1_saved_out = out;
+            while (_jettag_c_otherwise_42_1.okToProcessBody()) {
+                out = out.newNestedContentWriter();
+                out.write(NL);         
+                out.write(NL);         
+                out.write("-- Set default routing from shared variable Defaults and clear entry for this file ");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\tDECLARE I Integer 0;");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\tDECLARE J Integer 1;");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\tDECLARE FileKey CHARACTER;");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\tSET FileKey = InputLocalEnvironment.File.Directory||");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t\t\t\t\t\t\tInputLocalEnvironment.File.Name||");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t\t\t\t\t\t\tInputLocalEnvironment.File.TimeStamp;");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\tACCUMULATE: BEGIN ATOMIC");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t-- search for a match");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\tSET I = 1;");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t\tSEARCH: LOOP");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t\tIF I > Files THEN");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t\t\t-- No match ");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t\t\tSET Environment.PatternVariables.DefaultRouting = 0; ");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t\t\tLEAVE SEARCH; ");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t\tEND IF;");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t\tIF Defaults.Files[I].Key = FileKey");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t\t\tTHEN SET Environment.PatternVariables.DefaultRouting = Defaults.Files[I].Total;");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t\t\t-- NOw remove the total for this file");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t\t\tIF I < Files");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t\t\t\tTHEN");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t\t\t\tSET FileKey = \tDefaults.Files[Files].Key;\t\t");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t\t\t\tSET Defaults.Files[I].Key = FileKey ;");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t\t\t\tSET J = Defaults.Files[Files].Total;");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t\t\t\tSET Defaults.Files[I].Total = J;");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t\t\tEND IF;\t");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t\t\t\tSET Files = Files - 1;");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t\t\t\t");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t\t\tLEAVE SEARCH;");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t\tEND IF;");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t\tSET I = I + 1;");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t\t\tEND LOOP SEARCH;");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\tEND ACCUMULATE;");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\t-- Log data on file and records in XMLNSC body");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\tSET OutputRoot.XMLNSC.Log.Directory = InputLocalEnvironment.File.Directory;");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\tSET OutputRoot.XMLNSC.Log.FileName = InputLocalEnvironment.File.Name;");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\tSET OutputRoot.XMLNSC.Log.RecordTotal = InputLocalEnvironment.File.Record;");  //$NON-NLS-1$        
+                out.write(NL);         
+                out.write("\t\t\tSET OutputRoot.XMLNSC.Log.RecordsToDefault = Environment.PatternVariables.DefaultRouting;");  //$NON-NLS-1$        
+                out.write(NL);         
+                _jettag_c_otherwise_42_1.handleBodyContent(out);
+            }
+            out = _jettag_c_otherwise_42_1_saved_out;
+            _jettag_c_otherwise_42_1.doEnd();
+            _jettag_c_choose_35_1.handleBodyContent(out);
+        }
+        out = _jettag_c_choose_35_1_saved_out;
+        _jettag_c_choose_35_1.doEnd();
+        out.write(NL);         
+        out.write("END;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("END MODULE;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write(NL);         
+        out.write("CREATE Compute MODULE CreateTraceData");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("CREATE FUNCTION main() RETURNS BOOLEAN BEGIN");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\tDECLARE EnvVarRef REFERENCE TO Environment.PatternVariables;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\tSET EnvVarRef.DTSTAMP = CURRENT_TIMESTAMP; ");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\tSET EnvVarRef.BrokerName = SQL.BrokerName ;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("    SET EnvVarRef.MessageFlowlabel = SQL.MessageFlowLabel;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("-- Add file and record information");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\tSET EnvVarRef.File.Directory = InputLocalEnvironment.File.Directory;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\tSET EnvVarRef.File.FileName = InputLocalEnvironment.File.Name;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\tSET EnvVarRef.File.RecordTotal = InputLocalEnvironment.File.Record;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\tSET EnvVarRef.File.RecordsToDefault = Environment.PatternVariables.DefaultRouting;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write(NL);         
+        out.write(NL);         
+        out.write("RETURN TRUE;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("END;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("END MODULE;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write(NL);         
+        out.write("CREATE FILTER MODULE CheckLogging");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("CREATE FUNCTION main() RETURNS BOOLEAN BEGIN");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\t");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\tRETURN Environment.PatternVariables.LoggingOn;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write("\tEND;");  //$NON-NLS-1$        
+        out.write(NL);         
+        out.write(NL);         
+        out.write("END MODULE;");  //$NON-NLS-1$        
+    }
+}

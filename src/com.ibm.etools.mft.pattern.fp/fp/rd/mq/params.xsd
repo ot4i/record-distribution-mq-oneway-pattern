@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="com.ibm.etools.mft.pattern.fp.rd.mq" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" targetNamespace="com.ibm.etools.mft.pattern.fp.rd.mq">
+
+    <xsd:simpleType name="recordDetectionEnum">
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="fixedLength">
+                <xsd:annotation>
+                    <xsd:documentation>Fixed length</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="delimited">
+                <xsd:annotation>
+                    <xsd:documentation>Delimited (binary or text)</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="xmlDelimited">
+                <xsd:annotation>
+                    <xsd:documentation>Delimited (XML)</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="parsed">
+                <xsd:annotation>
+                    <xsd:documentation>Parsed (binary or text)</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="xmlParsed">
+                <xsd:annotation>
+                    <xsd:documentation>Parsed (XML)</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="delimiterTypeEnum">
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="EOL">
+                <xsd:annotation>
+                    <xsd:documentation>Dos or UNIX Line End</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="custom">
+                <xsd:annotation>
+                    <xsd:documentation>Custom Delimiter</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:complexType name="routingTableType">
+        <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="1" name="row">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="1" name="keyLocation" type="xsd:string"/>
+                        <xsd:element maxOccurs="1" minOccurs="1" name="keyValue" type="xsd:string"/>
+                        <xsd:element maxOccurs="1" minOccurs="0" name="queueManager" type="xsd:string"/>
+                        <xsd:element maxOccurs="1" minOccurs="1" name="queue" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="namespaceTableType">
+        <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="row">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element maxOccurs="1" minOccurs="1" name="nsPrefix" type="xsd:string"/>
+                        <xsd:element maxOccurs="1" minOccurs="1" name="nsURI" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:simpleType name="routingEnum">
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="noRouting">
+                <xsd:annotation>
+                    <xsd:documentation>No routing</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="specifyRoutes">
+                <xsd:annotation>
+                    <xsd:documentation>Specify routes</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="lookupRoutes">
+                <xsd:annotation>
+                    <xsd:documentation>Lookup routes</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="encodingEnum">
+        <xsd:restriction base="xsd:integer">
+            <xsd:enumeration value="0">
+                <xsd:annotation>
+                    <xsd:documentation>Broker System Determined</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="546">
+                <xsd:annotation>
+                    <xsd:documentation>Little Endian, with IEEE Floating Point(546)</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="273">
+                <xsd:annotation>
+                    <xsd:documentation>Big Endian with IEEE Floating Point(273)</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="785">
+                <xsd:annotation>
+                    <xsd:documentation>Big Endian with S390 Floating Point(785)</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="validationEnum">
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="None">
+                <xsd:annotation>
+                    <xsd:documentation>None</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="content">
+                <xsd:annotation>
+                    <xsd:documentation>Content</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="contentAndValue">
+                <xsd:annotation>
+                    <xsd:documentation>Content and Value</xsd:documentation>
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="ccsidEnum">
+        <xsd:union>
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:integer">
+                    <xsd:enumeration value="0">
+                        <xsd:annotation>
+                            <xsd:documentation>Broker system default</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:enumeration>
+                </xsd:restriction>
+            </xsd:simpleType>
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:positiveInteger"/>
+            </xsd:simpleType>
+        </xsd:union>
+    </xsd:simpleType>
+    
+    <xsd:element name="root" type="Root"/>
+    <xsd:complexType name="Root">
+        <xsd:sequence>
+            <!-- Instance name -->
+            <xsd:element default="default" maxOccurs="1" minOccurs="1" name="instanceName" type="xsd:string"/>
+            <!-- Input file -->
+            <xsd:element maxOccurs="1" minOccurs="1" name="directory" type="xsd:string"/>
+            <xsd:element default="*" maxOccurs="1" minOccurs="1" name="filePattern" type="xsd:string"/>
+            <xsd:element default="false" maxOccurs="1" minOccurs="1" name="useftp" type="xsd:boolean"/>
+            <xsd:element default="default" maxOccurs="1" minOccurs="1" name="ftpConfigurableSvc" type="xsd:string"/>
+            <!-- Input record detection -->
+            <xsd:element default="fixedLength" maxOccurs="1" minOccurs="0" name="recordDetect" type="recordDetectionEnum"/>
+            <xsd:element default="80" maxOccurs="1" minOccurs="1" name="recordLength" type="xsd:string"/>
+            <xsd:element default="EOL" maxOccurs="1" minOccurs="1" name="delimiterType" type="delimiterTypeEnum"/>
+            <xsd:element maxOccurs="1" minOccurs="1" name="recordDelimiter" type="xsd:string"/>
+            <!-- Input validation and parsing -->
+            <xsd:element maxOccurs="1" minOccurs="1" name="messageSet" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="1" name="messageType" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="1" name="messageFormat" type="xsd:string"/>
+            <xsd:element default="0" maxOccurs="1" minOccurs="1" name="CCSID" type="ccsidEnum"/>
+            <xsd:element default="0" maxOccurs="1" minOccurs="1" name="encoding" type="encodingEnum"/>
+            <!-- Routing -->
+            <xsd:element default="noRouting" maxOccurs="1" minOccurs="0" name="routing" type="routingEnum"/>
+            <!-- No routing -->
+            <xsd:element default="" maxOccurs="1" minOccurs="0" name="outputQueueManager" type="xsd:string"/>
+            <xsd:element default="OUTPUT" maxOccurs="1" minOccurs="1" name="outputQueue" type="xsd:string"/>
+            <!-- Specify routes -->
+            <xsd:element default="" maxOccurs="1" minOccurs="0" name="defaultQueueManager" type="xsd:string"/>
+            <xsd:element default="DEFAULT" maxOccurs="1" minOccurs="1" name="defaultQueue" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="namespaceTable" type="namespaceTableType"/>
+            <xsd:element maxOccurs="1" minOccurs="1" name="routeTable" type="routingTableType"/>
+            <!-- Lookup routes -->
+            <xsd:element default="" maxOccurs="1" minOccurs="1" name="routingDataSource" type="xsd:string"/>
+            <xsd:element default="" maxOccurs="1" minOccurs="1" name="routingContext" type="xsd:string"/>
+            <xsd:element default="" maxOccurs="1" minOccurs="1" name="key1" type="xsd:string"/>
+            <xsd:element default="" maxOccurs="1" minOccurs="0" name="key2" type="xsd:string"/>
+            <xsd:element default="" maxOccurs="1" minOccurs="0" name="defaultQueueManagerLookupRoutes" type="xsd:string"/>
+            <xsd:element default="DEFAULT" maxOccurs="1" minOccurs="1" name="defaultQueueLookupRoutes" type="xsd:string"/>
+            <xsd:element default="false" maxOccurs="1" minOccurs="0" name="cacheRefresh" type="xsd:boolean"/>
+            <xsd:element default="REFRESH" maxOccurs="1" minOccurs="1" name="refreshQueue" type="xsd:string"/>
+            <!-- Logging -->
+            <xsd:element default="false" maxOccurs="1" minOccurs="1" name="loggingRequired" type="xsd:boolean"/>
+            <xsd:element default="" maxOccurs="1" minOccurs="0" name="logQueueManager" type="xsd:string"/>
+            <xsd:element default="LOG" maxOccurs="1" minOccurs="1" name="logQueue" type="xsd:string"/>
+            <!-- Error handling -->
+            <xsd:element default="true" maxOccurs="1" minOccurs="1" name="errorMessageRequired" type="xsd:boolean"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="errorQueueManager" type="xsd:string"/>
+            <xsd:element default="ERROR" maxOccurs="1" minOccurs="1" name="errorQueue" type="xsd:string"/>
+            <!-- General -->
+            <xsd:element default="mqsi" maxOccurs="1" minOccurs="0" name="brokerSchema" type="xsd:string"/>
+            <xsd:element default="" maxOccurs="1" minOccurs="0" name="flowPrefix" type="xsd:string"/>
+            <xsd:element default="" maxOccurs="1" minOccurs="0" name="flowSuffix" type="xsd:string"/>
+            <xsd:element default="" maxOccurs="1" minOccurs="0" name="queuePrefix" type="xsd:string"/>
+            <xsd:element default="" maxOccurs="1" minOccurs="0" name="queueSuffix" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="shortDescription" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="longDescription" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>
