@@ -68,7 +68,7 @@ public class _jet_transformation implements JET2TemplateLoader,
             case 0: // fp/rd/mq/templates/dump.jet
                 return new org.eclipse.jet.compiled._jet_dump();
             case 1: // fp/rd/mq/templates/main.jet
-                return new org.eclipse.jet.compiled._jet_main();
+                return new org.eclipse.jet.compiled._jet_main_0();
             case 2: // fp/rd/mq/templates/root/Error.esql.jet
                 return new org.eclipse.jet.compiled._jet_Erroresql();
             case 3: // fp/rd/mq/templates/root/Error.subflow.jet
@@ -104,7 +104,7 @@ public class _jet_transformation implements JET2TemplateLoader,
             case 18: // templates/dump.jet
                 return new org.eclipse.jet.compiled._jet_dump_0();
             case 19: // templates/main.jet
-                return new org.eclipse.jet.compiled._jet_main_0();
+                return new org.eclipse.jet.compiled._jet_main();
             default:
                 break;
             }
